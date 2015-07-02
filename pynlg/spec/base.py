@@ -2,7 +2,12 @@
 
 """Definition of the base class from which all spec elements inherit."""
 
+from ..lexicon import category as lex_category
+from ..lexicon.feature import lexical as lex_feature
+
 from ..lexicon.feature import ELIDED
+
+FEATURE_MODULES = [lex_category, lex_feature]
 
 
 class NLGElement(object):
@@ -10,8 +15,8 @@ class NLGElement(object):
     """Base spec element class from which all spec element classes inherit."""
 
     def __init__(
-            self, features={}, category=u'', realisation=u'', lexicon=None):
-        self.features = features
+            self, features=None, category=u'', realisation=u'', lexicon=None):
+        self.features = features if features else {}
         self.category = category
         self.realisation = realisation
         self.lexicon = lexicon
@@ -63,6 +68,27 @@ class NLGElement(object):
 
     def __repr__(self):
         return unicode(self).encode('utf-8')
+
+    def __getattr__(self, name):
+        """When a undefined attribute name is accessed, try to return
+        self.features[name] if it exists.
+
+        If name is not in self.features, but name.upper() is found in
+        one of the modules defining feature constants,
+        self.features[v] will be returned, where v is the value
+        associated with the feature constant which name is v.upper()
+
+        If no such match is found, raise an AttributeError.
+
+        """
+        n = name.upper()
+        if name in self.features:
+            return self.features[name]
+        else:
+            for mod in FEATURE_MODULES:
+                if n in dir(mod):
+                    return self.features.get(vars(mod)[n])
+        raise AttributeError(name)
 
     @property
     def feature_names(self):

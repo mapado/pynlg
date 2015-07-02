@@ -10,10 +10,11 @@ from collections import defaultdict
 from xml.etree import cElementTree as ElementTree
 from os.path import join, dirname, abspath, exists
 
-from ..spec.word import WordElement
 from .lang import DEFAULT
+from .category import ANY
 from ..util import ensure_unicode as u
 from ..exc import UnhandledLanguage
+from ..spec.word import WordElement
 
 __all__ = ['Lexicon']
 
@@ -66,6 +67,50 @@ class Lexicon(object):
         if auto_index:
             self.make_indexes()
 
+    def __getitem__(self, word_feature):
+        return self.get(word_feature, category=ANY)
+
+    def __contains__(self, word_feature):
+        return bool(self[word_feature])
+
+    def __repr__(self):
+        return '<%s - %s>' % (self.__class__.__name__, self.language)
+
+    def get(self, word_feature, category=ANY):
+        """Fetch the WordElement(s) associated to the argument word
+        feature (an, a base form etc) from the Lexicon indexes.
+
+        If the word is not found, create it.
+
+        """
+        # Search by base form
+        if self.base_index.get(word_feature):
+            return self.indexed_words_by_category(
+                word_feature, category, self.base_index)
+        # Search by id
+        elif self.id_index.get(word_feature):
+            return [self.indexed_words_by_category(
+                word_feature, category, self.id_index)]
+        # Search by variant
+        elif self.variant_index.get(word_feature):
+            return self.indexed_words_by_category(
+                word_feature, category, self.variant_index)
+        return []
+
+    def first(self, word_feature, category=ANY):
+        """Return the first matching word identified by the word_feature
+        in one of the Lexicon indexes.
+
+        """
+        matches = self.get(word_feature, category=category)
+        return matches[0] if matches else matches
+
+    def indexed_words_by_category(self, word_feature, category, index):
+        if category == ANY:
+            return index[word_feature]
+        else:
+            return [w for w in index[word_feature] if w.category == category]
+
     def parse_xml_lexicon(self):
         return ElementTree.parse(self.lexicon_filepath)
 
@@ -90,7 +135,7 @@ class Lexicon(object):
         word = WordElement(base_form=None, category=None, id=None, lexicon=self)
         inflections = []
         for feature_node in word_node:
-            feature_name = u(feature_node.tag.strip().lower())
+            feature_name = u(feature_node.tag.strip())
             feature_value = feature_node.text
             assert bool(feature_name), "empty feature_name for word_node %s" % (
                 feature_value)
@@ -106,7 +151,7 @@ class Lexicon(object):
                 word.category = feature_value.upper()
             elif not feature_value:
                 if feature_name in self.INFL_CODES:
-                    inflections.append(feature_value)
+                    inflections.append(feature_name)
                 else:
                     word[feature_name] = True
             else:

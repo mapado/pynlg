@@ -8,6 +8,9 @@ from xml.etree import cElementTree as ET
 
 from ..lexicon.lexicon import Lexicon
 from ..lexicon.lang import FRENCH, ENGLISH
+from ..lexicon.category import NOUN, VERB, ANY, DETERMINER, ADJECTIVE, ADVERB
+from ..lexicon.feature.lexical import (COMPARATIVE, SUPERLATIVE, PREDICATIVE,
+                                       QUALITATIVE)
 from ..exc import UnhandledLanguage
 from ..spec.word import WordElement
 
@@ -86,3 +89,80 @@ def test_index_lexicon(lexicon_fr):
     assert lexicon_fr.base_index
     assert lexicon_fr.variant_index
     assert lexicon_fr.category_index
+
+
+@pytest.mark.parametrize("word_base_form, category, expected", [
+    ('son', ANY, 2),
+    ('son', NOUN, 1),
+    ('son', DETERMINER, 1),
+    ('son', VERB, 0),
+])
+def test_lookup(lexicon_fr, word_base_form, category, expected):
+    assert len(
+        lexicon_fr.get(word_base_form, category=category)) == expected
+
+
+@pytest.mark.parametrize("word_base_form, expected", [
+    ('son', 2),
+    ('GRUB', 0),
+])
+def test_getitem(lexicon_fr, word_base_form, expected):
+    assert len(lexicon_fr.get(word_base_form)) == expected
+
+
+@pytest.mark.parametrize("word_feature, expected_base_form", [
+    (u'manger', u'manger'),
+    (u'vache_1', u'vache'),
+])
+def test_get(lexicon_fr, word_feature, expected_base_form):
+    assert lexicon_fr.get(word_feature)[0].base_form == expected_base_form
+
+
+def test_contains(lexicon_fr):
+    assert 'table' in lexicon_fr
+    assert 'trululu' not in lexicon_fr
+
+
+def test_first(lexicon_fr):
+    son_categories = [w.category for w in lexicon_fr['son']]
+    assert son_categories == [DETERMINER, NOUN]
+    assert lexicon_fr.first('son', category=ANY).category == DETERMINER
+
+
+def test_features1(lexicon_en):
+    good = lexicon_en.first('good', category=ADJECTIVE)
+    assert good[COMPARATIVE] == 'better'
+    assert good[SUPERLATIVE] == 'best'
+    assert good[PREDICATIVE] is True
+    assert good[QUALITATIVE] is True
+
+
+def test_getattr(lexicon_en):
+    good = lexicon_en.first('good', category=ADJECTIVE)
+    assert good.predicative is True
+    assert good.superlative == 'best'
+    assert good.comparative == 'better'
+    assert good.qualitative is True
+
+
+def test_features2(lexicon_en):
+    woman = lexicon_en.first('woman', category=NOUN)
+    assert woman.plural == 'women'
+    assert woman.acronym_of is None
+    assert not woman.proper
+    assert 'uncount' not in woman.inflections
+
+
+def test_features3(lexicon_en):
+    sand = lexicon_en.first('sand', category=NOUN)
+    assert 'nonCount' in sand.inflections
+    assert sand.default_infl == 'nonCount'
+
+
+def test_features4(lexicon_en):
+    quickly = lexicon_en.first(u'E0051632')
+    assert quickly.base_form == 'quickly'
+    assert quickly.category == ADVERB
+    assert quickly.verb_modifier
+    assert not quickly.sentence_modifier
+    assert not quickly.intensifier
