@@ -7,17 +7,12 @@ from __future__ import absolute_import
 from xml.etree import cElementTree as ElementTree
 from os.path import join, dirname, abspath, exists
 
-__all__ = ['ENGLISH', 'FRENCH', 'DEFAULT', 'UnhandledLanguage', 'Lexicon']
+from ..spec.word import WordElement
+from .lang import DEFAULT
+from ..util import ensure_unicode as u
+from ..exc import UnhandledLanguage
 
-ENGLISH = 'english'
-FRENCH = 'french'
-DEFAULT = 'english'
-
-
-class UnhandledLanguage(Exception):
-
-    """Error raised when there is no lexicon for a language."""
-    pass
+__all__ = ['Lexicon']
 
 
 class Lexicon(object):
