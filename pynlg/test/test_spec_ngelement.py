@@ -13,13 +13,11 @@ def nlg_elt():
 
 
 def test_feature_access(nlg_elt):
-    with pytest.raises(KeyError):
-        nlg_elt['feature']
+    assert nlg_elt['feature'] is None
     nlg_elt['feature'] = 'value'
     assert nlg_elt['feature'] == 'value'
     del nlg_elt['feature']
-    with pytest.raises(KeyError):
-        nlg_elt['feature']
+    assert nlg_elt['feature'] is None
 
 
 def test_contains(nlg_elt):
