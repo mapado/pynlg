@@ -2,18 +2,19 @@
 
 """Definition of the base class from which all spec elements inherit."""
 
+from ..lexicon.feature import ELIDED
+
 
 class NLGElement(object):
 
     """Base spec element class from which all spec element classes inherit."""
 
-    def __init__(self, features={}, category=u'', realisation=u''):
+    def __init__(
+            self, features={}, category=u'', realisation=u'', lexicon=None):
         self.features = features
         self.category = category
         self.realisation = realisation
-        self.factory = None
-        self.language = None
-        self.lexicon = None
+        self.lexicon = lexicon
 
     def __eq__(self, other):
         if isinstance(other, NLGElement):
@@ -40,7 +41,7 @@ class NLGElement(object):
         If the feature name is not found in the feature dict, return None.
 
         """
-        return self.features[feature_name]
+        return self.features.get(feature_name)
 
     def __delitem__(self, feature_name):
         """Remove the argument feature name and its associated value from
@@ -50,13 +51,30 @@ class NLGElement(object):
         a KeyError will be raised.
 
         """
-        del self.features[feature_name]
+        if feature_name in self.features:
+            del self.features[feature_name]
 
     def __unicode__(self):
-        return u"{realisation=%s, category=%s, features=%s}" % (
-            self.realisation, self.category, unicode(self.features))
+        return u"<%s {realisation=%s, category=%s, features=%s}>" % (
+            self.__class__.__name__,
+            self.realisation,
+            self.category,
+            unicode(self.features))
+
+    def __repr__(self):
+        return unicode(self).encode('utf-8')
 
     @property
     def feature_names(self):
         """Return all feature names, the keys in the element feature dict."""
         return self.features.keys()
+
+    @property
+    def elided(self):
+        return self.features[ELIDED]
+
+    @property
+    def language(self):
+        """Return the language lexicon."""
+        if self.lexicon:
+            return self.lexicon.language
