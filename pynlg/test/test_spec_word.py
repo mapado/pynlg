@@ -46,13 +46,13 @@ def test_inflectional_variants(word):
 
 
 def test_spelling_variants(word):
-    word.spelling_variants = ['fish', 'fich']
-    assert word.spelling_variants == ['fish', 'fich']
+    word.spelling_variants = [u'clé', u'clef']
+    assert word.spelling_variants == [u'clé', u'clef']
 
 
 def test_default_spelling_variant(word):
-    word.default_spelling_variant = 'fish'
-    assert word.default_spelling_variant == 'fish'
+    word.default_spelling_variant = u'clé'
+    assert word.default_spelling_variant == u'clé'
 
 
 def test_children(word):
