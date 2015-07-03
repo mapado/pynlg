@@ -144,6 +144,7 @@ class Lexicon(object):
             # Set word base_form, id, category, inflection codes and features
             if feature_name == self.BASE:
                 word.base_form = feature_value
+                word.realisation = feature_value
             elif feature_name == self.ID:
                 word.id = feature_value
             elif feature_name == self.CATEGORY:
