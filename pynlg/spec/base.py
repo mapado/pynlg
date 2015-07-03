@@ -2,18 +2,45 @@
 
 """Definition of the base class from which all spec elements inherit."""
 
-from ..lexicon import category as lex_category
-from ..lexicon.feature import lexical as lex_feature
+import os
+import importlib
 
-FEATURE_MODULES = [lex_category, lex_feature]
+from os.path import join, dirname, relpath
+
+
+class FeatureModulesLoader(type):
+
+    """Metaclass injecting the feature module property onto a class."""
+
+    def __new__(cls, clsname, bases, dct):
+        features = {}
+        feature_pkg_path = relpath(
+            join(dirname(__file__), '..', 'lexicon', 'feature'))
+        for dirpath, _, filenames in os.walk(feature_pkg_path):
+            pkg_root = dirpath.replace('/', '.')
+            for filename in filenames:
+                if not filename.endswith('.py'):
+                    continue
+                pkg_path = pkg_root + '.' + filename.replace('.py', '')
+                mod = importlib.import_module(pkg_path)
+                mod_features = [c for c in dir(mod) if c.isupper()]
+                for feat in mod_features:
+                    features[feat] = getattr(mod, feat)
+
+        dct['_feature_constants'] = features
+
+        return super(FeatureModulesLoader, cls).__new__(
+            cls, clsname, bases, dct)
 
 
 class NLGElement(object):
 
     """Base spec element class from which all spec element classes inherit."""
 
-    def __init__(
-            self, features=None, category=u'', realisation=u'', lexicon=None):
+    __metaclass__ = FeatureModulesLoader
+
+    def __init__(self, features=None, category=u'', realisation=u'',
+                 lexicon=None):
         self.features = features if features else {}
         self.category = category
         self.realisation = realisation
@@ -71,21 +98,33 @@ class NLGElement(object):
         """When a undefined attribute name is accessed, try to return
         self.features[name] if it exists.
 
-        If name is not in self.features, but name.upper() is found in
-        one of the modules defining feature constants,
-        self.features[v] will be returned, where v is the value
-        associated with the feature constant which name is v.upper()
+        If name is not in self.features, but name.upper() is defined as
+        a feature constant, don't raise an AttribueError. Instead, try
+        to return the feature value associated with the feature constant
+        value.
+
+        This allows us to have a more consistant API when
+        dealing with NLGElement and instances of sublclasses.
 
         If no such match is found, raise an AttributeError.
+
+        Example:
+        >>> elt = NLGElement(features={'plural': 'plop', 'infl': ['lala']})
+        >>> elt.plural
+        'plop'  # because 'plural' is in features
+        >>> elt.infl
+        ['lala']  # because 'infl' is in features
+        >>> elt.inflections
+        ['lala']  # because INFLECTIONS='infl' is defined as a feature constant
+                # constant, and elt.features['infl'] = ['lala']
 
         """
         n = name.upper()
         if name in self.features:
             return self.features[name]
-        else:
-            for mod in FEATURE_MODULES:
-                if n in dir(mod):
-                    return self.features.get(vars(mod)[n])
+        elif n in self._feature_constants:
+            new_name = self._feature_constants[n]
+            return self.features.get(new_name)
         raise AttributeError(name)
 
     @property
