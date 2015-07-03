@@ -5,8 +5,6 @@
 from ..lexicon import category as lex_category
 from ..lexicon.feature import lexical as lex_feature
 
-from ..lexicon.feature import ELIDED
-
 FEATURE_MODULES = [lex_category, lex_feature]
 
 
@@ -94,10 +92,6 @@ class NLGElement(object):
     def feature_names(self):
         """Return all feature names, the keys in the element feature dict."""
         return self.features.keys()
-
-    @property
-    def elided(self):
-        return self.features[ELIDED]
 
     @property
     def language(self):
