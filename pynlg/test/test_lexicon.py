@@ -6,18 +6,17 @@ import pytest
 
 from xml.etree import cElementTree as ET
 
-from ..lexicon.lexicon import Lexicon
-from ..lexicon.lang import FRENCH, ENGLISH
+from ..lexicon.fr import FrenchLexicon
+from ..lexicon.en import EnglishLexicon
 from ..lexicon.category import NOUN, VERB, ANY, DETERMINER, ADJECTIVE, ADVERB
 from ..lexicon.feature.lexical import (COMPARATIVE, SUPERLATIVE, PREDICATIVE,
                                        QUALITATIVE)
-from ..exc import UnhandledLanguage
 from ..spec.word import WordElement
 
 
-@pytest.mark.parametrize('lang', [FRENCH, ENGLISH])
-def test_lexicon_supported_languages(lang):
-    Lexicon(lang, auto_index=False).lexicon_filepath
+def test_lexicon_supported_languages():
+    assert FrenchLexicon(auto_index=False).lexicon_filepath
+    assert EnglishLexicon(auto_index=False).lexicon_filepath
 
 
 @pytest.fixture
@@ -48,11 +47,6 @@ def word_node():
     ET.SubElement(word_node, 'subjunctive3p').text = u'soient'
     ET.SubElement(word_node, 'copular')
     return word_node
-
-
-def test_lexicon_other_language():
-    with pytest.raises(UnhandledLanguage):
-        Lexicon('unhandled language', auto_index=False).lexicon_filepath
 
 
 def test_word_from_node(empty_lexicon_fr, word_node):

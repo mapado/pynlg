@@ -10,7 +10,6 @@ from collections import defaultdict
 from xml.etree import cElementTree as ElementTree
 from os.path import join, dirname, abspath, exists
 
-from .lang import DEFAULT
 from .category import ANY
 from ..util import ensure_unicode as u
 from ..exc import UnhandledLanguage
@@ -44,7 +43,9 @@ class Lexicon(object):
         "reg", "irreg", "uncount", "inv",
         "metareg", "glreg", "nonCount", "sing", "groupuncount"]
 
-    def __init__(self, language=DEFAULT, auto_index=True):
+    language = None
+
+    def __init__(self, auto_index=True):
         """Create a new Lexicon.
 
         If auto_index is set to True, the XML lexicon corresponding to
@@ -56,8 +57,6 @@ class Lexicon(object):
                            instanciation (default: True)
 
         """
-        self.language = language
-
         self.words = set()
         self.id_index = {}
         self.base_index = defaultdict(list)
