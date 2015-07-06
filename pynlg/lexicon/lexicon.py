@@ -82,23 +82,28 @@ class Lexicon(object):
         """
         # Search by base form
         if self.base_index.get(word_feature):
-            return self.indexed_words_by_category(
+            word = self.indexed_words_by_category(
                 word_feature, category, self.base_index)
         # Search by id
         elif self.id_index.get(word_feature):
-            return [self.indexed_words_by_category(
+            word = [self.indexed_words_by_category(
                 word_feature, category, self.id_index)]
         # Search by variant
         elif self.variant_index.get(word_feature):
-            return self.indexed_words_by_category(
+            word = self.indexed_words_by_category(
                 word_feature, category, self.variant_index)
         else:
-            new_word = WordElement(
+            word = WordElement(
                 base_form=word_feature, category=category, id=None,
                 lexicon=self, realisation=word_feature)
-            self.words.add(new_word)
-            self.index_word(new_word)
-            return new_word
+            self.words.add(word)
+            self.index_word(word)
+        # don't return the indexed word, but return a deepcopy, so that
+        # any modification to the returned word won't impact the index
+        if isinstance(word, list):
+            return [deepcopy(w) for w in word]
+        else:
+            return deepcopy(word)
 
     def first(self, word_feature, category=ANY):
         """Return the first matching word identified by the word_feature
@@ -113,10 +118,9 @@ class Lexicon(object):
 
     def indexed_words_by_category(self, word_feature, category, index):
         if category == ANY:
-            return deepcopy(index[word_feature])
+            return index[word_feature]
         else:
-            return [deepcopy(w)
-                    for w in index[word_feature] if w.category == category]
+            return [w for w in index[word_feature] if w.category == category]
 
     def parse_xml_lexicon(self):
         return ElementTree.parse(self.lexicon_filepath)

@@ -135,6 +135,7 @@ def insert_au_du(left_word, right_word):
     ):
         replace_de_le_by_du(left_word, right_word)
         replace_a_le_by_au(left_word, right_word)
+        return True
 
 
 def undetach_pronoun(left_word, right_word):
@@ -161,6 +162,7 @@ def undetach_pronoun(left_word, right_word):
             left_word.category = inflected_new_base_word.category
             left_word[ELIDED] = False
             left_word.realisation = new_base_word.base_form
+            return True
 
 
 def add_apostrophe(left_word, right_word):
@@ -191,6 +193,7 @@ def add_apostrophe(left_word, right_word):
         # apostrophe. The orthography processing will later make sure
         # that no space is put after the apostrophe
         left_word.realisation = left_word.realisation[:-1] + "'"
+        return True
 
 
 def replace_word_by_liaison_form(left_word, right_word):
@@ -221,6 +224,7 @@ def replace_word_by_liaison_form(left_word, right_word):
                         and not feminine))):
 
             left_word.realisation = left_word.liaison
+            return True
 
 
 def deduplicate_left_right_realisation(left_word, right_word):
@@ -236,9 +240,10 @@ def deduplicate_left_right_realisation(left_word, right_word):
         )
     ):
         right_word.realisation = None
+        return True
 
 
-def apply_liaison_rules(left_word, right_word):
+def apply_rules(left_word, right_word):
     """Apply french morphophonologic rules to make sure that the
     transition between the left and right word is grammatically correct.
 
@@ -247,23 +252,27 @@ def apply_liaison_rules(left_word, right_word):
         return
 
     # Replace de + le by du, and associated rules
-    insert_au_du(left_word, right_word)
-
+    if insert_au_du(left_word, right_word):
+        return
     # special rule with "en" and "y" : the personal pronoun immediately
     # preceding it takes non detached form even if it is attached to an
     # imperative verb
-    undetach_pronoun(left_word, right_word)
+    if undetach_pronoun(left_word, right_word):
+        return
 
     # words who have their last vowel elided and take an apostrophe
     # when in front of a vowel (and singular for determiners)
-    add_apostrophe(left_word, right_word)
+    if add_apostrophe(left_word, right_word):
+        return
+
+    # Remove right duplication if it's a duplicate of the left one
+    if deduplicate_left_right_realisation(left_word, right_word):
+        return
 
     # Replace the left word by it's liaison form (different form when the
     # word is in front of a vowel) when one of this cases is true.
     # - the left word is a singular masculing adjective
     # - the left word is a feminine singular possessive determiner
     # - the left word is a masculine singular non possessive determiner
-    replace_word_by_liaison_form(right_word, right_word)
-
-    # Remove right duplication if it's a duplicate of the left one
-    deduplicate_left_right_realisation(left_word, right_word)
+    # if replace_word_by_liaison_form(right_word, right_word):
+    #     return
