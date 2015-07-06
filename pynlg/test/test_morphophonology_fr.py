@@ -6,41 +6,9 @@ import pytest
 import re
 
 from ..morphophonology.fr import (
-    LE_LEQUEL_RE, LES_LESQUELS_RE,
-    insert_au_du,
-    undetach_pronoun)
-
-
-@pytest.yield_fixture
-def a(lexicon_fr):
-    a = lexicon_fr.first(u'à')
-    rea = a.realisation
-    yield a
-    a.realisation = rea
-
-
-@pytest.yield_fixture
-def de(lexicon_fr):
-    de = lexicon_fr.first(u'de')
-    rea = de.realisation
-    yield de
-    de.realisation = rea
-
-
-@pytest.yield_fixture
-def le(lexicon_fr):
-    le = lexicon_fr.first(u'le')
-    rea = le.realisation
-    yield le
-    le.realisation = rea
-
-
-@pytest.yield_fixture
-def lequel(lexicon_fr):
-    lequel = lexicon_fr.first(u'lequel')
-    rea = lequel.realisation
-    yield lequel
-    lequel.realisation = rea
+    LE_LEQUEL_RE, LES_LESQUELS_RE, insert_au_du, undetach_pronoun,
+    add_apostrophe)
+from ..lexicon.feature.category import CONJUNCTION
 
 
 @pytest.mark.parametrize('s', [
@@ -62,25 +30,57 @@ def test_les_lequels_re(s):
     assert re.match(LES_LESQUELS_RE, s).group() == s
 
 
-def test_insert_au_du_a_le(a, le):
+def test_insert_au_du_a_le(lexicon_fr):
+    a = lexicon_fr.first(u'à')
+    le = lexicon_fr.first(u'le')
     insert_au_du(a, le)
     assert a.realisation == 'au'
     assert le.realisation is None
 
 
-def test_insert_au_du_a_lequel(a, lequel):
+def test_insert_au_du_a_lequel(lexicon_fr):
+    a = lexicon_fr.first(u'à')
+    lequel = lexicon_fr.first(u'lequel')
     insert_au_du(a, lequel)
     assert a.realisation == 'auquel'
     assert lequel.realisation is None
 
 
-def test_insert_au_du_de_le(de, le):
+def test_insert_au_du_de_le(lexicon_fr):
+    de = lexicon_fr.first(u'de')
+    le = lexicon_fr.first(u'le')
     insert_au_du(de, le)
     assert de.realisation == 'du'
     assert le.realisation is None
 
 
-def test_insert_au_du_de_lequel(de, lequel):
+def test_insert_au_du_de_lequel(lexicon_fr):
+    de = lexicon_fr.first(u'de')
+    lequel = lexicon_fr.first(u'lequel')
     insert_au_du(de, lequel)
     assert de.realisation == 'duquel'
     assert lequel.realisation is None
+
+
+def test_add_apostrophe_si_ils(lexicon_fr):
+    si = lexicon_fr.first(u'si', category=CONJUNCTION)
+    ils = lexicon_fr.first(u'ils')
+    add_apostrophe(si, ils)
+    assert si.realisation == u"s'"
+    assert ils.realisation == u'ils'
+
+
+def test_add_apostrophe_le_arbre(lexicon_fr):
+    le = lexicon_fr.first(u'le')
+    arbre = lexicon_fr.first(u'arbre')
+    add_apostrophe(le, arbre)
+    assert le.realisation == u"l'"
+    assert arbre.realisation == u'arbre'
+
+
+def test_add_apostrophe_other(lexicon_fr):
+    la = lexicon_fr.first(u'la')
+    voiture = lexicon_fr.first(u'voiture')
+    add_apostrophe(la, voiture)
+    assert la.realisation == u"la"
+    assert voiture.realisation == u'voiture'

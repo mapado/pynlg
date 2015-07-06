@@ -111,10 +111,11 @@ def replace_a_le_by_au(left_word, right_word):
 
 
 def insert_au_du(left_word, right_word):
-    if (left_word.category in [category.PREPOSITION, category.COMPLEMENTISER]
-            and (right_word.category == category.DETERMINER
-                 or right_word.pronoun_type == pronoun.RELATIVE)
-        ):
+    if (
+        left_word.category in [category.PREPOSITION, category.COMPLEMENTISER]
+        and (right_word.category == category.DETERMINER
+             or right_word.pronoun_type == pronoun.RELATIVE)
+    ):
         replace_de_le_by_du(left_word, right_word)
         replace_a_le_by_au(left_word, right_word)
 
@@ -146,15 +147,29 @@ def undetach_pronoun(left_word, right_word):
 
 
 def add_apostrophe(left_word, right_word):
-    si_ils_elision = (
-        left_word.realisation == 'si' or left_word.realisation.endswith(' si')
-        and match(r"il(s)?", right_word))
-    de_que_elision = (
+    """Add an apostrophe between the left and right word, if needed.
+
+    Two cases are identified:
+    1 - si + ils → s'ils
+    2 - left word is a singular word, ending with an elided vowel
+    (or by 'de' or 'que') and the first letter of the right word is a
+    vowel.
+
+    Examples for case 2:
+    - que + ils → qu'ils
+    - le + arbre → l'arbre
+
+    If these cases, the last letter (a vowel) of the left word will
+    be removed, and replaced by an apostrophe.
+
+    """
+    si_ils_elision = match(r' ?si', left_word) and match(r'il(s)?', right_word)
+    contiguous_vowels_elision = (
         (
             (left_word.vowel_elision and not left_word.is_plural)
-            or left_word.realisation.endswith((" de", " que"))
+            or left_word.realisation.endswith((' de', ' que'))
         ) and re.match(VOWELS_RE, right_word.realisation[0]))
-    if si_ils_elision or de_que_elision:
+    if si_ils_elision or contiguous_vowels_elision:
         # Remove last letter (vowel) of left word and append an
         # apostrophe. The orthography processing will later make sure
         # that no space is put after the apostrophe
