@@ -176,6 +176,21 @@ def add_apostrophe(left_word, right_word):
         left_word.realisation = left_word.realisation[:-1] + "'"
 
 
+def deduplicate_left_right_realisation(left_word, right_word):
+    """Remove the right word realisation if it's a duplicate of the left one."""
+    if (
+        (
+            left_word.realisation == 'de'
+            and right_word.realisation in ['de', 'du', "d'"]
+        )
+        or (
+            left_word.realisation == 'que'
+            and right_word.realisation in ['que', "qu'"]
+        )
+    ):
+        right_word.realisation = None
+
+
 def apply_liaison_rules(left_word, right_word):
     """Apply french morphophonologic rules to make sure that the
     transition between the left and right word is grammatically correct.
@@ -195,3 +210,6 @@ def apply_liaison_rules(left_word, right_word):
     # words who have their last vowel elided and take an apostrophe
     # when in front of a vowel (and singular for determiners)
     add_apostrophe(left_word, right_word)
+
+    # Remove right duplication if it's a duplicate of the left one
+    deduplicate_left_right_realisation(left_word, right_word)

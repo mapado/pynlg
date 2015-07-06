@@ -7,7 +7,7 @@ import re
 
 from ..morphophonology.fr import (
     LE_LEQUEL_RE, LES_LESQUELS_RE, insert_au_du, undetach_pronoun,
-    add_apostrophe)
+    add_apostrophe, deduplicate_left_right_realisation)
 from ..lexicon.feature.category import CONJUNCTION
 
 
@@ -84,3 +84,19 @@ def test_add_apostrophe_other(lexicon_fr):
     add_apostrophe(la, voiture)
     assert la.realisation == u"la"
     assert voiture.realisation == u'voiture'
+
+
+@pytest.mark.parametrize('left, right', [
+    ('de', 'de'),
+    ('de', 'du'),
+    ('de', "d'"),
+    ('que', 'que'),
+    ('que', "qu'"),
+])
+def test_deduplicate_left_right_realisation(lexicon_fr, left, right):
+    left = lexicon_fr.first(left)
+    old_left_realisation = left.realisation
+    right = lexicon_fr.first(right)
+    deduplicate_left_right_realisation(left, right)
+    assert left.realisation == old_left_realisation
+    assert right.realisation is None
