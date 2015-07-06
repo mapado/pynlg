@@ -6,8 +6,9 @@ import pytest
 import re
 
 from ..morphophonology.fr import (
-    LE_LEQUEL_RE, LES_LESQUELS_RE, insert_au_du, undetach_pronoun,
-    add_apostrophe, deduplicate_left_right_realisation)
+    LE_LEQUEL_RE, LES_LESQUELS_RE, insert_au_du,
+    add_apostrophe, deduplicate_left_right_realisation,
+    start_with_vowel)
 from ..lexicon.feature.category import CONJUNCTION
 
 
@@ -100,3 +101,13 @@ def test_deduplicate_left_right_realisation(lexicon_fr, left, right):
     deduplicate_left_right_realisation(left, right)
     assert left.realisation == old_left_realisation
     assert right.realisation is None
+
+
+@pytest.mark.parametrize('word, expected', [
+    (u'arbre', True),
+    (u'voiture', False),
+    (u'oui', False)
+])
+def test_start_with_vowel(lexicon_fr, word, expected):
+    word = lexicon_fr.first(word)
+    assert start_with_vowel(word) is expected

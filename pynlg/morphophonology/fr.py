@@ -26,7 +26,8 @@ VOWELS_RE = re.compile(
     ur'i|I|ï|Ï|î|Î|'
     ur'o|O|ô|Ô|'
     ur'u|U|û|Û|ü|Ü|ù|Ù|'
-    ur'y|Y|ý|Ý|ÿ|Ÿ')
+    ur'y|Y|ý|Ý|ÿ|Ÿ|'
+    ur'h|H')  # special case of aspired h
 
 # Matches le, les, lequel, lesquel, lesquelles
 LE_LEQUEL_RE = re.compile(ur'le(quel)?')
@@ -39,6 +40,21 @@ def match(pattern, word):
 
 def search(pattern, word):
     return re.search(pattern, word.realisation)
+
+
+def start_with_vowel(word):
+    """Return True if the word realisation starts with a vowel.
+
+    A word can be marked as having a so-called "aspired h"
+    even if it isn't written with an "h" at the beginning.
+    Numerals are also considered to have this trait.
+    ("le onzième jour", "le huit du mois")
+
+    """
+    return (
+        bool(re.match(VOWELS_RE, word.realisation[0]))
+        and not word.aspired_h
+        and not word.realisation.endswith(u'ième'))
 
 
 def _bind_words(
@@ -168,7 +184,7 @@ def add_apostrophe(left_word, right_word):
         (
             (left_word.vowel_elision and not left_word.is_plural)
             or left_word.realisation.endswith((' de', ' que'))
-        ) and re.match(VOWELS_RE, right_word.realisation[0]))
+        ) and start_with_vowel(right_word))
     if si_ils_elision or contiguous_vowels_elision:
         # Remove last letter (vowel) of left word and append an
         # apostrophe. The orthography processing will later make sure
