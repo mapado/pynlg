@@ -70,9 +70,6 @@ class Lexicon(object):
     def __getitem__(self, word_feature):
         return self.get(word_feature, category=ANY)
 
-    def __contains__(self, word_feature):
-        return bool(self[word_feature])
-
     def __repr__(self):
         return '<%s - %s>' % (self.__class__.__name__, self.language)
 
@@ -95,7 +92,13 @@ class Lexicon(object):
         elif self.variant_index.get(word_feature):
             return self.indexed_words_by_category(
                 word_feature, category, self.variant_index)
-        return []
+        else:
+            new_word = WordElement(
+                base_form=word_feature, category=category, id=None,
+                lexicon=self, realisation=word_feature)
+            self.words.add(new_word)
+            self.index_word(new_word)
+            return new_word
 
     def first(self, word_feature, category=ANY):
         """Return the first matching word identified by the word_feature
@@ -103,7 +106,10 @@ class Lexicon(object):
 
         """
         matches = self.get(word_feature, category=category)
-        return matches[0] if matches else None
+        if isinstance(matches, WordElement):
+            return matches
+        elif isinstance(matches, list):
+            return matches[0]
 
     def indexed_words_by_category(self, word_feature, category, index):
         if category == ANY:

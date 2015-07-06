@@ -14,6 +14,10 @@ from ..lexicon.feature.lexical import (COMPARATIVE, SUPERLATIVE, PREDICATIVE,
 from ..spec.word import WordElement
 
 
+def _list(x):
+    return [x] if not isinstance(x, list) else x
+
+
 def test_lexicon_supported_languages():
     assert FrenchLexicon(auto_index=False).lexicon_filepath
     assert EnglishLexicon(auto_index=False).lexicon_filepath
@@ -93,15 +97,15 @@ def test_index_lexicon(lexicon_fr):
 ])
 def test_lookup(lexicon_fr, word_base_form, category, expected):
     assert len(
-        lexicon_fr.get(word_base_form, category=category)) == expected
+        _list(lexicon_fr.get(word_base_form, category=category))) == expected
 
 
 @pytest.mark.parametrize("word_base_form, expected", [
     ('son', 2),
-    ('GRUB', 0),
+    ('GRUB', 1),  # will automatically be created
 ])
 def test_getitem(lexicon_fr, word_base_form, expected):
-    assert len(lexicon_fr.get(word_base_form)) == expected
+    assert len(_list(lexicon_fr.get(word_base_form))) == expected
 
 
 @pytest.mark.parametrize("word_feature, expected_base_form", [
@@ -110,11 +114,6 @@ def test_getitem(lexicon_fr, word_base_form, expected):
 ])
 def test_get(lexicon_fr, word_feature, expected_base_form):
     assert lexicon_fr.get(word_feature)[0].base_form == expected_base_form
-
-
-def test_contains(lexicon_fr):
-    assert 'table' in lexicon_fr
-    assert 'trululu' not in lexicon_fr
 
 
 def test_first(lexicon_fr):
