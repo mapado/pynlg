@@ -6,6 +6,7 @@ from __future__ import absolute_import
 
 import random
 
+from copy import deepcopy
 from collections import defaultdict
 from xml.etree import cElementTree as ElementTree
 from os.path import join, dirname, abspath, exists
@@ -102,13 +103,14 @@ class Lexicon(object):
 
         """
         matches = self.get(word_feature, category=category)
-        return matches[0] if matches else matches
+        return matches[0] if matches else None
 
     def indexed_words_by_category(self, word_feature, category, index):
         if category == ANY:
-            return index[word_feature]
+            return deepcopy(index[word_feature])
         else:
-            return [w for w in index[word_feature] if w.category == category]
+            return [deepcopy(w)
+                    for w in index[word_feature] if w.category == category]
 
     def parse_xml_lexicon(self):
         return ElementTree.parse(self.lexicon_filepath)

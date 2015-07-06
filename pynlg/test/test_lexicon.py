@@ -160,3 +160,11 @@ def test_features4(lexicon_en):
     assert quickly.verb_modifier
     assert not quickly.sentence_modifier
     assert not quickly.intensifier
+
+
+def test_independant_words(lexicon_fr):
+    le1 = lexicon_fr.first(u'le')
+    le2 = lexicon_fr.first(u'le')
+    assert le1 is not le2
+    le1.realisation = u"l'"
+    assert le2.realisation == u"le"

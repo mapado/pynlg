@@ -45,6 +45,7 @@ class NLGElement(object):
         self.category = category
         self.realisation = realisation
         self.lexicon = lexicon
+        self.base_form = None
 
     def __eq__(self, other):
         if isinstance(other, NLGElement):
@@ -126,6 +127,15 @@ class NLGElement(object):
             new_name = self._feature_constants[n]
             return self.features.get(new_name)
         raise AttributeError(name)
+
+    def __deepcopy__(self, memodict={}):
+        copyobj = self.__class__()
+        copyobj.features = self.features.copy()
+        copyobj.category = self.category
+        copyobj.realisation = self.realisation
+        copyobj.lexicon = self.lexicon
+        copyobj.base_form = self.base_form
+        return copyobj
 
     @property
     def feature_names(self):
