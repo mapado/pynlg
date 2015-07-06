@@ -7,6 +7,8 @@ import importlib
 
 from os.path import join, dirname, relpath
 
+from ..lexicon.feature.number import PLURAL
+
 
 class FeatureModulesLoader(type):
 
@@ -147,3 +149,7 @@ class NLGElement(object):
         """Return the language lexicon."""
         if self.lexicon:
             return self.lexicon.language
+
+    @property
+    def is_plural(self):
+        return self.number == PLURAL

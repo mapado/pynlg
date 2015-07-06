@@ -33,17 +33,19 @@ class WordElement(WordMixin, NLGElement):
 
     """Element defining rules and behaviour for a word."""
 
-    def __init__(self, base_form, category, id, lexicon):
+    def __init__(self, base_form=u'', category=u'', id=u'', lexicon=u'',
+                 realisation=u''):
         """Create a WordElement with the specified baseForm, category,
         ID and lexicon.
 
         :param base_form: the base form of WordElement
-        :param category: the category of WordElement
+        :param category: the category of Wor,dElement
         :param id: the ID of word in lexicon
         :param lexicon: the lexicon from witch this WordElement comes from
 
         """
-        super(WordElement, self).__init__(category=category, lexicon=lexicon)
+        super(WordElement, self).__init__(
+            category=category, lexicon=lexicon, realisation=realisation)
         self.base_form = base_form
         self.id = id
 
@@ -156,18 +158,6 @@ class InflectedWordElement(WordMixin, NLGElement):
                 self.category = self.word.category
             else:
                 self.category = ANY
-
-    @property
-    def base_word(self):
-        return self.features.get(BASE_WORD)
-
-    @base_word.setter
-    def base_word(self, word):
-        self.features[BASE_WORD] = word
-
-    @property
-    def base_form(self):
-        return self.features[BASE_FORM]
 
     @property
     def lexicon(self):
