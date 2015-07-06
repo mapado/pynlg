@@ -19,6 +19,7 @@ from ..lexicon.feature.pronoun import fr as pronoun
 from ..lexicon.feature import person
 from ..lexicon.feature.number import SINGULAR
 from ..lexicon.feature import ELIDED
+from ..lexicon.feature.gender import FEMININE
 
 VOWELS_RE = re.compile(
     ur'a|A|ä|Ä|à|À|â|Â|'
@@ -192,6 +193,36 @@ def add_apostrophe(left_word, right_word):
         left_word.realisation = left_word.realisation[:-1] + "'"
 
 
+def replace_word_by_liaison_form(left_word, right_word):
+    if (
+            left_word.parent
+            and left_word.category in [category.DETERMINER or category.ADJECTIVE]
+            and left_word.liaison
+    ):
+        # Get gender from parent or "grand-parent" for adjectives
+        if not left_word.parent.gender and left_word.parent.parent:
+            left_word.parent = left_word.parent.parent
+
+        # adjectives which have a different form in front of a vowel
+        # when masculine singular,
+        # possessive determiners when feminine singular
+        # and non possessive determiners when masculine singular
+        feminine = left_word.parent.gender == FEMININE
+        if (
+                start_with_vowel(right_word)
+                and not left_word.parent.is_plural
+                and ((
+                    left_word.category == category.DETERMINER
+                    and left_word.possessive == feminine
+                ) or
+                    (
+                        left_word.category == category.ADJECTIVE
+                        and right_word.category == category.NOUN
+                        and not feminine))):
+
+            left_word.realisation = left_word.liaison
+
+
 def deduplicate_left_right_realisation(left_word, right_word):
     """Remove the right word realisation if it's a duplicate of the left one."""
     if (
@@ -226,6 +257,13 @@ def apply_liaison_rules(left_word, right_word):
     # words who have their last vowel elided and take an apostrophe
     # when in front of a vowel (and singular for determiners)
     add_apostrophe(left_word, right_word)
+
+    # Replace the left word by it's liaison form (different form when the
+    # word is in front of a vowel) when one of this cases is true.
+    # - the left word is a singular masculing adjective
+    # - the left word is a feminine singular possessive determiner
+    # - the left word is a masculine singular non possessive determiner
+    replace_word_by_liaison_form(right_word, right_word)
 
     # Remove right duplication if it's a duplicate of the left one
     deduplicate_left_right_realisation(left_word, right_word)
