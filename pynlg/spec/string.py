@@ -27,13 +27,15 @@ class StringElement(NLGElement):
         self.features = {}
         self.features[ELIDED] = False
         self.lexicon = get_lexicon(language)
+        self.children = []
+        self.parent = None
         if not word:
             self.category = CANNED_TEXT
             self.realisation = string
         else:
             self.features.update(word.features.copy())
             self.category = word.category
-            self.realisation = word.realisation
+            self.realisation = string if string else word.realisation
 
     def __unicode__(self):
         return u"<%s [%s:%s]>" % (
@@ -47,11 +49,6 @@ class StringElement(NLGElement):
             and super(StringElement, self).__eq__(other)
             and self.realisation == other.realisation
         )
-
-    @property
-    def children(self):
-        """A StringElement has no children. Return []."""
-        return []
 
     def realise_morphophonology(self, next_word):
         ruleset = get_morphophonology_rules(self.language)

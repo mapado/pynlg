@@ -7,7 +7,9 @@ import importlib
 
 from os.path import join, dirname, relpath
 
+from ..lexicon.feature import PARTICLE
 from ..lexicon.feature.number import PLURAL
+from ..lexicon.feature.gender import FEMININE
 
 
 class FeatureModulesLoader(type):
@@ -48,6 +50,8 @@ class NLGElement(object):
         self.realisation = realisation
         self.lexicon = lexicon
         self.base_form = None
+        self.parent = None
+        self.children = []
 
     def __eq__(self, other):
         if isinstance(other, NLGElement):
@@ -153,3 +157,12 @@ class NLGElement(object):
     @property
     def is_plural(self):
         return self.number == PLURAL
+
+    @property
+    def is_feminine(self):
+        return self.gender == FEMININE
+
+    @property
+    def particle(self):
+        return ('-' + self.features[PARTICLE] if self.features.get(PARTICLE)
+                else '')

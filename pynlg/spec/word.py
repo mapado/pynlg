@@ -17,11 +17,6 @@ class WordMixin(object):
 
     """Class defining the behaviour of a word."""
 
-    @property
-    def children(self):
-        """A word has no children. Return an empty list."""
-        return []
-
     def __unicode__(self):
         return u"<%s [%s:%s]>" % (
             self.__class__.__name__,
@@ -92,10 +87,6 @@ class WordElement(WordMixin, NLGElement):
     @default_spelling_variant.setter
     def default_spelling_variant(self, variant):
         self.features[DEFAULT_SPELL] = variant
-
-    @property
-    def children(self):
-        return []
 
     def to_xml(self, pretty=False):
         """Export the WordElement to an XML string stucture."""
