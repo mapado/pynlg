@@ -9,8 +9,7 @@ from .base import NLGElement
 from ..lexicon.feature import ELIDED
 from ..lexicon.feature.category import CANNED_TEXT
 from ..lexicon.lang import DEFAULT as DEFAULT_LANG
-from ..lexicon import get_lexicon
-from ..morphophonology import get_morphophonology_rules
+from ..util import get_lexicon, get_morphophonology_rules
 
 
 class StringElement(NLGElement):

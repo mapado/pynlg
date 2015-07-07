@@ -10,7 +10,7 @@ from ..lexicon.feature.lexical import (DEFAULT_INFL, DEFAULT_SPELL, INFLECTIONS,
 from ..lexicon.feature.internal import BASE_WORD
 from ..lexicon.category import ANY
 from ..lexicon.lang import ENGLISH, FRENCH
-from ..exc import UnhandledLanguage
+from ..util import get_morphology_rules
 
 
 class WordMixin(object):
@@ -120,13 +120,6 @@ class WordElement(WordMixin, NLGElement):
 class InflectedWordElement(WordMixin, NLGElement):
 
     """TODO"""
-
-    _morphology_rules = {
-        # TODO: must be real class
-        ENGLISH: "NonStaticMorphologyRules",
-        # TODO: must be real class
-        FRENCH: "MorphologyRulesFrench",
-    }
 
     def __init__(self, word, category=None):
         """Constructs a new inflected word using the argument word as
