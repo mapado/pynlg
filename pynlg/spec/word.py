@@ -5,15 +5,15 @@
 from xml.etree import cElementTree as ET
 
 from .base import NLGElement
+from .string import StringElement
 from ..lexicon.feature.lexical import (DEFAULT_INFL, DEFAULT_SPELL, INFLECTIONS,
-                                       SPELL_VARS, BASE_FORM)
-from ..lexicon.feature.internal import BASE_WORD
-from ..lexicon.category import ANY
-from ..lexicon.lang import ENGLISH, FRENCH
+                                       SPELL_VARS)
+from ..lexicon.feature.internal import DISCOURSE_FUNCTION
+from ..lexicon.category import ANY, PRONOUN, NOUN, VERB, ADJECTIVE, ADVERB, DETERMINER
 from ..util import get_morphology_rules
 
 
-class WordMixin(object):
+class WordReprMixin(object):
 
     """Class defining the behaviour of a word."""
 
@@ -24,7 +24,7 @@ class WordMixin(object):
             self.category if self.category else u'no category')
 
 
-class WordElement(WordMixin, NLGElement):
+class WordElement(WordReprMixin, NLGElement):
 
     """Element defining rules and behaviour for a word."""
 
@@ -81,7 +81,7 @@ class WordElement(WordMixin, NLGElement):
 
     @property
     def default_spelling_variant(self):
-        default_spelling = self.features[DEFAULT_SPELL]
+        default_spelling = self.features.get(DEFAULT_SPELL)
         return self.base_form if default_spelling is None else default_spelling
 
     @default_spelling_variant.setter
@@ -104,24 +104,32 @@ class WordElement(WordMixin, NLGElement):
 
     def realize_syntax(self):
         if not self.elided:
-            # TODO, when InflectedWordElement is implemented
-            # infl = InflectedWordElement(word=self, category=None)  # None ??
-            # return infl.realize_syntax()
-            pass
+            infl = InflectedWordElement(word=self)
+            return infl.realize_syntax()
 
     def realize_morphology(self):
         if self.default_spelling_variant:
-            # TODO when StringElement is implemented
-            # return StringElement(param=self.default_spelling_variant,
-            # word=None)
-            pass
+            return StringElement(string=self.default_spelling_variant, word=None)
+
+    def inflex(self, **features):
+        """Return an InflectedWordElement holding all argument features."""
+        return InflectedWordElement(word=self, features=features)
 
 
-class InflectedWordElement(WordMixin, NLGElement):
+class InflectedWordElement(WordReprMixin, NLGElement):
 
-    """TODO"""
+    """An InflectedWordElement wraps a base WordElement and some features,
+    and is in charge of the realisation of the word, given the features.
 
-    def __init__(self, word, category=None):
+    Example:
+    >>> w = lex.first(u'voiture')
+    >>> iw = InflectedWordElement(w, number=PLURAL)
+    >>> iw.realise_morphology().realisation
+    u'voitures'
+
+    """
+
+    def __init__(self, word, category=None, features=None):
         """Constructs a new inflected word using the argument word as
         the base form.
 

@@ -4,8 +4,10 @@
 
 import pytest
 
-from ..spec.word import WordElement
+from ..spec.word import WordElement, InflectedWordElement
 from ..lexicon.category import NOUN, ADJECTIVE, ANY
+from ..lexicon.feature.number import PLURAL
+from ..lexicon.feature import NUMBER
 
 
 @pytest.fixture(scope='module')
@@ -57,6 +59,12 @@ def test_default_spelling_variant(word):
 
 def test_children(word):
     assert word.children == []
+
+
+def test_inflex(word):
+    iw = word.inflex(number=PLURAL)
+    assert isinstance(iw, InflectedWordElement)
+    assert iw.features[NUMBER] == PLURAL
 
 
 @pytest.mark.parametrize('word,xml', [
