@@ -4,3 +4,4 @@
 
 FEMININE = 'feminine'
 MASCULINE = 'masculine'
+NEUTER = 'neuter'
