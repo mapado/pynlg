@@ -8,7 +8,14 @@ from xml.etree import cElementTree as ET
 
 from ..lexicon.fr import FrenchLexicon
 from ..lexicon.en import EnglishLexicon
-from ..lexicon.feature.category import NOUN, VERB, ANY, DETERMINER, ADJECTIVE, ADVERB
+from ..lexicon.feature.internal import DISCOURSE_FUNCTION
+from ..lexicon.feature.discourse import SUBJECT
+from ..lexicon.feature.lexical.fr import VOWEL_ELISION
+from ..lexicon.feature.number import SINGULAR
+from ..lexicon.feature.person import FIRST
+from ..lexicon.feature import PERSON, NUMBER
+from ..lexicon.feature.category import (NOUN, VERB, ANY, DETERMINER, ADJECTIVE, ADVERB,
+                                        PRONOUN)
 from ..lexicon.feature.lexical import (COMPARATIVE, SUPERLATIVE, PREDICATIVE,
                                        QUALITATIVE)
 from ..spec.word import WordElement
@@ -172,3 +179,25 @@ def test_independant_words(lexicon_fr):
     assert le1 is not le2
     le1.realisation = u"l'"
     assert le2.realisation == u"le"
+
+
+@pytest.mark.parametrize('d1, d2, expected', [
+    ({}, {}, True),
+    ({'k1': 'v1', 'k2': 'v2'}, {'k1': 'v1', 'k2': 'v2'}, True),
+    ({'k1': 'v1', 'k2': 'v2'}, {'k1': 'v1', 'k2': 'v2', 'k3': 'v3'}, True),
+    ({'k1': 'v1', 'k2': 'v2'}, {'k1': 'v1'}, False),
+    ({'k1': 'v1', 'k2': 'v2'}, {'k3': 'v3'}, False),
+])
+def test_is_dict_subset(d1, d2, expected):
+    assert FrenchLexicon.is_dict_subset(d1, d2) is expected
+
+
+def test_find_by_features(lexicon_fr):
+    features = {
+        PERSON: FIRST,
+        NUMBER: SINGULAR,
+        VOWEL_ELISION: True,
+        DISCOURSE_FUNCTION: SUBJECT
+    }
+    word = lexicon_fr.find_by_features(features, category=PRONOUN)
+    assert word.base_form == u"je"

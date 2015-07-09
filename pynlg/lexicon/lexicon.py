@@ -218,3 +218,20 @@ class Lexicon(object):
                 '%s language is not handled: %s file not found.' % (
                     self.language, filepath))
         return filepath
+
+    @staticmethod
+    def is_dict_subset(d1, d2):
+        s1 = {(k, v) for k, v in d1.iteritems()}
+        s2 = {(k, v) for k, v in d2.iteritems() if k in d1}
+        return s1 == s2
+
+    def find_by_features(self, features, category=ANY):
+        """Return the first word found with features including the
+        argument features, and having the same category as the argument
+        one.
+
+        """
+        haystack = self.words if category == ANY else self.category_index[category]
+        for word in haystack:
+            if self.is_dict_subset(features, word.features):
+                return word
