@@ -112,9 +112,9 @@ class WordElement(WordReprMixin, NLGElement):
         if self.default_spelling_variant:
             return StringElement(string=self.default_spelling_variant, word=None)
 
-    def inflex(self, **features):
+    def inflex(self, category=None, **features):
         """Return an InflectedWordElement holding all argument features."""
-        return InflectedWordElement(word=self, features=features)
+        return InflectedWordElement(word=self, category=category, features=features)
 
 
 class InflectedWordElement(WordReprMixin, NLGElement):
