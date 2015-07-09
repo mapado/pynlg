@@ -108,4 +108,4 @@ class ListElement(NLGElement):
         return ListElement(realisations)
 
     def realise_orthograpphy(self):
-        pass
+        raise NotImplementedError
