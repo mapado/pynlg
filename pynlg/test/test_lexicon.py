@@ -53,6 +53,11 @@ def word_node():
     return word_node
 
 
+def test_indexed(empty_lexicon_fr, lexicon_fr):
+    assert not empty_lexicon_fr.indexed
+    assert lexicon_fr.indexed
+
+
 def test_word_from_node(empty_lexicon_fr, word_node):
     word_elt = empty_lexicon_fr.word_from_node(word_node)
     assert isinstance(word_elt, WordElement)

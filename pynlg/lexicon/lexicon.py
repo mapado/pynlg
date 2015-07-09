@@ -71,7 +71,14 @@ class Lexicon(object):
         return self.get(word_feature, category=ANY)
 
     def __repr__(self):
-        return '<%s - %s>' % (self.__class__.__name__, self.language)
+        return '<%s - %s (%s)>' % (
+            self.__class__.__name__,
+            self.language,
+            'indexed' if self.indexed else 'unindexed')
+
+    @property
+    def indexed(self):
+        return bool(self.id_index)
 
     def get(self, word_feature, category=ANY):
         """Fetch the WordElement(s) associated to the argument word
