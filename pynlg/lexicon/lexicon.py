@@ -11,7 +11,7 @@ from collections import defaultdict
 from xml.etree import cElementTree as ElementTree
 from os.path import join, dirname, abspath, exists
 
-from .category import ANY
+from .feature.category import ANY
 from ..util import ensure_unicode as u
 from ..exc import UnhandledLanguage
 from ..spec.word import WordElement

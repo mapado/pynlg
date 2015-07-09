@@ -9,7 +9,8 @@ from .string import StringElement
 from ..lexicon.feature.lexical import (DEFAULT_INFL, DEFAULT_SPELL, INFLECTIONS,
                                        SPELL_VARS)
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
-from ..lexicon.category import ANY, PRONOUN, NOUN, VERB, ADJECTIVE, ADVERB, DETERMINER
+from ..lexicon.feature.category import (
+    ANY, PRONOUN, NOUN, VERB, ADJECTIVE, ADVERB, DETERMINER)
 from ..util import get_morphology_rules
 
 

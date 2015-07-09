@@ -8,7 +8,7 @@ from xml.etree import cElementTree as ET
 
 from ..lexicon.fr import FrenchLexicon
 from ..lexicon.en import EnglishLexicon
-from ..lexicon.category import NOUN, VERB, ANY, DETERMINER, ADJECTIVE, ADVERB
+from ..lexicon.feature.category import NOUN, VERB, ANY, DETERMINER, ADJECTIVE, ADVERB
 from ..lexicon.feature.lexical import (COMPARATIVE, SUPERLATIVE, PREDICATIVE,
                                        QUALITATIVE)
 from ..spec.word import WordElement

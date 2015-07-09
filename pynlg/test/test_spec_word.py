@@ -5,7 +5,7 @@
 import pytest
 
 from ..spec.word import WordElement, InflectedWordElement
-from ..lexicon.category import NOUN, ADJECTIVE, ANY
+from ..lexicon.feature.category import NOUN, ADJECTIVE, ANY
 from ..lexicon.feature.number import PLURAL
 from ..lexicon.feature import NUMBER
 
