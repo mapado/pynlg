@@ -3,10 +3,21 @@
 
 """Definition of French morphology rules."""
 
-from ..lexicon.feature.gender import FEMININE
+from ..lexicon.feature.gender import FEMININE, MASCULINE, NEUTER
 from ..lexicon.feature.discourse import (
-    HEAD, FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER, OBJECT)
-from ..lexicon.feature.category import VERB_PHRASE
+    HEAD, FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER,
+    OBJECT, COMPLEMENT, SUBJECT, INDIRECT_OBJECT)
+from ..lexicon.feature.category import (
+    VERB_PHRASE, NOUN, VERB, PREPOSITIONAL_PHRASE, NOUN_PHRASE, PRONOUN, CLAUSE)
+from ..lexicon.feature.lexical import (
+    PRESENT_PARTICIPLE, PAST_PARTICIPLE, REFLEXIVE, GENDER)
+from ..lexicon.feature.pronoun import PERSONAL, RELATIVE
+from ..lexicon.feature.lexical.fr import PRONOUN_TYPE, DETACHED
+from ..lexicon.feature.person import FIRST, SECOND, THIRD
+from ..lexicon.feature.form import IMPERATIVE
+from ..lexicon.feature.number import SINGULAR
+from ..lexicon.feature import PERSON, NUMBER
+from ..lexicon.feature.internal import DISCOURSE_FUNCTION
 from ..spec.string import StringElement
 
 
@@ -18,7 +29,35 @@ class FrenchMorphologyRules(object):
     """
 
     @staticmethod
+    def get_base_form(element, base_word):
+        """Return a word base_form, either from the element or the base word.
+
+        If the element is a verb and the base_word has a base form, or
+        if the element has no base form return the base_word base form.
+        Else, the base_word base_form is returned.
+
+        """
+        if element.category == VERB:
+            if base_word and base_word.base_form:
+                return base_word.base_form
+            else:
+                return element.base_form
+        else:
+            if element.base_form:
+                return element.base_form
+            elif base_word:
+                return base_word.base_form
+
+    @staticmethod
     def replace_element(old_element, new_element_base_form):
+        """Return a WordElement which base_form is the argument
+        new_element_base_form. This element inherits its category and
+        features from the argument old_element.
+
+        Note: the old_element features do not override the new element
+        ones, they can only complete them.
+
+        """
         features = old_element.features.copy()
         element = old_element.lexicon.first(
             new_element_base_form,
@@ -30,6 +69,10 @@ class FrenchMorphologyRules(object):
 
     @staticmethod
     def feminize_singular_element(element, realised):
+        """Return the feminine singular form of the element, or apply
+        feminization rules on the argument realization.
+
+        """
         if element.base_form == realised and element.feminine_singular:
             return element.feminine_singular
         elif realised.endswith((u'el', u'eil')):
@@ -66,6 +109,7 @@ class FrenchMorphologyRules(object):
 
     @staticmethod
     def pluralize(realised):
+        """Return the plural form of the argument realisation string."""
         if realised.endswith((u's', u'x', u'z')):
             return realised
         elif realised.endswith((u'au', u'eu')):
@@ -115,6 +159,7 @@ class FrenchMorphologyRules(object):
 
     def morph_adjective(self, element, base_word=None):
         """Performs the morphology for adjectives."""
+        base_form = self.get_base_form(element, base_word)
         # Comparatives and superlatives are mainly treated by syntax
         # in French. Only exceptions, provided by the lexicon, are
         # treated by morphology.
@@ -125,9 +170,9 @@ class FrenchMorphologyRules(object):
             if base_word and not realised:
                 realised = base_word.comparative
             if not realised:
-                realised = base_word.base_form
+                realised = base_form
         else:
-            realised = base_word.base_form
+            realised = base_form
 
         #  Get gender from parent or "grandparent" or self, in that order
         discourse_function = element.discourse_function
@@ -183,3 +228,43 @@ class FrenchMorphologyRules(object):
         realised = '%s%s' % (realised, element.particle)
 
         return StringElement(string=realised, word=element)
+
+    def morph_noun(self, element, base_word=None):
+        # The gender of the inflected word is opposite to the base word
+        if (
+                base_word
+                and set([base_word.gender, element.gender]) == set([MASCULINE, FEMININE])
+                and base_word.opposite_gender
+        ):
+            element.base_form = base_word.opposite_gender
+            element.base_word = base_word.lexicon.first(element.base_form, category=NOUN)
+
+        base_form = self.get_base_form(element, base_word)
+
+        if element.is_plural and not element.proper:
+            if element.plural and base_word:
+                realised = base_word.plural
+            else:
+                realised = self.pluralize(base_form)
+        else:
+            realised = base_form
+
+        realised = '%s%s' % (realised, element.particle)
+        return StringElement(string=realised, word=element)
+
+
+    def morph_adverb(self, element, base_word):
+        base_form = self.get_base_form(element, base_word)
+        #  Comparatives and superlatives are mainly treated by syntax
+        #  in French. Only exceptions, provided by the lexicon, are
+        #  treated by morphology.
+        if element.is_comparative:
+            realised = element.comparative if element.comparative else base_word.comparative
+            if not realised:
+                realised = base_form
+        else:
+            realised = base_form
+
+        realised = '%s%s' % (realised, element.particle)
+        return StringElement(string=realised, word=element)
+

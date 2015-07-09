@@ -9,7 +9,7 @@ from ..lexicon.feature.category import ADJECTIVE
 from ..lexicon.feature.lexical import GENDER
 from ..lexicon.feature import NUMBER, IS_COMPARATIVE
 from ..lexicon.feature.gender import MASCULINE, FEMININE
-from ..lexicon.feature.number import PLURAL
+from ..lexicon.feature.number import PLURAL, SINGULAR
 
 
 @pytest.fixture
@@ -91,5 +91,42 @@ def test_morph_adjective(lexicon_fr, morph_rules_fr, word, features, expected):
     element = lexicon_fr.first(word)
     for k, v in features.iteritems():
         element.features[k] = v
-    inflected_form = morph_rules_fr.morph_adjective(element, )
+    inflected_form = morph_rules_fr.morph_adjective(element)
+    assert inflected_form.realisation == expected
+
+
+@pytest.mark.parametrize('word, base_word, features, expected', [
+    # No transformation
+    (u'voiture', u'voiture', {}, u'voiture'),
+    # Simple pluralisation based on plural feature of base word
+    (u'voiture', u'voiture', {NUMBER: PLURAL}, u'voitures'),
+    # PLuralisation based on plural feature of base word
+    (u'oeil', u'oeil', {NUMBER: PLURAL}, u'yeux'),
+    # No idea what I'm doing
+    (u'gars', u'fille', {GENDER: MASCULINE}, u'garçon'),
+    # Simple pluralisation using +s rule, because word is not
+    # in lexicon
+    (u'clavier', u'clavier', {NUMBER: PLURAL}, u'claviers'),
+])
+def test_morph_noun(lexicon_fr, morph_rules_fr, word, base_word, features, expected):
+    base_word = lexicon_fr.first(base_word)
+    element = lexicon_fr.first(word)
+    for k, v in features.iteritems():
+        element.features[k] = v
+    inflected_form = morph_rules_fr.morph_noun(element, base_word)
+    assert inflected_form.realisation == expected
+
+
+@pytest.mark.parametrize('word, base_word, features, expected', [
+    (u'bientôt', u'bientôt', {}, u'bientôt'),
+    (u'bien', u'bien', {IS_COMPARATIVE: True}, u'mieux'),
+    # bientôt does not compare
+    (u'bientôt', u'bientôt', {IS_COMPARATIVE: True}, u'bientôt'),
+])
+def test_morph_adverb(lexicon_fr, morph_rules_fr, word, base_word, features, expected):
+    base_word = lexicon_fr.first(base_word)
+    element = lexicon_fr.first(word)
+    for k, v in features.iteritems():
+        element.features[k] = v
+    inflected_form = morph_rules_fr.morph_adverb(element, base_word)
     assert inflected_form.realisation == expected

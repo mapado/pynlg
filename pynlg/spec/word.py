@@ -138,32 +138,61 @@ class InflectedWordElement(WordReprMixin, NLGElement):
 
         :param word: the base form for this inflected word.
         :param category: the lexical category for the word.
+        :param features: an optional feature dict
 
         """
+        self.base_word = word
+        self.base_form = word.default_spelling_variant
+        self.realisation = self.base_form
+        self.features = word.features.copy()
+        if features:
+            self.features.update(features)
         if not category:
-            if word:
-                #  the inflected word inherits all features from the base word
-                #  (moved from WordElement.realise_syntax())
-                self.features = word.features.copy()
-                self.features[BASE_WORD] = word
-                self.features[BASE_FORM] = word.default_spelling
-                self.category = self.word.category
-            else:
-                self.category = ANY
+            #  the inflected word inherits the base word category
+            #  (moved from WordElement.realise_syntax())
+            self.category = word.category
+        else:
+            self.category = ANY
+
+    @property
+    def parent(self):
+        return self.base_word.parent
+
+    @parent.setter
+    def parent(self, value):
+        self.base_word.parent = value
 
     @property
     def lexicon(self):
-        if self.word:
-            return self.base_word.lexicon
-
-    @property
-    def morphology_rules(self):
-        try:
-            return self._morphology_rules[self.language]
-        except KeyError:
-            raise UnhandledLanguage('The %s language is currently unhandled' % (
-                self.language))
+        return self.base_word.lexicon
 
     def realize_syntax(self):
-        if self.elided or not all(self.lexicon and self.base_form):
-            return None
+        if not self.elided and self.lexicon and self.base_form:
+            if not self.base_word:
+                self.base_word = self.lexicon.first(
+                    self.base_form, category=self.category)
+        return self
+
+    def realise_morphology(self):
+        """Apply morphology rules to update the word realisation
+        according to its features.
+
+        """
+        if self.non_morph:
+            realised_element = StringElement(string=self.base_form, word=self)
+            realised_element.features[
+                DISCOURSE_FUNCTION] = self.features[DISCOURSE_FUNCTION]
+        else:
+            if self.base_form:
+                base_word = self.base_word
+            else:
+                base_word = self.lexicon.first(self.base_form)
+            rules = get_morphology_rules(self.language)()
+            if self.category == NOUN:
+                realised_element = rules.morph_noun(self, base_word)
+            elif self.category == ADJECTIVE:
+                realised_element = rules.morph_adjective(self, base_word)
+            elif self.category == DETERMINER:
+                realised_element = rules.morph_determiner(self)
+
+        return realised_element
