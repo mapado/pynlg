@@ -95,14 +95,14 @@ class Lexicon(object):
         if self.base_index.get(word_feature):
             word = self.indexed_words_by_category(
                 word_feature, category, self.base_index)
-        # Search by id
-        elif self.id_index.get(word_feature):
-            word = [self.indexed_words_by_category(
-                word_feature, category, self.id_index)]
         # Search by variant
         elif self.variant_index.get(word_feature):
             word = self.indexed_words_by_category(
                 word_feature, category, self.variant_index)
+        # Search by id
+        elif self.id_index.get(word_feature):
+            word = [self.indexed_words_by_category(
+                word_feature, category, self.id_index)]
         elif create_if_missing:
             word = WordElement(
                 base_form=word_feature, category=category, id=None,
