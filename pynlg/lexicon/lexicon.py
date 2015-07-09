@@ -67,6 +67,9 @@ class Lexicon(object):
         if auto_index:
             self.make_indexes()
 
+    def __contains__(self, word_feature):
+        return bool(self.get(word_feature, create_if_missing=False))
+
     def __getitem__(self, word_feature):
         return self.get(word_feature, category=ANY)
 
@@ -80,11 +83,12 @@ class Lexicon(object):
     def indexed(self):
         return bool(self.id_index)
 
-    def get(self, word_feature, category=ANY):
+    def get(self, word_feature, category=ANY, create_if_missing=True):
         """Fetch the WordElement(s) associated to the argument word
         feature (an, a base form etc) from the Lexicon indexes.
 
-        If the word is not found, create it.
+        If the word is not found, create it if the argument
+        ``create_if_missing`` is set to True. Else, return None.
 
         """
         # Search by base form
@@ -99,12 +103,14 @@ class Lexicon(object):
         elif self.variant_index.get(word_feature):
             word = self.indexed_words_by_category(
                 word_feature, category, self.variant_index)
-        else:
+        elif create_if_missing:
             word = WordElement(
                 base_form=word_feature, category=category, id=None,
                 lexicon=self, realisation=word_feature)
             self.words.add(word)
             self.index_word(word)
+        else:
+            return
         # don't return the indexed word, but return a deepcopy, so that
         # any modification to the returned word won't impact the index
         if isinstance(word, list):

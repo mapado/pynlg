@@ -22,6 +22,8 @@ from ..spec.word import WordElement
 
 
 def _list(x):
+    if not x:
+        return []
     return [x] if not isinstance(x, list) else x
 
 
@@ -102,22 +104,35 @@ def test_index_lexicon(lexicon_fr):
 
 
 @pytest.mark.parametrize("word_base_form, category, expected", [
-    ('son', ANY, 2),
-    ('son', NOUN, 1),
-    ('son', DETERMINER, 1),
-    ('son', VERB, 0),
+    (u'son', ANY, 2),
+    (u'son', NOUN, 1),
+    (u'son', DETERMINER, 1),
+    (u'son', VERB, 0),
 ])
 def test_lookup(lexicon_fr, word_base_form, category, expected):
     assert len(
         _list(lexicon_fr.get(word_base_form, category=category))) == expected
 
 
-@pytest.mark.parametrize("word_base_form, expected", [
-    ('son', 2),
-    ('GRUB', 1),  # will automatically be created
+@pytest.mark.parametrize("word_base_form, auto_create, expected", [
+    (u'son', True, 2),
+    (u'son', False, 2),
+    (u'GRUB', False, 0),  # will not automatically be created
+    (u'GRUB', True, 1),  # will automatically be created
 ])
-def test_getitem(lexicon_fr, word_base_form, expected):
-    assert len(_list(lexicon_fr.get(word_base_form))) == expected
+def test_getitem(lexicon_fr, word_base_form, auto_create, expected):
+    matches = lexicon_fr.get(word_base_form, create_if_missing=auto_create)
+    assert len(_list(matches)) == expected
+
+
+@pytest.mark.incomplete('The variant index is not yet complete!')
+def test_contains(lexicon_fr):
+    assert u'son' in lexicon_fr
+    assert u'vache_1' in lexicon_fr
+    # assert SOME_VARIANT in lexicon_fr
+    assert u'BLAHBLAH' not in lexicon_fr
+    # check that last call did not have any side effect
+    assert u'BLAHBLAH' not in lexicon_fr
 
 
 @pytest.mark.parametrize("word_feature, expected_base_form", [
