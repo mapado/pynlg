@@ -15,10 +15,19 @@ from ..lexicon.feature.pronoun import PERSONAL, RELATIVE
 from ..lexicon.feature.lexical.fr import PRONOUN_TYPE, DETACHED
 from ..lexicon.feature.person import FIRST, SECOND, THIRD
 from ..lexicon.feature.form import IMPERATIVE
-from ..lexicon.feature.number import SINGULAR
+from ..lexicon.feature.number import SINGULAR, PLURAL
 from ..lexicon.feature import PERSON, NUMBER
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
 from ..spec.string import StringElement
+
+
+# def as_string_elt(f):
+#     """Wrap the return value of the decorated function in a StringElement."""
+#     def wrapper(*args, **kwargs):
+#         element = args[1]
+#         realised = f(*args, **kwargs)
+#         return StringElement(string=realised, word=element)
+#     return wrapper
 
 
 class FrenchMorphologyRules(object):
@@ -118,6 +127,40 @@ class FrenchMorphologyRules(object):
             return '%saux' % (realised[:-2])
         else:
             return '%ss' % (realised)
+
+    @staticmethod
+    def is_pronoun_detached(element):
+        """Determine if the argument is detached or not."""
+        parent = element.parent
+
+        if parent:
+            grandparent = parent.parent
+            if parent.discourse_function in (SUBJECT, OBJECT, INDIRECT_OBJECT):
+                return True
+                #  If the pronoun is in a prepositional phrase,
+                #  or it is 1rst or 2nd person and the verb is in imperative
+                #  form but not negated, it is detached.
+            elif (
+                    parent.category == PREPOSITIONAL_PHRASE
+                    or element.person in (FIRST, SECOND)
+                    or element.reflexive
+                    and parent.form == IMPERATIVE
+                    and not parent.negated
+            ):
+                return True
+            elif (
+                    grandparent.category == PREPOSITIONAL_PHRASE
+                    or element.person in (FIRST, SECOND)
+                    or element.reflexive
+                    and grandparent.form == IMPERATIVE
+                    and not grandparent.negated
+            ):
+                return True
+        else:
+            # no parent
+            return True
+
+        return False
 
     def morph_determiner(self, element):
         """Perform the morphology for determiners.
@@ -252,6 +295,34 @@ class FrenchMorphologyRules(object):
         realised = '%s%s' % (realised, element.particle)
         return StringElement(string=realised, word=element)
 
+    # def morph_verb(self, element, base_word):
+    #     """Apply morphology rules for verb words.
+
+    #     Return a StringElement which realisaton is the morphed verb.
+
+    #     """
+    #     if element.form in [PRESENT_PARTICIPLE, PAST_PARTICIPLE]:
+    #         if element.parent:
+    #             agreement = False
+    # used as epithet or as attribute of the subject
+    #             if parent.category == VERB_PHRASE or element.discourse_function == OBJECT:
+    #                 agreement = True
+    #                 if not parent.gender and parent.parent:
+    #                     parent = parent.parent
+    #             else:
+    # used as attribute of the direct object
+    #                 if element.discourse_function in [
+    # FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER]:
+    #                     agreement = True
+    #                     complements = parent.complements
+    #                     direct_object = None
+    #                     for complement in complements:
+    #                         if complement.discourse_function == OBJECT:
+    #                             direct_object = complement
+    #                             break
+    #                     if direct_object:
+    #                         parent = direct_object
+    #             if aggreement:
 
     def morph_adverb(self, element, base_word):
         base_form = self.get_base_form(element, base_word)
@@ -268,3 +339,100 @@ class FrenchMorphologyRules(object):
         realised = '%s%s' % (realised, element.particle)
         return StringElement(string=realised, word=element)
 
+    def morph_pronoun(self, element):
+        """TODO"""
+        #  inflect only personal pronouns, exluding complement pronouns
+        # ("y" and "en")
+        if element.pronoun_type == PERSONAL and element.discourse_function == COMPLEMENT:
+            detached = self.is_pronoun_detached(element)
+            gender = element.gender if element.gender != NEUTER else MASCULINE
+            passive = element.passive
+            parent = element.parent
+            person = element.person or THIRD
+            features = {
+                PRONOUN_TYPE: element.pronoun_type,
+                PERSON: person
+            }
+            number = person.number or SINGULAR
+            reflexive = element.reflexive
+            func = element.discourse_function
+            if not detached and func:
+                func = SUBJECT
+            if passive:
+                if func == SUBJECT:
+                    func = OBJECT
+                elif func == OBJECT:
+                    func = SUBJECT
+            if func not in (OBJECT, INDIRECT_OBJECT) and not detached:
+                reflexive = False
+
+            # agree the reflexive pronoun with the subject
+            if reflexive and parent:
+                grandparent = parent.parent
+                if grandparent and grandparent.category == VERB_PHRASE:
+                    person = grandparent.person
+                    number = grandparent.number
+                    # If the verb phrase is in imperative form,
+                    # the reflexive pronoun can only be in 2S, 1P or 2P
+                    if grandparent.form == IMPERATIVE:
+                        if person not in (FIRST, SECOND):
+                            person = SECOND
+
+            # If the pronoun is the head of a noun phrase,
+            # take the discourse function of this noun phrase
+            if func == SUBJECT and parent and parent.category == NOUN_PHRASE:
+                func = parent.discourse_function
+
+            # select wich features to include in search depending on pronoun
+            # features, syntactic function and wether the pronoun is
+            # detached from the verb
+            if person == THIRD:
+                features[REFLEXIVE] = reflexive
+                features[DETACHED] = detached
+                if not reflexive:
+                    features[NUMBER] = number
+                    if not detached:
+                        features[DISCOURSE_FUNCTION] = func
+                        if (
+                                (number != PLURAL and func != INDIRECT_OBJECT)
+                                or func == SUBJECT
+                        ):
+                            features[GENDER] = gender
+                    else:  # detached
+                        features[GENDER] = gender
+            else:  # person != THIRD
+                features[NUMBER] = number
+                if element.is_plural:
+                    features[DETACHED] = detached
+                    if not detached:
+                        if func != SUBJECT:
+                            func = None
+                        features[DISCOURSE_FUNCTION] = func
+
+            # find appropriate pronoun in lexicon, with the target features
+            new_element = element.lexicon.first_word_with_same_features(
+                features, category=PRONOUN)
+            realised = new_element.base_form
+
+        elif element.PRONOUN_TYPE == RELATIVE:
+            #  Get parent clause.
+            antecedent = element.parent
+            while antecedent and antecedent.category != CLAUSE:
+                antecedent = antecedent.parent
+
+            if antecedent:
+                # Get parent noun phrase of parent clause.
+                # Lookup lexical entry for appropriate form.
+                # If the corresponding form is not found :
+                # Feminine plural defaults to masculine plural.
+                # Feminine singular and masculine plural default
+                # to masculine singular.
+                if antecedent.feminine and antecedent.plural:
+                    realised = antecedent.feminine_plural
+                elif antecedent.feminine:
+                    realised = antecedent.feminine_singular
+                elif antecedent.plural:
+                    realised = element.plural
+
+        realised = '%s%s' % (realised, element.particle)
+        return StringElement(string=realised, word=element)
