@@ -25,6 +25,19 @@ class PhraseElement(NLGElement):
         super(PhraseElement, self).__init__(category=category, lexicon=lexicon)
         self.features[ELIDED] = False
 
+    @property
+    def head(self):
+        return self.features[internal.HEAD]
+
+    @head.setter
+    def head(self, value):
+        if isinstance(value, NLGElement):
+            head = value
+        else:
+            head = StringElement(string=value)
+        head.parent = self
+        self.features[internal.HEAD] = head
+
     def get_children(self):
         """Return the child components of the phrase.
 
@@ -100,6 +113,26 @@ class PhraseElement(NLGElement):
                 complement[internal.DISCOURSE_FUNCTION] = discourse.OBJECT
 
             complement.parent = self
+
+    def add_post_modifier(self, new_post_modifier):
+        """Add the argument post_modifer as the phrase post modifier,
+        and set the parent of the post modifier as the current sentence.
+
+        """
+        new_post_modifier.parent = self
+        current_post_modifiers = self.postmodifiers or []
+        current_post_modifiers.append(new_post_modifier)
+        self.postmodifiers = current_post_modifiers
+
+    def add_pre_modifier(self, new_pre_modifier):
+        """Add the argument pre_modifer as the phrase pre modifier,
+        and set the parent of the pre modifier as the current sentence.
+
+        """
+        new_pre_modifier.parent = self
+        current_pre_modifiers = self.premodifiers or []
+        current_pre_modifiers.append(new_pre_modifier)
+        self.premodifiers = current_pre_modifiers
 
 
 class AdjectivePhraseElement(PhraseElement):
