@@ -1,5 +1,4 @@
 # encoding: utf-8
-# encoding: utf-8
 
 """Definition of French morphology rules."""
 
@@ -27,15 +26,6 @@ from ..lexicon.feature.form import (
     BARE_INFINITIVE, PRESENT_PARTICIPLE, PAST_PARTICIPLE, SUBJUNCTIVE, IMPERATIVE, GERUND,
     INFINITIVE)
 from ..spec.string import StringElement
-
-
-# def as_string_elt(f):
-#     """Wrap the return value of the decorated function in a StringElement."""
-#     def wrapper(*args, **kwargs):
-#         element = args[1]
-#         realised = f(*args, **kwargs)
-#         return StringElement(string=realised, word=element)
-#     return wrapper
 
 
 Verb = namedtuple('Radical', ['radical', 'group'])
