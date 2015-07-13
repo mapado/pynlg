@@ -345,6 +345,10 @@ class FrenchMorphologyRules(object):
         """Realise the verb element which form is either present
         participle or gerund.
 
+        If the verb is regular, the present particple generation rules
+        will be used. Else, the present participle will be looked up
+        in the lexicon.
+
         """
         realised = (
             element.present_participle
@@ -352,16 +356,47 @@ class FrenchMorphologyRules(object):
         )
         if not realised:
             radical = self.get_imperfect_pres_part_radical(element, base_word, base_form)
-            realised = '%s%s' % (radical, u'ant')
+            realised = u'%sant' % (radical)
 
         #  Note : The gender and number features must only be
         #  passed to the present participle by the syntax when
         #  the present participle is used as an adjective.
         #  Otherwise it is immutable.
         if gender == FEMININE:
-            realised = '%s%s' % (realised, 'e')
+            realised = u'%se' % (realised)
         if number == PLURAL:
-            realised = '%s%s' % (realised, 's')
+            realised = u'%ss' % (realised)
+        return realised
+
+    def realise_verb_past_participle(
+            self, element, base_word, base_form, gender, number):
+        """Realise the past participle of the argument verb element.
+
+        The past particple will use the argument gender and number.
+
+        If the verb is regular, the past particple generation rules will
+        be used. Else, the (feminine) past participle will be looked up
+        in the lexicon.
+
+        """
+        realised = (
+            element.past_participle
+            or (base_word and base_word.past_participle)
+        )
+        if not realised:
+            realised = self.build_verb_past_participle(base_form)
+
+        if gender == FEMININE:
+            fem_realised = (
+                element.feminine_past_participle
+                or (base_word and base_word.feminine_past_participle)
+            )
+            if not fem_realised:
+                realised = u'%se' % (realised)
+            else:
+                realised = fem_realised
+        if number == PLURAL and not realised.endswith(u's'):
+            realised = u'%ss' % (realised)
         return realised
 
     def morph_determiner(self, element):
@@ -524,7 +559,7 @@ class FrenchMorphologyRules(object):
             realised = self.realise_present_participle_or_gerund_verb(
                 element, base_word, base_form)
         elif form == PAST_PARTICIPLE:
-            pass
+            realised = self.realise_verb_past_participle(element, base_word, base_form)
 
     def morph_adverb(self, element, base_word):
         base_form = self.get_base_form(element, base_word)

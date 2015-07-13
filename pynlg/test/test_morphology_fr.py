@@ -325,3 +325,19 @@ def test_realise_verb_participle_or_gerund(lexicon_fr, morph_rules_fr):
 ])
 def test_build_verb_past_participle(morph_rules_fr, base_form, expected):
     assert morph_rules_fr.build_verb_past_participle(base_form) == expected
+
+
+@pytest.mark.parametrize('base_form, gender, number, expected', [
+    (u'être', None, None, u'été'),
+    (u'kiffer', None, None, u'kiffé'),
+    (u'manger', FEMININE, SINGULAR, u'mangée'),
+    (u'manger', FEMININE, PLURAL, u'mangées'),
+    (u'abattre', FEMININE, SINGULAR, u'abattue'),  # has a feminine past participle
+    (u'abattre', FEMININE, PLURAL, u'abattues'),  # idem
+])
+def test_realise_verb_past_participle(
+        lexicon_fr, morph_rules_fr, base_form, gender, number, expected):
+    verb = lexicon_fr.first(base_form, category=VERB)
+    past_participle = morph_rules_fr.realise_verb_past_participle(
+        verb, base_word=verb, base_form=base_form, gender=gender, number=number)
+    assert past_participle == expected
