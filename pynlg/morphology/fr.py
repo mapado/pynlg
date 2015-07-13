@@ -1,5 +1,4 @@
 # encoding: utf-8
-# encoding: utf-8
 
 """Definition of French morphology rules."""
 
@@ -19,15 +18,6 @@ from ..lexicon.feature.number import SINGULAR, PLURAL
 from ..lexicon.feature import PERSON, NUMBER
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
 from ..spec.string import StringElement
-
-
-# def as_string_elt(f):
-#     """Wrap the return value of the decorated function in a StringElement."""
-#     def wrapper(*args, **kwargs):
-#         element = args[1]
-#         realised = f(*args, **kwargs)
-#         return StringElement(string=realised, word=element)
-#     return wrapper
 
 
 class FrenchMorphologyRules(object):
