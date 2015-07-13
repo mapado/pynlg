@@ -93,7 +93,7 @@ class ListElement(NLGElement):
             return None
         realised_list = ListElement()
         for element in self:
-            realised_list.append(element.realize_syntax())
+            realised_list.append(element.realise_syntax())
         if len(realised_list) == 1:
             return realised_list.head
         else:

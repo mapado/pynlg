@@ -103,12 +103,12 @@ class WordElement(WordReprMixin, NLGElement):
             _id.text = self.id
         return ET.tostring(word_tree, encoding='utf-8')
 
-    def realize_syntax(self):
+    def realise_syntax(self):
         if not self.elided:
             infl = InflectedWordElement(word=self)
-            return infl.realize_syntax()
+            return infl.realise_syntax()
 
-    def realize_morphology(self):
+    def realise_morphology(self):
         if self.default_spelling_variant:
             return StringElement(string=self.default_spelling_variant, word=None)
 
@@ -167,7 +167,7 @@ class InflectedWordElement(WordReprMixin, NLGElement):
     def lexicon(self):
         return self.base_word.lexicon
 
-    def realize_syntax(self):
+    def realise_syntax(self):
         if not self.elided and self.lexicon and self.base_form:
             if not self.base_word:
                 self.base_word = self.lexicon.first(
