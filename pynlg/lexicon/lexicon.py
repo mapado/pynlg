@@ -83,6 +83,10 @@ class Lexicon(object):
     def indexed(self):
         return bool(self.id_index)
 
+    def create_word(self, word):
+        self.words.add(word)
+        self.index_word(word)
+
     def get(self, word_feature, category=ANY, create_if_missing=True):
         """Fetch the WordElement(s) associated to the argument word
         feature (an, a base form etc) from the Lexicon indexes.
@@ -107,8 +111,7 @@ class Lexicon(object):
             word = WordElement(
                 base_form=word_feature, category=category, id=None,
                 lexicon=self, realisation=word_feature)
-            self.words.add(word)
-            self.index_word(word)
+            self.create_word(word)
         else:
             return
         # don't return the indexed word, but return a deepcopy, so that
@@ -149,8 +152,7 @@ class Lexicon(object):
         for word_node in root:
             word = self.word_from_node(word_node)
             if word:
-                self.words.add(word)
-                self.index_word(word)
+                self.create_word(word)
 
     def word_from_node(self, word_node):
         """Convert a word node of the lexicon to a WordElement."""
