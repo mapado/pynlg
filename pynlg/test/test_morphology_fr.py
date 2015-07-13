@@ -5,11 +5,16 @@
 import pytest
 
 from ..morphology.fr import FrenchMorphologyRules
-from ..lexicon.feature.category import ADJECTIVE
+from ..spec.phrase import PhraseElement
+from ..spec.word import WordElement
+from ..lexicon.feature.category import ADJECTIVE, VERB_PHRASE, NOUN_PHRASE, VERB
 from ..lexicon.feature.lexical import GENDER
 from ..lexicon.feature import NUMBER, IS_COMPARATIVE
 from ..lexicon.feature.gender import MASCULINE, FEMININE
 from ..lexicon.feature.number import PLURAL, SINGULAR
+from ..lexicon.feature.discourse import OBJECT, PRE_MODIFIER, FRONT_MODIFIER, POST_MODIFIER
+from ..lexicon.feature.internal import DISCOURSE_FUNCTION, COMPLEMENTS
+from ..lexicon.feature.person import FIRST, SECOND, THIRD
 
 
 @pytest.fixture
@@ -131,3 +136,116 @@ def test_morph_adverb(lexicon_fr, morph_rules_fr, word, base_word, features, exp
         element.features[k] = v
     inflected_form = morph_rules_fr.morph_adverb(element, base_word)
     assert inflected_form.realisation == expected
+
+
+def test_get_verb_parent(lexicon_fr, morph_rules_fr):
+    verb = lexicon_fr.first(u'avoir')
+    parent, agreement = morph_rules_fr.get_verb_parent(verb)
+    assert parent is None
+    assert agreement is False
+
+
+def test_get_verb_parent2(lexicon_fr, morph_rules_fr):
+    verb = lexicon_fr.first(u'avoir')
+    p = PhraseElement(lexicon=lexicon_fr, category=VERB_PHRASE)
+    verb.parent = p
+    parent, agreement = morph_rules_fr.get_verb_parent(verb)
+    assert parent == p
+    assert agreement is True
+
+
+def test_get_verb_parent3(lexicon_fr, morph_rules_fr):
+    verb = lexicon_fr.first(u'avoir')
+    p = PhraseElement(lexicon=lexicon_fr, category=VERB_PHRASE)
+    verb.parent = p
+    gp = PhraseElement(lexicon=lexicon_fr, category=VERB_PHRASE)
+    gp.gender = FEMININE
+    parent, agreement = morph_rules_fr.get_verb_parent(verb)
+    assert parent == gp
+    assert agreement is True
+
+
+@pytest.mark.parametrize('mod_func', [FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER])
+def test_get_verb_parent4(lexicon_fr, morph_rules_fr, mod_func):
+    verb = lexicon_fr.first(u'avoir')
+    verb.features[DISCOURSE_FUNCTION] = mod_func
+    p = PhraseElement(lexicon=lexicon_fr, category=NOUN_PHRASE)
+    verb.parent = p
+    parent, agreement = morph_rules_fr.get_verb_parent(verb)
+    assert parent == p
+    assert agreement is True
+
+
+@pytest.mark.parametrize('mod_func', [FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER])
+def test_get_verb_parent5(lexicon_fr, morph_rules_fr, mod_func):
+    verb = lexicon_fr.first(u'avoir')
+    verb.features[DISCOURSE_FUNCTION] = mod_func
+    p = PhraseElement(lexicon=lexicon_fr, category=NOUN_PHRASE)
+    w = lexicon_fr.first(u'cheval')
+    w.features[DISCOURSE_FUNCTION] = OBJECT
+    p.features[COMPLEMENTS] = [w]
+    verb.parent = p
+    parent, agreement = morph_rules_fr.get_verb_parent(verb)
+    assert parent == w
+    assert agreement is True
+
+
+@pytest.mark.parametrize('verb, radical, number, group', [
+    (u'aimer', u'aim', SINGULAR, 1),
+    (u'aimer', u'aim', PLURAL, 1),
+    (u'choir', u'choi', SINGULAR, 2),
+    (u'choir', u'choy', PLURAL, 2),
+    (u'finir', u'fini', SINGULAR, 2),
+    (u'finir', u'finiss', PLURAL, 2),
+    (u'haïr', u'hai', SINGULAR, 2),
+    (u'haïr', u'haïss', PLURAL, 2),
+    (u'vendre', u'vend', SINGULAR, 3),
+    (u'vendre', u'vend', PLURAL, 3),
+    (u'mettre', u'met', SINGULAR, 3),
+    (u'mettre', u'mett', PLURAL, 3),
+])
+def test_get_present_radical(morph_rules_fr, verb, radical, number, group):
+    verb_tuple = morph_rules_fr.get_present_radical(verb, number)
+    assert verb_tuple.radical == radical
+    assert verb_tuple.group == group
+
+
+def test_get_present_radical_unrecognized_verb(morph_rules_fr):
+    with pytest.raises(ValueError):
+        morph_rules_fr.get_present_radical(u'plop', SINGULAR)
+
+
+@pytest.mark.parametrize('base_form, person, number, expected', [
+    (u'aimer', FIRST, SINGULAR, u'aime'),
+    (u'aimer', SECOND, SINGULAR, u'aimes'),
+    (u'aimer', THIRD, SINGULAR, u'aime'),
+    (u'aimer', FIRST, PLURAL, u'aimons'),
+    (u'aimer', SECOND, PLURAL, u'aimez'),
+    (u'aimer', THIRD, PLURAL, u'aiment'),
+    (u'finir', FIRST, SINGULAR, u'finis'),
+    (u'finir', SECOND, SINGULAR, u'finis'),
+    (u'finir', THIRD, SINGULAR, u'finit'),
+    (u'finir', FIRST, PLURAL, u'finissons'),
+    (u'finir', SECOND, PLURAL, u'finissez'),
+    (u'finir', THIRD, PLURAL, u'finissent'),
+    (u'voir', FIRST, SINGULAR, u'vois'),
+    (u'voir', SECOND, SINGULAR, u'vois'),
+    (u'voir', THIRD, SINGULAR, u'voit'),
+    (u'voir', FIRST, PLURAL, u'voyons'),
+    (u'voir', SECOND, PLURAL, u'voyez'),
+    (u'voir', THIRD, PLURAL, u'voient'),
+    (u'haïr', FIRST, SINGULAR, u'hais'),
+    (u'haïr', SECOND, SINGULAR, u'hais'),
+    (u'haïr', THIRD, SINGULAR, u'hait'),
+    (u'haïr', FIRST, PLURAL, u'haïssons'),
+    (u'haïr', SECOND, PLURAL, u'haïssez'),
+    (u'haïr', THIRD, PLURAL, u'haïssent'),
+    (u'vendre', FIRST, SINGULAR, u'vends'),
+    (u'vendre', SECOND, SINGULAR, u'vends'),
+    (u'vendre', THIRD, SINGULAR, u'vend'),
+    (u'vendre', FIRST, PLURAL, u'vendons'),
+    (u'vendre', SECOND, PLURAL, u'vendez'),
+    (u'vendre', THIRD, PLURAL, u'vendent'),
+])
+def test_build_present_verb(morph_rules_fr, base_form, person, number, expected):
+    assert morph_rules_fr.build_present_verb(base_form, person, number) == expected

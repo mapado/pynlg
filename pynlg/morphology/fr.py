@@ -3,6 +3,10 @@
 
 """Definition of French morphology rules."""
 
+import re
+
+from collections import namedtuple
+
 from ..lexicon.feature.gender import FEMININE, MASCULINE, NEUTER
 from ..lexicon.feature.discourse import (
     HEAD, FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER,
@@ -16,8 +20,12 @@ from ..lexicon.feature.lexical.fr import PRONOUN_TYPE, DETACHED
 from ..lexicon.feature.person import FIRST, SECOND, THIRD
 from ..lexicon.feature.form import IMPERATIVE
 from ..lexicon.feature.number import SINGULAR, PLURAL
-from ..lexicon.feature import PERSON, NUMBER
+from ..lexicon.feature.tense import PRESENT
+from ..lexicon.feature import PERSON, NUMBER, TENSE
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
+from ..lexicon.feature.form import (
+    BARE_INFINITIVE, PRESENT_PARTICIPLE, PAST_PARTICIPLE, SUBJUNCTIVE, IMPERATIVE, GERUND,
+    INFINITIVE)
 from ..spec.string import StringElement
 
 
@@ -30,12 +38,17 @@ from ..spec.string import StringElement
 #     return wrapper
 
 
+Verb = namedtuple('Radical', ['radical', 'group'])
+
+
 class FrenchMorphologyRules(object):
 
     """Class in charge of performing french morphology rules for any
     type of words: verbs, nouns, determiners, etc.
 
     """
+
+    a_o_regex = ur'(a|ä|à|â|o|ô)'
 
     @staticmethod
     def get_base_form(element, base_word):
@@ -161,6 +174,106 @@ class FrenchMorphologyRules(object):
             return True
 
         return False
+
+    @staticmethod
+    def get_present_radical(base_form, number):
+        """Return the radical used in indicative simple future and
+        conditional present of the argument regular verb element, using
+        the argument number.
+
+        Return a Verb namedtuple with a 'radical' and 'group' attributes.
+
+        """
+        # First group verbs, based on 'aimer'
+        if base_form.endswith(u'er'):
+            group = 1
+            radical = base_form[:-2]
+        # Second group verbs, based on voir
+        elif base_form.endswith(u'oir'):
+            group = 2
+            radical = base_form[:-2]
+            if number == PLURAL:
+                radical = u'%sy' % (radical)
+            else:
+                radical = u'%si' % (radical)
+        # Second group verbs, based on finir
+        elif base_form.endswith(u'ir'):
+            group = 2
+            radical = base_form[:-1]
+            # if radical.endswith(u'ï'):
+            # for verbs like 'haïr'
+            #     radical = u'%s%s' % (radical[:-1], u'i')
+            if number == PLURAL:
+                radical = u'%sss' % (radical)
+        elif base_form.endswith(u'ïr'):
+            group = 2
+            if number == SINGULAR:
+                radical = u'%si' % (base_form[:-2])
+            else:
+                radical = u'%sïss' % (base_form[:-2])
+        # Third group verbs, based on "vendre" and "mettre"
+        elif base_form.endswith(u're'):
+            group = 3
+            radical = base_form[:-2]
+            if number == SINGULAR and radical.endswith(u't'):
+                # remove last 't':
+                radical = radical[:-1]
+        else:
+            raise ValueError('Unrecognized verb group for base form %s' % (base_form))
+        return Verb(radical, group)
+
+    def add_suffix(self, radical, suffix):
+        """Return the concatenation of the radical, any appropriate
+        liaison letters and the suffix.
+
+        """
+        # change "c" to "ç" and "g" to "ge" before "a" and "o";
+        if re.match(self.a_o_regex, suffix):
+            if radical.endswith(u'c'):
+                radical = '%s%s' % (radical[:-1], u'ç')
+            elif radical.endswith(u'g'):
+                radical = '%s%s' % (radical, u'e')
+        # if suffix begins with mute "e"
+        elif suffix != u'ez' and suffix.startswith(u'e'):
+            #  change "y" to "i" if not in front of "e"
+            if not radical.endswith(u"ey") and radical.endswith(u"y"):
+                radical = '%s%s' % (radical[:-1], u'i')
+            #  change "e" and "é" to "è" in last sillable of radical
+            if radical[-2] in [u'e', u'é']:
+                radical = '%s%s%s' % (radical[:-2], u'é', radical[-1])
+        return '%s%s' % (radical, suffix)
+
+    def build_present_verb(self, base_form, person, number):
+        """Return the present form for regular verb, using argument
+        person and number.
+
+        """
+        verb = self.get_present_radical(base_form, number)
+        if number == SINGULAR:
+            if verb.group == 1:
+                if person in (FIRST, THIRD):
+                    suffix = u'e'
+                else:
+                    suffix = u'es'
+            elif verb.group == 2:
+                if person in (FIRST, SECOND):
+                    suffix = u's'
+                else:
+                    suffix = u't'
+            else:  # third group
+                if person in (FIRST, SECOND):
+                    suffix = u's'
+                else:
+                    suffix = u''
+        else:
+            if person == FIRST:
+                suffix = u'ons'
+            elif person == SECOND:
+                suffix = u'ez'
+            else:
+                suffix = u'ent'
+        return self.add_suffix(verb.radical, suffix)
+
 
     def morph_determiner(self, element):
         """Perform the morphology for determiners.
@@ -324,6 +437,39 @@ class FrenchMorphologyRules(object):
     #                     if direct_object:
     #                         parent = direct_object
     #             if aggreement:
+
+    def get_verb_parent(self, element):
+        """Return the parenf of the verb and its agreement.
+
+        The verb parent can either be its parent or its grandparent,
+        or the direct object in the sentence.
+
+        If the returned agreement is True, it means that the parent
+        is either a verb phrase, has an object function in the sentence,
+        or has either a front/pre/post-modifier function.
+
+        """
+        #  Get gender and number from parent or "grandparent" or self, in
+        #  that order
+        parent = element.parent
+        agreement = False
+        if element.parent:
+            # used as epithet or as attribute of the subject
+            if parent.category == VERB_PHRASE or element.discourse_function == OBJECT:
+                agreement = True
+                if not parent.gender and parent.parent:
+                    parent = parent.parent
+            else:
+                # used as attribute of the direct object
+                modifier_functions = [FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER]
+                if element.discourse_function in modifier_functions:
+                    agreement = True
+                    for complement in (parent.complements or []):
+                        if complement.discourse_function == OBJECT:
+                            direct_object = complement
+                            parent = direct_object
+                            break
+        return parent, agreement
 
     def morph_adverb(self, element, base_word):
         base_form = self.get_base_form(element, base_word)
