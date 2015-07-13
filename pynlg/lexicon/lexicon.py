@@ -127,7 +127,7 @@ class Lexicon(object):
         if isinstance(matches, WordElement):
             return matches
         elif isinstance(matches, list):
-            return matches[0] if matches else matches
+            return matches[0] if matches else None
 
     def indexed_words_by_category(self, word_feature, category, index):
         if category == ANY:

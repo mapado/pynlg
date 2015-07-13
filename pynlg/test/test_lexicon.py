@@ -114,6 +114,10 @@ def test_lookup(lexicon_fr, word_base_form, category, expected):
         _list(lexicon_fr.get(word_base_form, category=category))) == expected
 
 
+def test_lookup_null_return(lexicon_fr):
+    assert lexicon_fr.get(u'BLAH', create_if_missing=False) is None
+
+
 @pytest.mark.parametrize("word_base_form, auto_create, expected", [
     (u'son', True, 2),
     (u'son', False, 2),
