@@ -249,3 +249,47 @@ def test_get_present_radical_unrecognized_verb(morph_rules_fr):
 ])
 def test_build_present_verb(morph_rules_fr, base_form, person, number, expected):
     assert morph_rules_fr.build_present_verb(base_form, person, number) == expected
+
+
+def test_imperfect_pres_part_radical_elt_has_imparfait_radical(lexicon_fr, morph_rules_fr):
+    verb = lexicon_fr.first(u'être', category=VERB)
+    radical = morph_rules_fr.get_imperfect_pres_part_radical(
+        verb, base_word=None, base_form=u'être')
+    assert radical == u'ét'
+
+
+def test_imperfect_pres_part_radical_elt_has_no_imparfait_radical(
+        lexicon_fr, morph_rules_fr):
+    verb = lexicon_fr.first(u'être', category=VERB)
+    infl_verb = verb.inflex(verb, person=FIRST)
+    infl_verb.features = {}
+    radical = morph_rules_fr.get_imperfect_pres_part_radical(
+        infl_verb, base_word=verb, base_form=u'être')
+    assert radical == u'ét'
+
+
+def test_imperfect_pres_part_radical_elt_has_person1s(lexicon_fr, morph_rules_fr):
+    verb = lexicon_fr.first(u'avoir', category=VERB)
+    radical = morph_rules_fr.get_imperfect_pres_part_radical(
+        verb, base_word=verb, base_form=u'avoir')
+    assert radical == u'av'
+
+
+def test_imperfect_pres_part_radical_base_word_has_person1s(
+        lexicon_fr, morph_rules_fr):
+    verb = lexicon_fr.first(u'avoir', category=VERB)
+    infl_verb = verb.inflex(verb, person=FIRST)
+    infl_verb.features = {}
+    radical = morph_rules_fr.get_imperfect_pres_part_radical(
+        infl_verb, base_word=verb, base_form=u'avoir')
+    assert radical == u'av'
+
+
+def test_imperfect_pres_part_radical_unexisting_verb(
+        lexicon_fr, morph_rules_fr):
+    verb = lexicon_fr.first(u'kiffer', category=VERB)  # will be inserted
+    infl_verb = verb.inflex(verb, person=FIRST)
+    infl_verb.features = {}
+    radical = morph_rules_fr.get_imperfect_pres_part_radical(
+        infl_verb, base_word=verb, base_form=u'kiffer')
+    assert radical == u'kiff'

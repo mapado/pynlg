@@ -274,6 +274,24 @@ class FrenchMorphologyRules(object):
                 suffix = u'ent'
         return self.add_suffix(verb.radical, suffix)
 
+    def get_imperfect_pres_part_radical(self, element, base_word, base_form):
+        """Gets or builds the radical used for "imparfait" and present participle."""
+        if element.imparfait_radical:
+            return element.imparfait_radical
+        elif base_word.imparfait_radical:
+            return base_word.imparfait_radical
+        else:
+            if element.present1p:
+                radical = element.present1p
+            elif base_word.present1p:
+                radical = base_word.present1p
+            else:
+                radical = self.build_present_verb(base_form, person=FIRST, number=PLURAL)
+            # Remove -ons suffix:
+            if radical.endswith('ons'):
+                radical = radical[:-3]
+            return radical
+
 
     def morph_determiner(self, element):
         """Perform the morphology for determiners.
