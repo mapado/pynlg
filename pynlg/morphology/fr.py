@@ -20,11 +20,10 @@ from ..lexicon.feature.person import FIRST, SECOND, THIRD
 from ..lexicon.feature.form import IMPERATIVE
 from ..lexicon.feature.number import SINGULAR, PLURAL, BOTH
 from ..lexicon.feature.tense import PRESENT
-from ..lexicon.feature import PERSON, NUMBER, TENSE
+from ..lexicon.feature import PERSON, NUMBER
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
 from ..lexicon.feature.form import (
-    BARE_INFINITIVE, PRESENT_PARTICIPLE, PAST_PARTICIPLE, SUBJUNCTIVE, IMPERATIVE, GERUND,
-    INFINITIVE)
+    BARE_INFINITIVE, SUBJUNCTIVE, GERUND, INFINITIVE)
 from ..spec.string import StringElement
 
 
