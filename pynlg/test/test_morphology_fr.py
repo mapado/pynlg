@@ -314,3 +314,14 @@ def test_realise_verb_participle_or_gerund(lexicon_fr, morph_rules_fr):
     gerund_or_present_part = morph_rules_fr.realise_verb_present_participle_or_gerund(
         verb, base_word=verb, base_form=u'être', gender=None, number=None)
     assert gerund_or_present_part == u'étant'
+
+
+@pytest.mark.parametrize('base_form, expected', [
+    (u'manger', u'mangé'),
+    (u'vouloir', u'voulu'),
+    (u'finir', u'fini'),
+    (u'permettre', u'permis'),
+    (u'vendre', u'vendu'),
+])
+def test_build_verb_past_participle(morph_rules_fr, base_form, expected):
+    assert morph_rules_fr.build_verb_past_participle(base_form) == expected

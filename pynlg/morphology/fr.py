@@ -222,6 +222,21 @@ class FrenchMorphologyRules(object):
             raise ValueError('Unrecognized verb group for base form %s' % (base_form))
         return Verb(radical, group)
 
+    @staticmethod
+    def build_verb_past_participle(base_form):
+        realised = base_form
+        if base_form.endswith(u'er'):
+            realised = u'%sé' % (realised[:-2])
+        elif base_form.endswith(u'oir'):
+            realised = u'%su' % (realised[:-3])
+        elif base_form.endswith(u'ir'):
+            realised = realised[:-1]
+        elif base_form.endswith(u'mettre'):
+            realised = u'%sis' % (realised[:-5])
+        elif base_form.endswith(u're'):
+            realised = u'%su' % (realised[:-2])
+        return realised
+
     def add_suffix(self, radical, suffix):
         """Return the concatenation of the radical, any appropriate
         liaison letters and the suffix.
