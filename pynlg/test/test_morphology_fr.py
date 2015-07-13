@@ -6,12 +6,11 @@ import pytest
 
 from ..morphology.fr import FrenchMorphologyRules
 from ..spec.phrase import PhraseElement
-from ..spec.word import WordElement
 from ..lexicon.feature.category import ADJECTIVE, VERB_PHRASE, NOUN_PHRASE, VERB
 from ..lexicon.feature.lexical import GENDER
 from ..lexicon.feature import NUMBER, IS_COMPARATIVE
 from ..lexicon.feature.gender import MASCULINE, FEMININE
-from ..lexicon.feature.number import PLURAL, SINGULAR
+from ..lexicon.feature.number import PLURAL, SINGULAR, BOTH
 from ..lexicon.feature.discourse import OBJECT, PRE_MODIFIER, FRONT_MODIFIER, POST_MODIFIER
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION, COMPLEMENTS
 from ..lexicon.feature.person import FIRST, SECOND, THIRD
@@ -341,3 +340,48 @@ def test_realise_verb_past_participle(
     past_participle = morph_rules_fr.realise_verb_past_participle(
         verb, base_word=verb, base_form=base_form, gender=gender, number=number)
     assert past_participle == expected
+
+
+@pytest.mark.parametrize('base_form, person, number, expected', [
+    (u'aimer', FIRST, SINGULAR, u'aime'),
+    (u'aimer', SECOND, SINGULAR, u'aimes'),
+    (u'aimer', THIRD, SINGULAR, u'aime'),
+    (u'aimer', FIRST, BOTH, u'aime'),
+    (u'aimer', SECOND, BOTH, u'aimes'),
+    (u'aimer', THIRD, BOTH, u'aime'),
+    (u'aimer', FIRST, PLURAL, u'aimions'),
+    (u'aimer', SECOND, PLURAL, u'aimiez'),
+    (u'aimer', THIRD, PLURAL, u'aiment'),
+])
+def test_build_subjunctive_verb(morph_rules_fr, base_form, person, number, expected):
+    assert morph_rules_fr.build_subjunctive_verb(base_form, person, number) == expected
+
+
+@pytest.mark.parametrize('base_form, person, number, expected', [
+    # irregular, from lexicon
+    (u'aller', FIRST, SINGULAR, u'aille'),
+    (u'aller', SECOND, SINGULAR, u'ailles'),
+    (u'aller', THIRD, SINGULAR, u'aille'),
+    (u'aller', FIRST, BOTH, u'aille'),
+    (u'aller', SECOND, BOTH, u'ailles'),
+    (u'aller', THIRD, BOTH, u'aille'),
+    (u'aller', FIRST, PLURAL, u'allions'),
+    (u'aller', SECOND, PLURAL, u'alliez'),
+    (u'aller', THIRD, PLURAL, u'aillent'),
+    # regular, from building rules
+    (u'aimer', FIRST, SINGULAR, u'aime'),
+    (u'aimer', SECOND, SINGULAR, u'aimes'),
+    (u'aimer', THIRD, SINGULAR, u'aime'),
+    (u'aimer', FIRST, BOTH, u'aime'),
+    (u'aimer', SECOND, BOTH, u'aimes'),
+    (u'aimer', THIRD, BOTH, u'aime'),
+    (u'aimer', FIRST, PLURAL, u'aimions'),
+    (u'aimer', SECOND, PLURAL, u'aimiez'),
+    (u'aimer', THIRD, PLURAL, u'aiment'),
+])
+def test_realise_verb_subjunctive(
+        lexicon_fr, morph_rules_fr, base_form, person, number, expected):
+    verb = lexicon_fr.first(base_form, category=VERB)
+    subj = morph_rules_fr.realise_verb_subjunctive(
+        verb, base_word=verb, base_form=base_form, number=number, person=person)
+    assert subj == expected

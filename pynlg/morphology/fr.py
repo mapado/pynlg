@@ -19,7 +19,7 @@ from ..lexicon.feature.pronoun import PERSONAL, RELATIVE
 from ..lexicon.feature.lexical.fr import PRONOUN_TYPE, DETACHED
 from ..lexicon.feature.person import FIRST, SECOND, THIRD
 from ..lexicon.feature.form import IMPERATIVE
-from ..lexicon.feature.number import SINGULAR, PLURAL
+from ..lexicon.feature.number import SINGULAR, PLURAL, BOTH
 from ..lexicon.feature.tense import PRESENT
 from ..lexicon.feature import PERSON, NUMBER, TENSE
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
@@ -289,6 +289,33 @@ class FrenchMorphologyRules(object):
                 suffix = u'ent'
         return self.add_suffix(verb.radical, suffix)
 
+    def build_subjunctive_verb(self, base_form, person, number):
+        """Return the subjunctive form for regular verb, using argument
+        person and number.
+
+        """
+        # Compared to indicative present, singular persons
+        # take the radical of third person plural.
+        if number == SINGULAR:
+            radical_number = PLURAL
+        else:
+            radical_number = number
+
+        verb = self.get_present_radical(base_form, radical_number)
+        if number in (SINGULAR, BOTH):
+            if person in (FIRST, THIRD):
+                suffix = u'e'
+            else:
+                suffix = u'es'
+        else:
+            if person == FIRST:
+                suffix = u'ions'
+            elif person == SECOND:
+                suffix = u'iez'
+            else:
+                suffix = u'ent'
+        return self.add_suffix(verb.radical, suffix)
+
     def get_imperfect_pres_part_radical(self, element, base_word, base_form):
         """Gets or builds the radical used for "imparfait" and present participle."""
         if element.imparfait_radical:
@@ -397,6 +424,36 @@ class FrenchMorphologyRules(object):
                 realised = fem_realised
         if number == PLURAL and not realised.endswith(u's'):
             realised = u'%ss' % (realised)
+        return realised
+
+    def realise_verb_subjunctive(self, element, base_word, base_form, person, number):
+        """Realise the subjunctive form of the argument verb element
+        at the argument gender and number.
+
+        """
+        realised = None
+        if number in (SINGULAR, BOTH):
+            if person == FIRST:
+                realised = (
+                    element.subjunctive1s or (base_word and base_word.subjunctive1s))
+            elif person == SECOND:
+                realised = (
+                    element.subjunctive2s or (base_word and base_word.subjunctive2s))
+            else:
+                realised = (
+                    element.subjunctive3s or (base_word and base_word.subjunctive3s))
+        else:
+            if person == FIRST:
+                realised = (
+                    element.subjunctive1p or (base_word and base_word.subjunctive1p))
+            elif person == SECOND:
+                realised = (
+                    element.subjunctive2p or (base_word and base_word.subjunctive2p))
+            else:
+                realised = (
+                    element.subjunctive3p or (base_word and base_word.subjunctive3p))
+        if not realised:
+            realised = self.build_subjunctive_verb(base_form, person, number)
         return realised
 
     def morph_determiner(self, element):
@@ -556,10 +613,14 @@ class FrenchMorphologyRules(object):
         if form in (BARE_INFINITIVE, INFINITIVE):
             realised = base_form
         elif form in (PRESENT_PARTICIPLE, GERUND):
-            realised = self.realise_present_participle_or_gerund_verb(
-                element, base_word, base_form)
+            realised = self.realise_verb_present_participle_or_gerund(
+                element, base_word, base_form, gender, number)
         elif form == PAST_PARTICIPLE:
-            realised = self.realise_verb_past_participle(element, base_word, base_form)
+            realised = self.realise_verb_past_participle(
+                element, base_word, base_form, gender, number)
+        elif form == SUBJUNCTIVE:
+            realised = self.realise_verb_subjunctive(
+                element, base_word, base_form, person, number)
 
     def morph_adverb(self, element, base_word):
         base_form = self.get_base_form(element, base_word)
