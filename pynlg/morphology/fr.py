@@ -254,7 +254,7 @@ class FrenchMorphologyRules(object):
 
         """
         verb = self.get_present_radical(base_form, number)
-        if number == SINGULAR:
+        if number in (SINGULAR, BOTH):
             if verb.group == 1:
                 if person in (FIRST, THIRD):
                     suffix = u'e'
@@ -446,6 +446,66 @@ class FrenchMorphologyRules(object):
             realised = self.build_subjunctive_verb(base_form, person, number)
         return realised
 
+    def realise_verb_imperative(self, element, base_word, base_form, person, number):
+        """Realise the imperative form of the argument verb element
+        at the argument gender and number.
+
+        If the imperative form is not foundin the lexicon
+
+        """
+        realised = None
+        present_form = self.realise_verb_present(
+            element, base_word, base_form, person, number)
+        if number in (SINGULAR, BOTH):
+            if person in (FIRST, THIRD):
+                pass
+            else:
+                realised = (
+                    element.imperative2s
+                    or (base_word and base_word.imperative2s)
+                    or present_form)
+                if realised.endswith(u's'):
+                    realised = realised[:-1]
+        else:
+            if person == FIRST:
+                realised = (
+                    element.imperative1p
+                    or (base_word and base_word.imperative1p)
+                    or present_form)
+            elif person == SECOND:
+                realised = (
+                    element.imperative2p
+                    or (base_word and base_word.imperative2p)
+                    or present_form)
+        return realised
+
+    def realise_verb_present(self, element, base_word, base_form, person, number):
+        """Realise the present form of the argument verb element at the
+        argument gender and number.
+
+        If the verb is regular, the present generation rules will
+        be used. Else, the appropriate present form will be looked up
+        in the lexicon.
+
+        """
+        if number in (SINGULAR, BOTH):
+            if person == FIRST:
+                realised = (element.present1s or (base_word and base_word.present1s))
+            elif person == SECOND:
+                realised = (element.present2s or (base_word and base_word.present2s))
+            else:
+                realised = (element.present3s or (base_word and base_word.present3s))
+        else:
+            if person == FIRST:
+                realised = (element.present1p or (base_word and base_word.present1p))
+            elif person == SECOND:
+                realised = (element.present2p or (base_word and base_word.present2p))
+            else:
+                realised = (element.present3p or (base_word and base_word.present3p))
+        if not realised:
+            realised = self.build_present_verb(base_form, person, number)
+        return realised
+
     def morph_determiner(self, element):
         """Perform the morphology for determiners.
 
@@ -610,6 +670,12 @@ class FrenchMorphologyRules(object):
                 element, base_word, base_form, gender, number)
         elif form == SUBJUNCTIVE:
             realised = self.realise_verb_subjunctive(
+                element, base_word, base_form, person, number)
+        elif tense == PRESENT:
+            realised = self.realise_verb_present(
+                element, base_word, base_form, person, number)
+        elif form == IMPERATIVE:
+            realised = self.realise_verb_imperative_or_present(
                 element, base_word, base_form, person, number)
 
     def morph_adverb(self, element, base_word):

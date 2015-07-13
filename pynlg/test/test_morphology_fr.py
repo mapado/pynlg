@@ -385,3 +385,61 @@ def test_realise_verb_subjunctive(
     subj = morph_rules_fr.realise_verb_subjunctive(
         verb, base_word=verb, base_form=base_form, number=number, person=person)
     assert subj == expected
+
+
+@pytest.mark.parametrize('base_form, person, number, expected', [
+    (u'aller', FIRST, SINGULAR, None),
+    (u'aller', SECOND, SINGULAR, u'va'),
+    (u'aller', THIRD, SINGULAR, None),
+    (u'aller', FIRST, BOTH, None),
+    (u'aller', SECOND, BOTH, u'va'),
+    (u'aller', THIRD, BOTH, None),
+    (u'aller', FIRST, PLURAL, u'allons'),
+    (u'aller', SECOND, PLURAL, u'allez'),
+    (u'aller', THIRD, PLURAL, None),
+    (u'manger', FIRST, SINGULAR, None),
+    (u'manger', SECOND, SINGULAR, u'mange'),
+    (u'manger', THIRD, SINGULAR, None),
+    (u'manger', FIRST, BOTH, None),
+    (u'manger', SECOND, BOTH, u'mange'),
+    (u'manger', THIRD, BOTH, None),
+    (u'manger', FIRST, PLURAL, u'mangeons'),
+    (u'manger', SECOND, PLURAL, u'mangez'),
+    (u'manger', THIRD, PLURAL, None),
+])
+def test_realise_verb_imperative(
+        lexicon_fr, morph_rules_fr, base_form, person, number, expected):
+    verb = lexicon_fr.first(base_form, category=VERB)
+    imp = morph_rules_fr.realise_verb_imperative(
+        verb, base_word=verb, base_form=base_form, number=number, person=person)
+    assert imp == expected
+
+
+@pytest.mark.parametrize('base_form, person, number, expected', [
+    # irregular: from lexicon
+    (u'aller', FIRST, SINGULAR, u'vais'),
+    (u'aller', SECOND, SINGULAR, u'vas'),
+    (u'aller', THIRD, SINGULAR, u'va'),
+    (u'aller', FIRST, BOTH, u'vais'),
+    (u'aller', SECOND, BOTH, u'vas'),
+    (u'aller', THIRD, BOTH, u'va'),
+    (u'aller', FIRST, PLURAL, u'allons'),
+    (u'aller', SECOND, PLURAL, u'allez'),
+    (u'aller', THIRD, PLURAL, u'vont'),
+    # regular: from rules
+    (u'vendre', FIRST, SINGULAR, u'vends'),
+    (u'vendre', SECOND, SINGULAR, u'vends'),
+    (u'vendre', THIRD, SINGULAR, u'vend'),
+    (u'vendre', FIRST, BOTH, u'vends'),
+    (u'vendre', SECOND, BOTH, u'vends'),
+    (u'vendre', THIRD, BOTH, u'vend'),
+    (u'vendre', FIRST, PLURAL, u'vendons'),
+    (u'vendre', SECOND, PLURAL, u'vendez'),
+    (u'vendre', THIRD, PLURAL, u'vendent'),
+])
+def test_realise_verb_present(
+        lexicon_fr, morph_rules_fr, base_form, person, number, expected):
+    verb = lexicon_fr.first(base_form, category=VERB)
+    imp = morph_rules_fr.realise_verb_present(
+        verb, base_word=verb, base_form=base_form, number=number, person=person)
+    assert imp == expected
