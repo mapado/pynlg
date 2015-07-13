@@ -22,8 +22,8 @@
 		<imperative2p>soyez</imperative2p>
 		<future_radical>ser</future_radical>
 		<imparfait_radical>ét</imparfait_radical>
-		<pastParticiple>été</pastParticiple>
-		<presentParticiple>étant</presentParticiple>
+		<past_participle>été</past_participle>
+		<present_participle>étant</present_participle>
 		<subjunctive1s>sois</subjunctive1s>
 		<subjunctive2s>sois</subjunctive2s>
 		<subjunctive3s>soit</subjunctive3s>
@@ -46,8 +46,8 @@
 		<imperative1p>ayons</imperative1p>
 		<imperative2p>ayez</imperative2p>
 		<future_radical>aur</future_radical>
-		<pastParticiple>eu</pastParticiple>
-		<presentParticiple>ayant</presentParticiple>
+		<past_participle>eu</past_participle>
+		<present_participle>ayant</present_participle>
 		<subjunctive1s>aie</subjunctive1s>
 		<subjunctive2s>aies</subjunctive2s>
 		<subjunctive3s>ait</subjunctive3s>
@@ -827,7 +827,7 @@
 		<feminine_singular>laquelle</feminine_singular>
 		<feminine_plural>lesquelles</feminine_plural>
 	</word>
-	
+
 	<!-- conjunctions -->
 	<word>
 		<base>et</base>
@@ -898,7 +898,7 @@
 		<feminine_plural>premières</feminine_plural>
 		<preposed/>
 	</word>
-	
+
 	<!-- adverbs -->
 	<word>
 		<base>ne</base>
@@ -960,7 +960,7 @@
 		<present1s>abats</present1s>
 		<present2s>abats</present2s>
 		<imperative2s>abats</imperative2s>
-		<presentParticiple>abattant</presentParticiple>
+		<present_participle>abattant</present_participle>
 		<present3p>abattent</present3p>
 		<present2p>abattez</present2p>
 		<imperative2p>abattez</imperative2p>
@@ -968,7 +968,7 @@
 		<present1p>abattons</present1p>
 		<imperative1p>abattons</imperative1p>
 		<future_radical>abattr</future_radical>
-		<pastParticiple>abattu</pastParticiple>
+		<past_participle>abattu</past_participle>
 		<feminine_past_participle>abattue</feminine_past_participle>
 		<subjunctive1s>abatte</subjunctive1s>
 		<subjunctive2s>abattes</subjunctive2s>
@@ -1143,7 +1143,7 @@
 		<base>accourir</base>
 		<category>verb</category>
 		<id>accourir_1</id>
-		<presentParticiple>accourant</presentParticiple>
+		<present_participle>accourant</present_participle>
 		<present3p>accourent</present3p>
 		<present2p>accourez</present2p>
 		<imperative2p>accourez</imperative2p>
@@ -1155,7 +1155,7 @@
 		<present2s>accours</present2s>
 		<imperative2s>accours</imperative2s>
 		<present3s>accourt</present3s>
-		<pastParticiple>accouru</pastParticiple>
+		<past_participle>accouru</past_participle>
 		<feminine_past_participle>accourue</feminine_past_participle>
 		<subjunctive1s>accoure</subjunctive1s>
 		<subjunctive2s>accoures</subjunctive2s>
@@ -1180,7 +1180,7 @@
 		<base>accueillir</base>
 		<category>verb</category>
 		<id>accueillir_1</id>
-		<presentParticiple>accueillant</presentParticiple>
+		<present_participle>accueillant</present_participle>
 		<present1s>accueille</present1s>
 		<present3s>accueille</present3s>
 		<imperative2s>accueille</imperative2s>
@@ -1192,7 +1192,7 @@
 		<imparfait_radical>accueill</imparfait_radical>
 		<present1p>accueillons</present1p>
 		<imperative1p>accueillons</imperative1p>
-		<pastParticiple>accueilli</pastParticiple>
+		<past_participle>accueilli</past_participle>
 		<feminine_past_participle>accueillie</feminine_past_participle>
 		<subjunctive1s>accueille</subjunctive1s>
 		<subjunctive2s>accueilles</subjunctive2s>
@@ -1273,13 +1273,13 @@
 		<imperative2s>acquiers</imperative2s>
 		<present3s>acquiert</present3s>
 		<present3p>acquièrent</present3p>
-		<presentParticiple>acquérant</presentParticiple>
+		<present_participle>acquérant</present_participle>
 		<present2p>acquérez</present2p>
 		<imperative2p>acquérez</imperative2p>
 		<imparfait_radical>acquér</imparfait_radical>
 		<present1p>acquérons</present1p>
 		<imperative1p>acquérons</imperative1p>
-		<pastParticiple>acquis</pastParticiple>
+		<past_participle>acquis</past_participle>
 		<feminine_past_participle>acquise</feminine_past_participle>
 		<subjunctive1s>acquière</subjunctive1s>
 		<subjunctive2s>acquières</subjunctive2s>
@@ -1354,7 +1354,7 @@
 		<present1s>admets</present1s>
 		<present2s>admets</present2s>
 		<imperative2s>admets</imperative2s>
-		<presentParticiple>admettant</presentParticiple>
+		<present_participle>admettant</present_participle>
 		<present3p>admettent</present3p>
 		<present2p>admettez</present2p>
 		<imperative2p>admettez</imperative2p>
@@ -1362,7 +1362,7 @@
 		<present1p>admettons</present1p>
 		<imperative1p>admettons</imperative1p>
 		<future_radical>admettr</future_radical>
-		<pastParticiple>admis</pastParticiple>
+		<past_participle>admis</past_participle>
 		<feminine_past_participle>admise</feminine_past_participle>
 		<subjunctive1s>admette</subjunctive1s>
 		<subjunctive2s>admettes</subjunctive2s>
@@ -1785,7 +1785,7 @@
 		<category>verb</category>
 		<id>aller_2</id>
 		<auxiliary_etre/>
-		<presentParticiple>allant</presentParticiple>
+		<present_participle>allant</present_participle>
 		<present2p>allez</present2p>
 		<imperative2p>allez</imperative2p>
 		<imparfait_radical>all</imparfait_radical>
@@ -1796,7 +1796,7 @@
 		<present1s>vais</present1s>
 		<present2s>vas</present2s>
 		<present3p>vont</present3p>
-		<pastParticiple>allé</pastParticiple>
+		<past_participle>allé</past_participle>
 		<feminine_past_participle>allée</feminine_past_participle>
 		<subjunctive1s>aille</subjunctive1s>
 		<subjunctive2s>ailles</subjunctive2s>
@@ -2097,7 +2097,7 @@
 		<base>apercevoir</base>
 		<category>verb</category>
 		<id>apercevoir_1</id>
-		<presentParticiple>apercevant</presentParticiple>
+		<present_participle>apercevant</present_participle>
 		<present2p>apercevez</present2p>
 		<imperative2p>apercevez</imperative2p>
 		<imparfait_radical>apercev</imparfait_radical>
@@ -2109,7 +2109,7 @@
 		<imperative2s>aperçois</imperative2s>
 		<present3s>aperçoit</present3s>
 		<present3p>aperçoivent</present3p>
-		<pastParticiple>aperçu</pastParticiple>
+		<past_participle>aperçu</past_participle>
 		<feminine_past_participle>aperçue</feminine_past_participle>
 		<subjunctive1s>aperçoive</subjunctive1s>
 		<subjunctive2s>aperçoives</subjunctive2s>
@@ -2141,7 +2141,7 @@
 		<present1s>apparais</present1s>
 		<present2s>apparais</present2s>
 		<imperative2s>apparais</imperative2s>
-		<presentParticiple>apparaissant</presentParticiple>
+		<present_participle>apparaissant</present_participle>
 		<present3p>apparaissent</present3p>
 		<present2p>apparaissez</present2p>
 		<imperative2p>apparaissez</imperative2p>
@@ -2150,7 +2150,7 @@
 		<imperative1p>apparaissons</imperative1p>
 		<present3s>apparaît</present3s>
 		<future_radical>apparaîtr</future_radical>
-		<pastParticiple>apparu</pastParticiple>
+		<past_participle>apparu</past_participle>
 		<feminine_past_participle>apparue</feminine_past_participle>
 		<subjunctive1s>apparaisse</subjunctive1s>
 		<subjunctive2s>apparaisses</subjunctive2s>
@@ -2184,7 +2184,7 @@
 		<base>appartenir</base>
 		<category>verb</category>
 		<id>appartenir_1</id>
-		<presentParticiple>appartenant</presentParticiple>
+		<present_participle>appartenant</present_participle>
 		<present2p>appartenez</present2p>
 		<imperative2p>appartenez</imperative2p>
 		<imparfait_radical>apparten</imparfait_radical>
@@ -2196,7 +2196,7 @@
 		<present2s>appartiens</present2s>
 		<imperative2s>appartiens</imperative2s>
 		<present3s>appartient</present3s>
-		<pastParticiple>appartenu</pastParticiple>
+		<past_participle>appartenu</past_participle>
 		<feminine_past_participle>appartenue</feminine_past_participle>
 		<subjunctive1s>appartienne</subjunctive1s>
 		<subjunctive2s>appartiennes</subjunctive2s>
@@ -2274,7 +2274,7 @@
 		<base>apprendre</base>
 		<category>verb</category>
 		<id>apprendre_1</id>
-		<presentParticiple>apprenant</presentParticiple>
+		<present_participle>apprenant</present_participle>
 		<present3s>apprend</present3s>
 		<future_radical>apprendr</future_radical>
 		<present1s>apprends</present1s>
@@ -2286,7 +2286,7 @@
 		<present3p>apprennent</present3p>
 		<present1p>apprenons</present1p>
 		<imperative1p>apprenons</imperative1p>
-		<pastParticiple>appris</pastParticiple>
+		<past_participle>appris</past_participle>
 		<feminine_past_participle>apprise</feminine_past_participle>
 		<subjunctive1s>apprenne</subjunctive1s>
 		<subjunctive2s>apprennes</subjunctive2s>
@@ -2544,7 +2544,7 @@
 		<base>asseoir</base>
 		<category>verb</category>
 		<id>asseoir_1</id>
-		<presentParticiple>asseyant</presentParticiple>
+		<present_participle>asseyant</present_participle>
 		<present3p>asseyent</present3p>
 		<present2p>asseyez</present2p>
 		<imperative2p>asseyez</imperative2p>
@@ -2555,7 +2555,7 @@
 		<present1s>assieds</present1s>
 		<present2s>assieds</present2s>
 		<imperative2s>assieds</imperative2s>
-		<pastParticiple>assis</pastParticiple>
+		<past_participle>assis</past_participle>
 		<feminine_past_participle>assise</feminine_past_participle>
 		<subjunctive1s>asseye</subjunctive1s>
 		<subjunctive2s>asseyes</subjunctive2s>
@@ -2652,7 +2652,7 @@
 		<base>atteindre</base>
 		<category>verb</category>
 		<id>atteindre_1</id>
-		<presentParticiple>atteignant</presentParticiple>
+		<present_participle>atteignant</present_participle>
 		<present3p>atteignent</present3p>
 		<present2p>atteignez</present2p>
 		<imperative2p>atteignez</imperative2p>
@@ -2664,7 +2664,7 @@
 		<present2s>atteins</present2s>
 		<imperative2s>atteins</imperative2s>
 		<present3s>atteint</present3s>
-		<pastParticiple>atteint</pastParticiple>
+		<past_participle>atteint</past_participle>
 		<feminine_past_participle>atteinte</feminine_past_participle>
 		<subjunctive1s>atteigne</subjunctive1s>
 		<subjunctive2s>atteignes</subjunctive2s>
@@ -2683,7 +2683,7 @@
 		<category>verb</category>
 		<id>attendre_1</id>
 		<present3s>attend</present3s>
-		<presentParticiple>attendant</presentParticiple>
+		<present_participle>attendant</present_participle>
 		<present3p>attendent</present3p>
 		<present2p>attendez</present2p>
 		<imperative2p>attendez</imperative2p>
@@ -2694,7 +2694,7 @@
 		<present1s>attends</present1s>
 		<present2s>attends</present2s>
 		<imperative2s>attends</imperative2s>
-		<pastParticiple>attendu</pastParticiple>
+		<past_participle>attendu</past_participle>
 		<feminine_past_participle>attendue</feminine_past_participle>
 		<subjunctive1s>attende</subjunctive1s>
 		<subjunctive2s>attendes</subjunctive2s>
@@ -3335,7 +3335,7 @@
 		<present1s>bats</present1s>
 		<present2s>bats</present2s>
 		<imperative2s>bats</imperative2s>
-		<presentParticiple>battant</presentParticiple>
+		<present_participle>battant</present_participle>
 		<present3p>battent</present3p>
 		<present2p>battez</present2p>
 		<imperative2p>battez</imperative2p>
@@ -3343,7 +3343,7 @@
 		<present1p>battons</present1p>
 		<imperative1p>battons</imperative1p>
 		<future_radical>battr</future_radical>
-		<pastParticiple>battu</pastParticiple>
+		<past_participle>battu</past_participle>
 		<feminine_past_participle>battue</feminine_past_participle>
 		<subjunctive1s>batte</subjunctive1s>
 		<subjunctive2s>battes</subjunctive2s>
@@ -3758,13 +3758,13 @@
 		<imperative2s>bois</imperative2s>
 		<present3s>boit</present3s>
 		<present3p>boivent</present3p>
-		<presentParticiple>buvant</presentParticiple>
+		<present_participle>buvant</present_participle>
 		<present2p>buvez</present2p>
 		<imperative2p>buvez</imperative2p>
 		<imparfait_radical>buv</imparfait_radical>
 		<present1p>buvons</present1p>
 		<imperative1p>buvons</imperative1p>
-		<pastParticiple>bu</pastParticiple>
+		<past_participle>bu</past_participle>
 		<feminine_past_participle>bue</feminine_past_participle>
 		<subjunctive1s>boive</subjunctive1s>
 		<subjunctive2s>boives</subjunctive2s>
@@ -6026,7 +6026,7 @@
 		<present1s>combats</present1s>
 		<present2s>combats</present2s>
 		<imperative2s>combats</imperative2s>
-		<presentParticiple>combattant</presentParticiple>
+		<present_participle>combattant</present_participle>
 		<present3p>combattent</present3p>
 		<present2p>combattez</present2p>
 		<imperative2p>combattez</imperative2p>
@@ -6034,7 +6034,7 @@
 		<present1p>combattons</present1p>
 		<imperative1p>combattons</imperative1p>
 		<future_radical>combattr</future_radical>
-		<pastParticiple>combattu</pastParticiple>
+		<past_participle>combattu</past_participle>
 		<feminine_past_participle>combattue</feminine_past_participle>
 		<subjunctive1s>combatte</subjunctive1s>
 		<subjunctive2s>combattes</subjunctive2s>
@@ -6137,7 +6137,7 @@
 		<present1s>commets</present1s>
 		<present2s>commets</present2s>
 		<imperative2s>commets</imperative2s>
-		<presentParticiple>commettant</presentParticiple>
+		<present_participle>commettant</present_participle>
 		<present3p>commettent</present3p>
 		<present2p>commettez</present2p>
 		<imperative2p>commettez</imperative2p>
@@ -6145,7 +6145,7 @@
 		<present1p>commettons</present1p>
 		<imperative1p>commettons</imperative1p>
 		<future_radical>commettr</future_radical>
-		<pastParticiple>commis</pastParticiple>
+		<past_participle>commis</past_participle>
 		<feminine_past_participle>commise</feminine_past_participle>
 		<subjunctive1s>commette</subjunctive1s>
 		<subjunctive2s>commettes</subjunctive2s>
@@ -6317,7 +6317,7 @@
 		<base>comprendre</base>
 		<category>verb</category>
 		<id>comprendre_1</id>
-		<presentParticiple>comprenant</presentParticiple>
+		<present_participle>comprenant</present_participle>
 		<present3s>comprend</present3s>
 		<future_radical>comprendr</future_radical>
 		<present1s>comprends</present1s>
@@ -6329,7 +6329,7 @@
 		<present3p>comprennent</present3p>
 		<present1p>comprenons</present1p>
 		<imperative1p>comprenons</imperative1p>
-		<pastParticiple>compris</pastParticiple>
+		<past_participle>compris</past_participle>
 		<feminine_past_participle>comprise</feminine_past_participle>
 		<subjunctive1s>comprenne</subjunctive1s>
 		<subjunctive2s>comprennes</subjunctive2s>
@@ -6382,7 +6382,7 @@
 		<base>conclure</base>
 		<category>verb</category>
 		<id>conclure_1</id>
-		<presentParticiple>concluant</presentParticiple>
+		<present_participle>concluant</present_participle>
 		<present3p>concluent</present3p>
 		<present2p>concluez</present2p>
 		<imperative2p>concluez</imperative2p>
@@ -6394,7 +6394,7 @@
 		<present2s>conclus</present2s>
 		<imperative2s>conclus</imperative2s>
 		<present3s>conclut</present3s>
-		<pastParticiple>conclu</pastParticiple>
+		<past_participle>conclu</past_participle>
 		<feminine_past_participle>conclue</feminine_past_participle>
 		<subjunctive1s>conclue</subjunctive1s>
 		<subjunctive2s>conclues</subjunctive2s>
@@ -6450,7 +6450,7 @@
 		<present1s>conduis</present1s>
 		<present2s>conduis</present2s>
 		<imperative2s>conduis</imperative2s>
-		<presentParticiple>conduisant</presentParticiple>
+		<present_participle>conduisant</present_participle>
 		<present3p>conduisent</present3p>
 		<present2p>conduisez</present2p>
 		<imperative2p>conduisez</imperative2p>
@@ -6458,7 +6458,7 @@
 		<present1p>conduisons</present1p>
 		<imperative1p>conduisons</imperative1p>
 		<present3s>conduit</present3s>
-		<pastParticiple>conduit</pastParticiple>
+		<past_participle>conduit</past_participle>
 		<feminine_past_participle>conduite</feminine_past_participle>
 		<subjunctive1s>conduise</subjunctive1s>
 		<subjunctive2s>conduises</subjunctive2s>
@@ -6515,7 +6515,7 @@
 		<category>verb</category>
 		<id>confondre_1</id>
 		<present3s>confond</present3s>
-		<presentParticiple>confondant</presentParticiple>
+		<present_participle>confondant</present_participle>
 		<present3p>confondent</present3p>
 		<present2p>confondez</present2p>
 		<imperative2p>confondez</imperative2p>
@@ -6526,7 +6526,7 @@
 		<present1s>confonds</present1s>
 		<present2s>confonds</present2s>
 		<imperative2s>confonds</imperative2s>
-		<pastParticiple>confondu</pastParticiple>
+		<past_participle>confondu</past_participle>
 		<feminine_past_participle>confondue</feminine_past_participle>
 		<subjunctive1s>confonde</subjunctive1s>
 		<subjunctive2s>confondes</subjunctive2s>
@@ -6582,7 +6582,7 @@
 		<present1s>connais</present1s>
 		<present2s>connais</present2s>
 		<imperative2s>connais</imperative2s>
-		<presentParticiple>connaissant</presentParticiple>
+		<present_participle>connaissant</present_participle>
 		<present3p>connaissent</present3p>
 		<present2p>connaissez</present2p>
 		<imperative2p>connaissez</imperative2p>
@@ -6591,7 +6591,7 @@
 		<imperative1p>connaissons</imperative1p>
 		<present3s>connaît</present3s>
 		<future_radical>connaîtr</future_radical>
-		<pastParticiple>connu</pastParticiple>
+		<past_participle>connu</past_participle>
 		<feminine_past_participle>connue</feminine_past_participle>
 		<subjunctive1s>connaisse</subjunctive1s>
 		<subjunctive2s>connaisses</subjunctive2s>
@@ -6610,13 +6610,13 @@
 		<imperative2s>conquiers</imperative2s>
 		<present3s>conquiert</present3s>
 		<present3p>conquièrent</present3p>
-		<presentParticiple>conquérant</presentParticiple>
+		<present_participle>conquérant</present_participle>
 		<present2p>conquérez</present2p>
 		<imperative2p>conquérez</imperative2p>
 		<imparfait_radical>conquér</imparfait_radical>
 		<present1p>conquérons</present1p>
 		<imperative1p>conquérons</imperative1p>
-		<pastParticiple>conquis</pastParticiple>
+		<past_participle>conquis</past_participle>
 		<feminine_past_participle>conquise</feminine_past_participle>
 		<subjunctive1s>conquière</subjunctive1s>
 		<subjunctive2s>conquières</subjunctive2s>
@@ -6664,7 +6664,7 @@
 		<present2s>consens</present2s>
 		<imperative2s>consens</imperative2s>
 		<present3s>consent</present3s>
-		<presentParticiple>consentant</presentParticiple>
+		<present_participle>consentant</present_participle>
 		<present3p>consentent</present3p>
 		<present2p>consentez</present2p>
 		<imperative2p>consentez</imperative2p>
@@ -6672,7 +6672,7 @@
 		<future_radical>consentir</future_radical>
 		<present1p>consentons</present1p>
 		<imperative1p>consentons</imperative1p>
-		<pastParticiple>consenti</pastParticiple>
+		<past_participle>consenti</past_participle>
 		<feminine_past_participle>consentie</feminine_past_participle>
 		<subjunctive1s>consente</subjunctive1s>
 		<subjunctive2s>consentes</subjunctive2s>
@@ -6760,7 +6760,7 @@
 		<present1s>construis</present1s>
 		<present2s>construis</present2s>
 		<imperative2s>construis</imperative2s>
-		<presentParticiple>construisant</presentParticiple>
+		<present_participle>construisant</present_participle>
 		<present3p>construisent</present3p>
 		<present2p>construisez</present2p>
 		<imperative2p>construisez</imperative2p>
@@ -6768,7 +6768,7 @@
 		<present1p>construisons</present1p>
 		<imperative1p>construisons</imperative1p>
 		<present3s>construit</present3s>
-		<pastParticiple>construit</pastParticiple>
+		<past_participle>construit</past_participle>
 		<feminine_past_participle>construite</feminine_past_participle>
 		<subjunctive1s>construise</subjunctive1s>
 		<subjunctive2s>construises</subjunctive2s>
@@ -6805,7 +6805,7 @@
 		<base>contenir</base>
 		<category>verb</category>
 		<id>contenir_1</id>
-		<presentParticiple>contenant</presentParticiple>
+		<present_participle>contenant</present_participle>
 		<present2p>contenez</present2p>
 		<imperative2p>contenez</imperative2p>
 		<imparfait_radical>conten</imparfait_radical>
@@ -6817,7 +6817,7 @@
 		<present2s>contiens</present2s>
 		<imperative2s>contiens</imperative2s>
 		<present3s>contient</present3s>
-		<pastParticiple>contenu</pastParticiple>
+		<past_participle>contenu</past_participle>
 		<feminine_past_participle>contenue</feminine_past_participle>
 		<subjunctive1s>contienne</subjunctive1s>
 		<subjunctive2s>contiennes</subjunctive2s>
@@ -6915,14 +6915,14 @@
 		<present1s>convaincs</present1s>
 		<present2s>convaincs</present2s>
 		<imperative2s>convaincs</imperative2s>
-		<presentParticiple>convainquant</presentParticiple>
+		<present_participle>convainquant</present_participle>
 		<present3p>convainquent</present3p>
 		<present2p>convainquez</present2p>
 		<imperative2p>convainquez</imperative2p>
 		<imparfait_radical>convainqu</imparfait_radical>
 		<present1p>convainquons</present1p>
 		<imperative1p>convainquons</imperative1p>
-		<pastParticiple>convaincu</pastParticiple>
+		<past_participle>convaincu</past_participle>
 		<feminine_past_participle>convaincue</feminine_past_participle>
 		<subjunctive1s>convainque</subjunctive1s>
 		<subjunctive2s>convainques</subjunctive2s>
@@ -6943,7 +6943,7 @@
 		<base>convenir</base>
 		<category>verb</category>
 		<id>convenir_1</id>
-		<presentParticiple>convenant</presentParticiple>
+		<present_participle>convenant</present_participle>
 		<present2p>convenez</present2p>
 		<imperative2p>convenez</imperative2p>
 		<imparfait_radical>conven</imparfait_radical>
@@ -6955,7 +6955,7 @@
 		<present2s>conviens</present2s>
 		<imperative2s>conviens</imperative2s>
 		<present3s>convient</present3s>
-		<pastParticiple>convenu</pastParticiple>
+		<past_participle>convenu</past_participle>
 		<feminine_past_participle>convenue</feminine_past_participle>
 		<subjunctive1s>convienne</subjunctive1s>
 		<subjunctive2s>conviennes</subjunctive2s>
@@ -7196,14 +7196,14 @@
 		<present1s>couds</present1s>
 		<present2s>couds</present2s>
 		<imperative2s>couds</imperative2s>
-		<presentParticiple>cousant</presentParticiple>
+		<present_participle>cousant</present_participle>
 		<present3p>cousent</present3p>
 		<present2p>cousez</present2p>
 		<imperative2p>cousez</imperative2p>
 		<imparfait_radical>cous</imparfait_radical>
 		<present1p>cousons</present1p>
 		<imperative1p>cousons</imperative1p>
-		<pastParticiple>cousu</pastParticiple>
+		<past_participle>cousu</past_participle>
 		<feminine_past_participle>cousue</feminine_past_participle>
 		<subjunctive1s>couse</subjunctive1s>
 		<subjunctive2s>couses</subjunctive2s>
@@ -7317,7 +7317,7 @@
 		<base>courir</base>
 		<category>verb</category>
 		<id>courir_1</id>
-		<presentParticiple>courant</presentParticiple>
+		<present_participle>courant</present_participle>
 		<present3p>courent</present3p>
 		<present2p>courez</present2p>
 		<imperative2p>courez</imperative2p>
@@ -7329,7 +7329,7 @@
 		<present2s>cours</present2s>
 		<imperative2s>cours</imperative2s>
 		<present3s>court</present3s>
-		<pastParticiple>couru</pastParticiple>
+		<past_participle>couru</past_participle>
 		<feminine_past_participle>courue</feminine_past_participle>
 		<subjunctive1s>coure</subjunctive1s>
 		<subjunctive2s>coures</subjunctive2s>
@@ -7463,7 +7463,7 @@
 		<base>couvrir</base>
 		<category>verb</category>
 		<id>couvrir_1</id>
-		<presentParticiple>couvrant</presentParticiple>
+		<present_participle>couvrant</present_participle>
 		<present1s>couvre</present1s>
 		<present3s>couvre</present3s>
 		<imperative2s>couvre</imperative2s>
@@ -7475,7 +7475,7 @@
 		<future_radical>couvrir</future_radical>
 		<present1p>couvrons</present1p>
 		<imperative1p>couvrons</imperative1p>
-		<pastParticiple>couvert</pastParticiple>
+		<past_participle>couvert</past_participle>
 		<feminine_past_participle>couverte</feminine_past_participle>
 		<subjunctive1s>couvre</subjunctive1s>
 		<subjunctive2s>couvres</subjunctive2s>
@@ -7488,7 +7488,7 @@
 		<base>craindre</base>
 		<category>verb</category>
 		<id>craindre_1</id>
-		<presentParticiple>craignant</presentParticiple>
+		<present_participle>craignant</present_participle>
 		<present3p>craignent</present3p>
 		<present2p>craignez</present2p>
 		<imperative2p>craignez</imperative2p>
@@ -7500,7 +7500,7 @@
 		<present2s>crains</present2s>
 		<imperative2s>crains</imperative2s>
 		<present3s>craint</present3s>
-		<pastParticiple>craint</pastParticiple>
+		<past_participle>craint</past_participle>
 		<feminine_past_participle>crainte</feminine_past_participle>
 		<subjunctive1s>craigne</subjunctive1s>
 		<subjunctive2s>craignes</subjunctive2s>
@@ -7652,13 +7652,13 @@
 		<present2s>crois</present2s>
 		<imperative2s>crois</imperative2s>
 		<present3s>croit</present3s>
-		<presentParticiple>croyant</presentParticiple>
+		<present_participle>croyant</present_participle>
 		<present2p>croyez</present2p>
 		<imperative2p>croyez</imperative2p>
 		<imparfait_radical>croy</imparfait_radical>
 		<present1p>croyons</present1p>
 		<imperative1p>croyons</imperative1p>
-		<pastParticiple>cru</pastParticiple>
+		<past_participle>cru</past_participle>
 		<feminine_past_participle>crue</feminine_past_participle>
 		<subjunctive1s>croie</subjunctive1s>
 		<subjunctive2s>croies</subjunctive2s>
@@ -7676,7 +7676,7 @@
 		<base>croître</base>
 		<category>verb</category>
 		<id>croître_1</id>
-		<presentParticiple>croissant</presentParticiple>
+		<present_participle>croissant</present_participle>
 		<present3p>croissent</present3p>
 		<present2p>croissez</present2p>
 		<imperative2p>croissez</imperative2p>
@@ -7688,7 +7688,7 @@
 		<imperative2s>croîs</imperative2s>
 		<present3s>croît</present3s>
 		<future_radical>croîtr</future_radical>
-		<pastParticiple>crû</pastParticiple>
+		<past_participle>crû</past_participle>
 		<feminine_past_participle>crue</feminine_past_participle>
 		<subjunctive1s>croisse</subjunctive1s>
 		<subjunctive2s>croisse</subjunctive2s>
@@ -7742,7 +7742,7 @@
 		<base>cueillir</base>
 		<category>verb</category>
 		<id>cueillir_1</id>
-		<presentParticiple>cueillant</presentParticiple>
+		<present_participle>cueillant</present_participle>
 		<present1s>cueille</present1s>
 		<present3s>cueille</present3s>
 		<imperative2s>cueille</imperative2s>
@@ -7754,7 +7754,7 @@
 		<imparfait_radical>cueill</imparfait_radical>
 		<present1p>cueillons</present1p>
 		<imperative1p>cueillons</imperative1p>
-		<pastParticiple>cueilli</pastParticiple>
+		<past_participle>cueilli</past_participle>
 		<feminine_past_participle>cueillie</feminine_past_participle>
 		<subjunctive1s>cueille</subjunctive1s>
 		<subjunctive2s>cueilles</subjunctive2s>
@@ -7792,7 +7792,7 @@
 		<present1s>cuis</present1s>
 		<present2s>cuis</present2s>
 		<imperative2s>cuis</imperative2s>
-		<presentParticiple>cuisant</presentParticiple>
+		<present_participle>cuisant</present_participle>
 		<present3p>cuisent</present3p>
 		<present2p>cuisez</present2p>
 		<imperative2p>cuisez</imperative2p>
@@ -7800,7 +7800,7 @@
 		<present1p>cuisons</present1p>
 		<imperative1p>cuisons</imperative1p>
 		<present3s>cuit</present3s>
-		<pastParticiple>cuit</pastParticiple>
+		<past_participle>cuit</past_participle>
 		<feminine_past_participle>cuite</feminine_past_participle>
 		<subjunctive1s>cuise</subjunctive1s>
 		<subjunctive2s>cuises</subjunctive2s>
@@ -8007,7 +8007,7 @@
 		<present1s>débats</present1s>
 		<present2s>débats</present2s>
 		<imperative2s>débats</imperative2s>
-		<presentParticiple>débattant</presentParticiple>
+		<present_participle>débattant</present_participle>
 		<present3p>débattent</present3p>
 		<present2p>débattez</present2p>
 		<imperative2p>débattez</imperative2p>
@@ -8015,7 +8015,7 @@
 		<present1p>débattons</present1p>
 		<imperative1p>débattons</imperative1p>
 		<future_radical>débattr</future_radical>
-		<pastParticiple>débattu</pastParticiple>
+		<past_participle>débattu</past_participle>
 		<feminine_past_participle>débattue</feminine_past_participle>
 		<subjunctive1s>débatte</subjunctive1s>
 		<subjunctive2s>débattes</subjunctive2s>
@@ -8135,7 +8135,7 @@
 		<base>découvrir</base>
 		<category>verb</category>
 		<id>découvrir_1</id>
-		<presentParticiple>découvrant</presentParticiple>
+		<present_participle>découvrant</present_participle>
 		<present1s>découvre</present1s>
 		<present3s>découvre</present3s>
 		<imperative2s>découvre</imperative2s>
@@ -8147,7 +8147,7 @@
 		<future_radical>découvrir</future_radical>
 		<present1p>découvrons</present1p>
 		<imperative1p>découvrons</imperative1p>
-		<pastParticiple>découvert</pastParticiple>
+		<past_participle>découvert</past_participle>
 		<feminine_past_participle>découverte</feminine_past_participle>
 		<subjunctive1s>découvre</subjunctive1s>
 		<subjunctive2s>découvres</subjunctive2s>
@@ -8165,14 +8165,14 @@
 		<present2s>décris</present2s>
 		<imperative2s>décris</imperative2s>
 		<present3s>décrit</present3s>
-		<presentParticiple>décrivant</presentParticiple>
+		<present_participle>décrivant</present_participle>
 		<present3p>décrivent</present3p>
 		<present2p>décrivez</present2p>
 		<imperative2p>décrivez</imperative2p>
 		<imparfait_radical>décriv</imparfait_radical>
 		<present1p>décrivons</present1p>
 		<imperative1p>décrivons</imperative1p>
-		<pastParticiple>décrit</pastParticiple>
+		<past_participle>décrit</past_participle>
 		<feminine_past_participle>décrite</feminine_past_participle>
 		<subjunctive1s>décrive</subjunctive1s>
 		<subjunctive2s>décrives</subjunctive2s>
@@ -8197,7 +8197,7 @@
 		<present1s>défais</present1s>
 		<present2s>défais</present2s>
 		<imperative2s>défais</imperative2s>
-		<presentParticiple>défaisant</presentParticiple>
+		<present_participle>défaisant</present_participle>
 		<imparfait_radical>défais</imparfait_radical>
 		<present1p>défaisons</present1p>
 		<imperative1p>défaisons</imperative1p>
@@ -8206,7 +8206,7 @@
 		<imperative2p>défaites</imperative2p>
 		<future_radical>défer</future_radical>
 		<present3p>défont</present3p>
-		<pastParticiple>défait</pastParticiple>
+		<past_participle>défait</past_participle>
 		<feminine_past_participle>défaite</feminine_past_participle>
 		<subjunctive1s>défasse</subjunctive1s>
 		<subjunctive2s>défasses</subjunctive2s>
@@ -8227,7 +8227,7 @@
 		<category>verb</category>
 		<id>défendre_1</id>
 		<present3s>défend</present3s>
-		<presentParticiple>défendant</presentParticiple>
+		<present_participle>défendant</present_participle>
 		<present3p>défendent</present3p>
 		<present2p>défendez</present2p>
 		<imperative2p>défendez</imperative2p>
@@ -8238,7 +8238,7 @@
 		<present1s>défends</present1s>
 		<present2s>défends</present2s>
 		<imperative2s>défends</imperative2s>
-		<pastParticiple>défendu</pastParticiple>
+		<past_participle>défendu</past_participle>
 		<feminine_past_participle>défendue</feminine_past_participle>
 		<subjunctive1s>défende</subjunctive1s>
 		<subjunctive2s>défendes</subjunctive2s>
@@ -8460,7 +8460,7 @@
 		<category>verb</category>
 		<id>dépendre_1</id>
 		<present3s>dépend</present3s>
-		<presentParticiple>dépendant</presentParticiple>
+		<present_participle>dépendant</present_participle>
 		<present3p>dépendent</present3p>
 		<present2p>dépendez</present2p>
 		<imperative2p>dépendez</imperative2p>
@@ -8471,7 +8471,7 @@
 		<present1s>dépends</present1s>
 		<present2s>dépends</present2s>
 		<imperative2s>dépends</imperative2s>
-		<pastParticiple>dépendu</pastParticiple>
+		<past_participle>dépendu</past_participle>
 		<feminine_past_participle>dépendue</feminine_past_participle>
 		<subjunctive1s>dépende</subjunctive1s>
 		<subjunctive2s>dépendes</subjunctive2s>
@@ -8505,7 +8505,7 @@
 		<present1s>déplais</present1s>
 		<present2s>déplais</present2s>
 		<imperative2s>déplais</imperative2s>
-		<presentParticiple>déplaisant</presentParticiple>
+		<present_participle>déplaisant</present_participle>
 		<present3p>déplaisent</present3p>
 		<present2p>déplaisez</present2p>
 		<imperative2p>déplaisez</imperative2p>
@@ -8607,7 +8607,7 @@
 		<category>verb</category>
 		<id>descendre_1</id>
 		<present3s>descend</present3s>
-		<presentParticiple>descendant</presentParticiple>
+		<present_participle>descendant</present_participle>
 		<present3p>descendent</present3p>
 		<present2p>descendez</present2p>
 		<imperative2p>descendez</imperative2p>
@@ -8618,7 +8618,7 @@
 		<present1s>descends</present1s>
 		<present2s>descends</present2s>
 		<imperative2s>descends</imperative2s>
-		<pastParticiple>descendu</pastParticiple>
+		<past_participle>descendu</past_participle>
 		<feminine_past_participle>descendue</feminine_past_participle>
 		<subjunctive1s>descende</subjunctive1s>
 		<subjunctive2s>descendes</subjunctive2s>
@@ -8829,7 +8829,7 @@
 		<present1s>détruis</present1s>
 		<present2s>détruis</present2s>
 		<imperative2s>détruis</imperative2s>
-		<presentParticiple>détruisant</presentParticiple>
+		<present_participle>détruisant</present_participle>
 		<present3p>détruisent</present3p>
 		<present2p>détruisez</present2p>
 		<imperative2p>détruisez</imperative2p>
@@ -8837,7 +8837,7 @@
 		<present1p>détruisons</present1p>
 		<imperative1p>détruisons</imperative1p>
 		<present3s>détruit</present3s>
-		<pastParticiple>détruit</pastParticiple>
+		<past_participle>détruit</past_participle>
 		<feminine_past_participle>détruite</feminine_past_participle>
 		<subjunctive1s>détruise</subjunctive1s>
 		<subjunctive2s>détruises</subjunctive2s>
@@ -8875,7 +8875,7 @@
 		<id>devenir_2</id>
 		<copular/>
 		<auxiliary_etre/>
-		<presentParticiple>devenant</presentParticiple>
+		<present_participle>devenant</present_participle>
 		<present2p>devenez</present2p>
 		<imperative2p>devenez</imperative2p>
 		<imparfait_radical>deven</imparfait_radical>
@@ -8887,7 +8887,7 @@
 		<present2s>deviens</present2s>
 		<imperative2s>deviens</imperative2s>
 		<present3s>devient</present3s>
-		<pastParticiple>devenu</pastParticiple>
+		<past_participle>devenu</past_participle>
 		<feminine_past_participle>devenue</feminine_past_participle>
 		<subjunctive1s>devienne</subjunctive1s>
 		<subjunctive2s>deviennes</subjunctive2s>
@@ -8905,7 +8905,7 @@
 		<base>devoir</base>
 		<category>verb</category>
 		<id>devoir_2</id>
-		<presentParticiple>devant</presentParticiple>
+		<present_participle>devant</present_participle>
 		<present2p>devez</present2p>
 		<imperative2p>devez</imperative2p>
 		<imparfait_radical>dev</imparfait_radical>
@@ -8917,7 +8917,7 @@
 		<imperative2s>dois</imperative2s>
 		<present3s>doit</present3s>
 		<present3p>doivent</present3p>
-		<pastParticiple>dû</pastParticiple>
+		<past_participle>dû</past_participle>
 		<feminine_past_participle>due</feminine_past_participle>
 		<subjunctive1s>doive</subjunctive1s>
 		<subjunctive2s>doives</subjunctive2s>
@@ -9062,7 +9062,7 @@
 		<present1s>dis</present1s>
 		<present2s>dis</present2s>
 		<imperative2s>dis</imperative2s>
-		<presentParticiple>disant</presentParticiple>
+		<present_participle>disant</present_participle>
 		<present3p>disent</present3p>
 		<imparfait_radical>dis</imparfait_radical>
 		<present1p>disons</present1p>
@@ -9070,7 +9070,7 @@
 		<present3s>dit</present3s>
 		<present2p>dites</present2p>
 		<imperative2p>dites</imperative2p>
-		<pastParticiple>dit</pastParticiple>
+		<past_participle>dit</past_participle>
 		<feminine_past_participle>dite</feminine_past_participle>
 		<subjunctive1s>dise</subjunctive1s>
 		<subjunctive2s>dises</subjunctive2s>
@@ -9137,7 +9137,7 @@
 		<present1s>disparais</present1s>
 		<present2s>disparais</present2s>
 		<imperative2s>disparais</imperative2s>
-		<presentParticiple>disparaissant</presentParticiple>
+		<present_participle>disparaissant</present_participle>
 		<present3p>disparaissent</present3p>
 		<present2p>disparaissez</present2p>
 		<imperative2p>disparaissez</imperative2p>
@@ -9146,7 +9146,7 @@
 		<imperative1p>disparaissons</imperative1p>
 		<present3s>disparaît</present3s>
 		<future_radical>disparaîtr</future_radical>
-		<pastParticiple>disparu</pastParticiple>
+		<past_participle>disparu</past_participle>
 		<feminine_past_participle>disparue</feminine_past_participle>
 		<subjunctive1s>disparaisse</subjunctive1s>
 		<subjunctive2s>disparaisses</subjunctive2s>
@@ -9230,13 +9230,13 @@
 		<present2s>distrais</present2s>
 		<imperative2s>distrais</imperative2s>
 		<present3s>distrait</present3s>
-		<presentParticiple>distrayant</presentParticiple>
+		<present_participle>distrayant</present_participle>
 		<present2p>distrayez</present2p>
 		<imperative2p>distrayez</imperative2p>
 		<imparfait_radical>distray</imparfait_radical>
 		<present1p>distrayons</present1p>
 		<imperative1p>distrayons</imperative1p>
-		<pastParticiple>distrait</pastParticiple>
+		<past_participle>distrait</past_participle>
 		<feminine_past_participle>distraite</feminine_past_participle>
 		<subjunctive1s>distraie</subjunctive1s>
 		<subjunctive2s>distraie</subjunctive2s>
@@ -9393,7 +9393,7 @@
 		<base>dormir</base>
 		<category>verb</category>
 		<id>dormir_1</id>
-		<presentParticiple>dormant</presentParticiple>
+		<present_participle>dormant</present_participle>
 		<present3p>dorment</present3p>
 		<present2p>dormez</present2p>
 		<imperative2p>dormez</imperative2p>
@@ -9405,7 +9405,7 @@
 		<present2s>dors</present2s>
 		<imperative2s>dors</imperative2s>
 		<present3s>dort</present3s>
-		<pastParticiple>dormi</pastParticiple>
+		<past_participle>dormi</past_participle>
 		<feminine_past_participle>dormie</feminine_past_participle>
 		<subjunctive1s>dorme</subjunctive1s>
 		<subjunctive2s>dormes</subjunctive2s>
@@ -9712,10 +9712,10 @@
 		<base>éclore</base>
 		<category>verb</category>
 		<id>éclore_1</id>
-		<presentParticiple>éclosant</presentParticiple>
+		<present_participle>éclosant</present_participle>
 		<present3p>éclosent</present3p>
 		<present3s>éclot</present3s>
-		<pastParticiple>éclos</pastParticiple>
+		<past_participle>éclos</past_participle>
 		<feminine_past_participle>éclose</feminine_past_participle>
 		<subjunctive1s/>
 		<subjunctive2s/>
@@ -9797,14 +9797,14 @@
 		<present2s>écris</present2s>
 		<imperative2s>écris</imperative2s>
 		<present3s>écrit</present3s>
-		<presentParticiple>écrivant</presentParticiple>
+		<present_participle>écrivant</present_participle>
 		<present3p>écrivent</present3p>
 		<present2p>écrivez</present2p>
 		<imperative2p>écrivez</imperative2p>
 		<imparfait_radical>écriv</imparfait_radical>
 		<present1p>écrivons</present1p>
 		<imperative1p>écrivons</imperative1p>
-		<pastParticiple>écrit</pastParticiple>
+		<past_participle>écrit</past_participle>
 		<feminine_past_participle>écrite</feminine_past_participle>
 		<subjunctive1s>écrive</subjunctive1s>
 		<subjunctive2s>écrives</subjunctive2s>
@@ -10048,14 +10048,14 @@
 		<imperative2s>émeus</imperative2s>
 		<present3s>émeut</present3s>
 		<present3p>émeuvent</present3p>
-		<presentParticiple>émouvant</presentParticiple>
+		<present_participle>émouvant</present_participle>
 		<present2p>émouvez</present2p>
 		<imperative2p>émouvez</imperative2p>
 		<imparfait_radical>émouv</imparfait_radical>
 		<present1p>émouvons</present1p>
 		<imperative1p>émouvons</imperative1p>
 		<future_radical>émouvr</future_radical>
-		<pastParticiple>ému</pastParticiple>
+		<past_participle>ému</past_participle>
 		<feminine_past_participle>émue</feminine_past_participle>
 		<subjunctive1s>émeuve</subjunctive1s>
 		<subjunctive2s>émeuves</subjunctive2s>
@@ -10171,8 +10171,8 @@
 		<imperative2p>encourez</imperative2p>
 		<imparfait_radical>encour</imparfait_radical>
 		<future_radical>encourr</future_radical>
-		<presentParticiple>encourant</presentParticiple>
-		<pastParticiple>encouru</pastParticiple>
+		<present_participle>encourant</present_participle>
+		<past_participle>encouru</past_participle>
 		<feminine_past_participle>encourue</feminine_past_participle>
 		<subjunctive1s>encoure</subjunctive1s>
 		<subjunctive2s>encoures</subjunctive2s>
@@ -10211,8 +10211,8 @@
 		<imperative2p>endormez</imperative2p>
 		<imparfait_radical>endorm</imparfait_radical>
 		<future_radical>endormir</future_radical>
-		<presentParticiple>endormant</presentParticiple>
-		<pastParticiple>endormi</pastParticiple>
+		<present_participle>endormant</present_participle>
+		<past_participle>endormi</past_participle>
 		<feminine_past_participle>endormie</feminine_past_participle>
 		<subjunctive1s>endorme</subjunctive1s>
 		<subjunctive2s>endormes</subjunctive2s>
@@ -10407,7 +10407,7 @@
 		<id>entendre_1</id>
 		<clitic_rising/>
 		<present3s>entend</present3s>
-		<presentParticiple>entendant</presentParticiple>
+		<present_participle>entendant</present_participle>
 		<present3p>entendent</present3p>
 		<present2p>entendez</present2p>
 		<imperative2p>entendez</imperative2p>
@@ -10418,7 +10418,7 @@
 		<present1s>entends</present1s>
 		<present2s>entends</present2s>
 		<imperative2s>entends</imperative2s>
-		<pastParticiple>entendu</pastParticiple>
+		<past_participle>entendu</past_participle>
 		<feminine_past_participle>entendue</feminine_past_participle>
 		<subjunctive1s>entende</subjunctive1s>
 		<subjunctive2s>entendes</subjunctive2s>
@@ -10495,7 +10495,7 @@
 		<base>entreprendre</base>
 		<category>verb</category>
 		<id>entreprendre_1</id>
-		<presentParticiple>entreprenant</presentParticiple>
+		<present_participle>entreprenant</present_participle>
 		<present3s>entreprend</present3s>
 		<future_radical>entreprendr</future_radical>
 		<present1s>entreprends</present1s>
@@ -10507,7 +10507,7 @@
 		<present3p>entreprennent</present3p>
 		<present1p>entreprenons</present1p>
 		<imperative1p>entreprenons</imperative1p>
-		<pastParticiple>entrepris</pastParticiple>
+		<past_participle>entrepris</past_participle>
 		<feminine_past_participle>entreprise</feminine_past_participle>
 		<subjunctive1s>entreprenne</subjunctive1s>
 		<subjunctive2s>entreprennes</subjunctive2s>
@@ -10526,7 +10526,7 @@
 		<base>entretenir</base>
 		<category>verb</category>
 		<id>entretenir_1</id>
-		<presentParticiple>entretenant</presentParticiple>
+		<present_participle>entretenant</present_participle>
 		<present2p>entretenez</present2p>
 		<imperative2p>entretenez</imperative2p>
 		<imparfait_radical>entreten</imparfait_radical>
@@ -10538,7 +10538,7 @@
 		<present2s>entretiens</present2s>
 		<imperative2s>entretiens</imperative2s>
 		<present3s>entretient</present3s>
-		<pastParticiple>entretenu</pastParticiple>
+		<past_participle>entretenu</past_participle>
 		<feminine_past_participle>entretenue</feminine_past_participle>
 		<subjunctive1s>entretienne</subjunctive1s>
 		<subjunctive2s>entretiennes</subjunctive2s>
@@ -10564,13 +10564,13 @@
 		<present2s>entrevois</present2s>
 		<imperative2s>entrevois</imperative2s>
 		<present3s>entrevoit</present3s>
-		<presentParticiple>entrevoyant</presentParticiple>
+		<present_participle>entrevoyant</present_participle>
 		<present2p>entrevoyez</present2p>
 		<imperative2p>entrevoyez</imperative2p>
 		<imparfait_radical>entrevoy</imparfait_radical>
 		<present1p>entrevoyons</present1p>
 		<imperative1p>entrevoyons</imperative1p>
-		<pastParticiple>entrevu</pastParticiple>
+		<past_participle>entrevu</past_participle>
 		<feminine_past_participle>entrevue</feminine_past_participle>
 		<subjunctive1s>entrevoie</subjunctive1s>
 		<subjunctive2s>entrevoies</subjunctive2s>
@@ -10583,7 +10583,7 @@
 		<base>entrouvrir</base>
 		<category>verb</category>
 		<id>entrouvrir_1</id>
-		<presentParticiple>entrouvrant</presentParticiple>
+		<present_participle>entrouvrant</present_participle>
 		<present1s>entrouvre</present1s>
 		<present3s>entrouvre</present3s>
 		<imperative2s>entrouvre</imperative2s>
@@ -10595,7 +10595,7 @@
 		<future_radical>entrouvrir</future_radical>
 		<present1p>entrouvrons</present1p>
 		<imperative1p>entrouvrons</imperative1p>
-		<pastParticiple>entrouvert</pastParticiple>
+		<past_participle>entrouvert</past_participle>
 		<feminine_past_participle>entrouverte</feminine_past_participle>
 		<subjunctive1s>entrouvre</subjunctive1s>
 		<subjunctive2s>entrouvres</subjunctive2s>
@@ -11003,7 +11003,7 @@
 		<base>éteindre</base>
 		<category>verb</category>
 		<id>éteindre_1</id>
-		<presentParticiple>éteignant</presentParticiple>
+		<present_participle>éteignant</present_participle>
 		<present3p>éteignent</present3p>
 		<present2p>éteignez</present2p>
 		<imperative2p>éteignez</imperative2p>
@@ -11015,7 +11015,7 @@
 		<present2s>éteins</present2s>
 		<imperative2s>éteins</imperative2s>
 		<present3s>éteint</present3s>
-		<pastParticiple>éteint</pastParticiple>
+		<past_participle>éteint</past_participle>
 		<feminine_past_participle>éteinte</feminine_past_participle>
 		<subjunctive1s>éteigne</subjunctive1s>
 		<subjunctive2s>éteignes</subjunctive2s>
@@ -11029,7 +11029,7 @@
 		<category>verb</category>
 		<id>étendre_1</id>
 		<present3s>étend</present3s>
-		<presentParticiple>étendant</presentParticiple>
+		<present_participle>étendant</present_participle>
 		<present3p>étendent</present3p>
 		<present2p>étendez</present2p>
 		<imperative2p>étendez</imperative2p>
@@ -11040,7 +11040,7 @@
 		<present1s>étends</present1s>
 		<present2s>étends</present2s>
 		<imperative2s>étends</imperative2s>
-		<pastParticiple>étendu</pastParticiple>
+		<past_participle>étendu</past_participle>
 		<feminine_past_participle>étendue</feminine_past_participle>
 		<subjunctive1s>étende</subjunctive1s>
 		<subjunctive2s>étendes</subjunctive2s>
@@ -11466,13 +11466,13 @@
 		<present2s>extrais</present2s>
 		<imperative2s>extrais</imperative2s>
 		<present3s>extrait</present3s>
-		<presentParticiple>extrayant</presentParticiple>
+		<present_participle>extrayant</present_participle>
 		<present2p>extrayez</present2p>
 		<imperative2p>extrayez</imperative2p>
 		<imparfait_radical>extray</imparfait_radical>
 		<present1p>extrayons</present1p>
 		<imperative1p>extrayons</imperative1p>
-		<pastParticiple>extrait</pastParticiple>
+		<past_participle>extrait</past_participle>
 		<feminine_past_participle>extraite</feminine_past_participle>
 		<subjunctive1s>extraie</subjunctive1s>
 		<subjunctive2s>extraies</subjunctive2s>
@@ -11624,7 +11624,7 @@
 		<present1s>fais</present1s>
 		<present2s>fais</present2s>
 		<imperative2s>fais</imperative2s>
-		<presentParticiple>faisant</presentParticiple>
+		<present_participle>faisant</present_participle>
 		<imparfait_radical>fais</imparfait_radical>
 		<present1p>faisons</present1p>
 		<imperative1p>faisons</imperative1p>
@@ -11633,7 +11633,7 @@
 		<imperative2p>faites</imperative2p>
 		<future_radical>fer</future_radical>
 		<present3p>font</present3p>
-		<pastParticiple>fait</pastParticiple>
+		<past_participle>fait</past_participle>
 		<feminine_past_participle>faite</feminine_past_participle>
 		<subjunctive1s>fasse</subjunctive1s>
 		<subjunctive2s>fasses</subjunctive2s>
@@ -11855,7 +11855,7 @@
 		<category>verb</category>
 		<id>fendre_1</id>
 		<present3s>fend</present3s>
-		<presentParticiple>fendant</presentParticiple>
+		<present_participle>fendant</present_participle>
 		<present3p>fendent</present3p>
 		<present2p>fendez</present2p>
 		<imperative2p>fendez</imperative2p>
@@ -11866,7 +11866,7 @@
 		<present1s>fends</present1s>
 		<present2s>fends</present2s>
 		<imperative2s>fends</imperative2s>
-		<pastParticiple>fendu</pastParticiple>
+		<past_participle>fendu</past_participle>
 		<feminine_past_participle>fendue</feminine_past_participle>
 		<subjunctive1s>fende</subjunctive1s>
 		<subjunctive2s>fendes</subjunctive2s>
@@ -12327,7 +12327,7 @@
 		<category>verb</category>
 		<id>fondre_1</id>
 		<present3s>fond</present3s>
-		<presentParticiple>fondant</presentParticiple>
+		<present_participle>fondant</present_participle>
 		<present3p>fondent</present3p>
 		<present2p>fondez</present2p>
 		<imperative2p>fondez</imperative2p>
@@ -12338,7 +12338,7 @@
 		<present1s>fonds</present1s>
 		<present2s>fonds</present2s>
 		<imperative2s>fonds</imperative2s>
-		<pastParticiple>fondu</pastParticiple>
+		<past_participle>fondu</past_participle>
 		<feminine_past_participle>fondue</feminine_past_participle>
 		<subjunctive1s>fonde</subjunctive1s>
 		<subjunctive2s>fondes</subjunctive2s>
@@ -12758,13 +12758,13 @@
 		<present2s>fuis</present2s>
 		<imperative2s>fuis</imperative2s>
 		<present3s>fuit</present3s>
-		<presentParticiple>fuyant</presentParticiple>
+		<present_participle>fuyant</present_participle>
 		<present2p>fuyez</present2p>
 		<imperative2p>fuyez</imperative2p>
 		<imparfait_radical>fuy</imparfait_radical>
 		<present1p>fuyons</present1p>
 		<imperative1p>fuyons</imperative1p>
-		<pastParticiple>fui</pastParticiple>
+		<past_participle>fui</past_participle>
 		<feminine_past_participle>fuie</feminine_past_participle>
 		<subjunctive1s>fuie</subjunctive1s>
 		<subjunctive2s>fuies</subjunctive2s>
@@ -14640,14 +14640,14 @@
 		<present2s>inscris</present2s>
 		<imperative2s>inscris</imperative2s>
 		<present3s>inscrit</present3s>
-		<presentParticiple>inscrivant</presentParticiple>
+		<present_participle>inscrivant</present_participle>
 		<present3p>inscrivent</present3p>
 		<present2p>inscrivez</present2p>
 		<imperative2p>inscrivez</imperative2p>
 		<imparfait_radical>inscriv</imparfait_radical>
 		<present1p>inscrivons</present1p>
 		<imperative1p>inscrivons</imperative1p>
-		<pastParticiple>inscrit</pastParticiple>
+		<past_participle>inscrit</past_participle>
 		<feminine_past_participle>inscrite</feminine_past_participle>
 		<subjunctive1s>inscrive</subjunctive1s>
 		<subjunctive2s>inscrives</subjunctive2s>
@@ -14754,7 +14754,7 @@
 		<present1s>instruis</present1s>
 		<present2s>instruis</present2s>
 		<imperative2s>instruis</imperative2s>
-		<presentParticiple>instruisant</presentParticiple>
+		<present_participle>instruisant</present_participle>
 		<present3p>instruisent</present3p>
 		<present2p>instruisez</present2p>
 		<imperative2p>instruisez</imperative2p>
@@ -14762,7 +14762,7 @@
 		<present1p>instruisons</present1p>
 		<imperative1p>instruisons</imperative1p>
 		<present3s>instruit</present3s>
-		<pastParticiple>instruit</pastParticiple>
+		<past_participle>instruit</past_participle>
 		<feminine_past_participle>instruite</feminine_past_participle>
 		<subjunctive1s>instruise</subjunctive1s>
 		<subjunctive2s>instruises</subjunctive2s>
@@ -14824,7 +14824,7 @@
 		<present1s>interdis</present1s>
 		<present2s>interdis</present2s>
 		<imperative2s>interdis</imperative2s>
-		<presentParticiple>interdisant</presentParticiple>
+		<present_participle>interdisant</present_participle>
 		<present3p>interdisent</present3p>
 		<present2p>interdisez</present2p>
 		<imperative2p>interdisez</imperative2p>
@@ -14832,7 +14832,7 @@
 		<present1p>interdisons</present1p>
 		<imperative1p>interdisons</imperative1p>
 		<present3s>interdit</present3s>
-		<pastParticiple>interdit</pastParticiple>
+		<past_participle>interdit</past_participle>
 		<feminine_past_participle>interdite</feminine_past_participle>
 		<subjunctive1s>interdise</subjunctive1s>
 		<subjunctive2s>interdises</subjunctive2s>
@@ -14883,7 +14883,7 @@
 		<base>interrompre</base>
 		<category>verb</category>
 		<id>interrompre_1</id>
-		<presentParticiple>interrompant</presentParticiple>
+		<present_participle>interrompant</present_participle>
 		<present3p>interrompent</present3p>
 		<present2p>interrompez</present2p>
 		<imperative2p>interrompez</imperative2p>
@@ -14895,7 +14895,7 @@
 		<present2s>interromps</present2s>
 		<imperative2s>interromps</imperative2s>
 		<present3s>interrompt</present3s>
-		<pastParticiple>interrompu</pastParticiple>
+		<past_participle>interrompu</past_participle>
 		<feminine_past_participle>interrompue</feminine_past_participle>
 		<subjunctive1s>interrompe</subjunctive1s>
 		<subjunctive2s>interrompes</subjunctive2s>
@@ -14915,7 +14915,7 @@
 		<base>intervenir</base>
 		<category>verb</category>
 		<id>intervenir_1</id>
-		<presentParticiple>intervenant</presentParticiple>
+		<present_participle>intervenant</present_participle>
 		<present2p>intervenez</present2p>
 		<imperative2p>intervenez</imperative2p>
 		<imparfait_radical>interven</imparfait_radical>
@@ -14927,7 +14927,7 @@
 		<present2s>interviens</present2s>
 		<imperative2s>interviens</imperative2s>
 		<present3s>intervient</present3s>
-		<pastParticiple>intervenu</pastParticiple>
+		<past_participle>intervenu</past_participle>
 		<feminine_past_participle>intervenue</feminine_past_participle>
 		<subjunctive1s>intervienne</subjunctive1s>
 		<subjunctive2s>interviennes</subjunctive2s>
@@ -14964,7 +14964,7 @@
 		<present1s>introduis</present1s>
 		<present2s>introduis</present2s>
 		<imperative2s>introduis</imperative2s>
-		<presentParticiple>introduisant</presentParticiple>
+		<present_participle>introduisant</present_participle>
 		<present3p>introduisent</present3p>
 		<present2p>introduisez</present2p>
 		<imperative2p>introduisez</imperative2p>
@@ -14972,7 +14972,7 @@
 		<present1p>introduisons</present1p>
 		<imperative1p>introduisons</imperative1p>
 		<present3s>introduit</present3s>
-		<pastParticiple>introduit</pastParticiple>
+		<past_participle>introduit</past_participle>
 		<feminine_past_participle>introduite</feminine_past_participle>
 		<subjunctive1s>introduise</subjunctive1s>
 		<subjunctive2s>introduises</subjunctive2s>
@@ -15202,7 +15202,7 @@
 		<base>joindre</base>
 		<category>verb</category>
 		<id>joindre_1</id>
-		<presentParticiple>joignant</presentParticiple>
+		<present_participle>joignant</present_participle>
 		<present3p>joignent</present3p>
 		<present2p>joignez</present2p>
 		<imperative2p>joignez</imperative2p>
@@ -15214,7 +15214,7 @@
 		<present2s>joins</present2s>
 		<imperative2s>joins</imperative2s>
 		<present3s>joint</present3s>
-		<pastParticiple>joint</pastParticiple>
+		<past_participle>joint</past_participle>
 		<feminine_past_participle>jointe</feminine_past_participle>
 		<subjunctive1s>joigne</subjunctive1s>
 		<subjunctive2s>joignes</subjunctive2s>
@@ -15853,7 +15853,7 @@
 		<present1s>lis</present1s>
 		<present2s>lis</present2s>
 		<imperative2s>lis</imperative2s>
-		<presentParticiple>lisant</presentParticiple>
+		<present_participle>lisant</present_participle>
 		<present3p>lisent</present3p>
 		<present2p>lisez</present2p>
 		<imperative2p>lisez</imperative2p>
@@ -15861,7 +15861,7 @@
 		<present1p>lisons</present1p>
 		<imperative1p>lisons</imperative1p>
 		<present3s>lit</present3s>
-		<pastParticiple>lu</pastParticiple>
+		<past_participle>lu</past_participle>
 		<feminine_past_participle>lue</feminine_past_participle>
 		<subjunctive1s>lise</subjunctive1s>
 		<subjunctive2s>lises</subjunctive2s>
@@ -16090,7 +16090,7 @@
 		<present1s>luis</present1s>
 		<present2s>luis</present2s>
 		<imperative2s>luis</imperative2s>
-		<presentParticiple>luisant</presentParticiple>
+		<present_participle>luisant</present_participle>
 		<present3p>luisent</present3p>
 		<present2p>luisez</present2p>
 		<imperative2p>luisez</imperative2p>
@@ -16256,7 +16256,7 @@
 		<base>maintenir</base>
 		<category>verb</category>
 		<id>maintenir_1</id>
-		<presentParticiple>maintenant</presentParticiple>
+		<present_participle>maintenant</present_participle>
 		<present2p>maintenez</present2p>
 		<imperative2p>maintenez</imperative2p>
 		<imparfait_radical>mainten</imparfait_radical>
@@ -16268,7 +16268,7 @@
 		<present2s>maintiens</present2s>
 		<imperative2s>maintiens</imperative2s>
 		<present3s>maintient</present3s>
-		<pastParticiple>maintenu</pastParticiple>
+		<past_participle>maintenu</past_participle>
 		<feminine_past_participle>maintenue</feminine_past_participle>
 		<subjunctive1s>maintienne</subjunctive1s>
 		<subjunctive2s>maintiennes</subjunctive2s>
@@ -16729,7 +16729,7 @@
 		<present1s>maudis</present1s>
 		<present2s>maudis</present2s>
 		<imperative2s>maudis</imperative2s>
-		<presentParticiple>maudissant</presentParticiple>
+		<present_participle>maudissant</present_participle>
 		<present3p>maudissent</present3p>
 		<present2p>maudissez</present2p>
 		<imperative2p>maudissez</imperative2p>
@@ -16737,7 +16737,7 @@
 		<present1p>maudissons</present1p>
 		<imperative1p>maudissons</imperative1p>
 		<present3s>maudit</present3s>
-		<pastParticiple>maudit</pastParticiple>
+		<past_participle>maudit</past_participle>
 		<feminine_past_participle>maudite</feminine_past_participle>
 		<subjunctive1s>maudisse</subjunctive1s>
 		<subjunctive2s>maudisses</subjunctive2s>
@@ -16977,7 +16977,7 @@
 		<present2s>mens</present2s>
 		<imperative2s>mens</imperative2s>
 		<present3s>ment</present3s>
-		<presentParticiple>mentant</presentParticiple>
+		<present_participle>mentant</present_participle>
 		<present3p>mentent</present3p>
 		<present2p>mentez</present2p>
 		<imperative2p>mentez</imperative2p>
@@ -16985,7 +16985,7 @@
 		<future_radical>mentir</future_radical>
 		<present1p>mentons</present1p>
 		<imperative1p>mentons</imperative1p>
-		<pastParticiple>menti</pastParticiple>
+		<past_participle>menti</past_participle>
 		<feminine_past_participle>mentie</feminine_past_participle>
 		<subjunctive1s>mente</subjunctive1s>
 		<subjunctive2s>mentes</subjunctive2s>
@@ -17152,7 +17152,7 @@
 		<present1s>mets</present1s>
 		<present2s>mets</present2s>
 		<imperative2s>mets</imperative2s>
-		<presentParticiple>mettant</presentParticiple>
+		<present_participle>mettant</present_participle>
 		<present3p>mettent</present3p>
 		<present2p>mettez</present2p>
 		<imperative2p>mettez</imperative2p>
@@ -17160,7 +17160,7 @@
 		<present1p>mettons</present1p>
 		<imperative1p>mettons</imperative1p>
 		<future_radical>mettr</future_radical>
-		<pastParticiple>mis</pastParticiple>
+		<past_participle>mis</past_participle>
 		<feminine_past_participle>mise</feminine_past_participle>
 		<subjunctive1s>mette</subjunctive1s>
 		<subjunctive2s>mettes</subjunctive2s>
@@ -17653,7 +17653,7 @@
 		<category>verb</category>
 		<id>mordre_1</id>
 		<present3s>mord</present3s>
-		<presentParticiple>mordant</presentParticiple>
+		<present_participle>mordant</present_participle>
 		<present3p>mordent</present3p>
 		<present2p>mordez</present2p>
 		<imperative2p>mordez</imperative2p>
@@ -17664,7 +17664,7 @@
 		<present1s>mords</present1s>
 		<present2s>mords</present2s>
 		<imperative2s>mords</imperative2s>
-		<pastParticiple>mordu</pastParticiple>
+		<past_participle>mordu</past_participle>
 		<feminine_past_participle>mordue</feminine_past_participle>
 		<subjunctive1s>morde</subjunctive1s>
 		<subjunctive2s>mordes</subjunctive2s>
@@ -17757,14 +17757,14 @@
 		<present1s>mouds</present1s>
 		<present2s>mouds</present2s>
 		<imperative2s>mouds</imperative2s>
-		<presentParticiple>moulant</presentParticiple>
+		<present_participle>moulant</present_participle>
 		<present3p>moulent</present3p>
 		<present2p>moulez</present2p>
 		<imperative2p>moulez</imperative2p>
 		<imparfait_radical>moul</imparfait_radical>
 		<present1p>moulons</present1p>
 		<imperative1p>moulons</imperative1p>
-		<pastParticiple>moulu</pastParticiple>
+		<past_participle>moulu</past_participle>
 		<feminine_past_participle>moulue</feminine_past_participle>
 		<subjunctive1s>moule</subjunctive1s>
 		<subjunctive2s>moules</subjunctive2s>
@@ -17795,14 +17795,14 @@
 		<present2s>meurs</present2s>
 		<imperative2s>meurs</imperative2s>
 		<present3s>meurt</present3s>
-		<presentParticiple>mourant</presentParticiple>
+		<present_participle>mourant</present_participle>
 		<present2p>mourez</present2p>
 		<imperative2p>mourez</imperative2p>
 		<imparfait_radical>mour</imparfait_radical>
 		<present1p>mourons</present1p>
 		<imperative1p>mourons</imperative1p>
 		<future_radical>mourr</future_radical>
-		<pastParticiple>mort</pastParticiple>
+		<past_participle>mort</past_participle>
 		<feminine_past_participle>morte</feminine_past_participle>
 		<subjunctive1s>meure</subjunctive1s>
 		<subjunctive2s>meures</subjunctive2s>
@@ -17848,7 +17848,7 @@
 		<imperative2s>meus</imperative2s>
 		<present3s>meut</present3s>
 		<present3p>meuvent</present3p>
-		<presentParticiple>mouvant</presentParticiple>
+		<present_participle>mouvant</present_participle>
 		<present2p>mouvez</present2p>
 		<imperative2p>mouvez</imperative2p>
 		<imparfait_radical>mouv</imparfait_radical>
@@ -17856,7 +17856,7 @@
 		<imperative1p>mouvons</imperative1p>
 		<future_radical>mouvr</future_radical>
 		<feminine_past_participle>mue</feminine_past_participle>
-		<pastParticiple>mû</pastParticiple>
+		<past_participle>mû</past_participle>
 		<subjunctive1s>meuve</subjunctive1s>
 		<subjunctive2s>meuves</subjunctive2s>
 		<subjunctive3s>meuve</subjunctive3s>
@@ -18040,7 +18040,7 @@
 		<present1s>nais</present1s>
 		<present2s>nais</present2s>
 		<imperative2s>nais</imperative2s>
-		<presentParticiple>naissant</presentParticiple>
+		<present_participle>naissant</present_participle>
 		<present3p>naissent</present3p>
 		<present2p>naissez</present2p>
 		<imperative2p>naissez</imperative2p>
@@ -18049,7 +18049,7 @@
 		<imperative1p>naissons</imperative1p>
 		<present3s>naît</present3s>
 		<future_radical>naîtr</future_radical>
-		<pastParticiple>né</pastParticiple>
+		<past_participle>né</past_participle>
 		<feminine_past_participle>née</feminine_past_participle>
 		<subjunctive1s>naisse</subjunctive1s>
 		<subjunctive2s>naisses</subjunctive2s>
@@ -18524,7 +18524,7 @@
 		<base>obtenir</base>
 		<category>verb</category>
 		<id>obtenir_1</id>
-		<presentParticiple>obtenant</presentParticiple>
+		<present_participle>obtenant</present_participle>
 		<present2p>obtenez</present2p>
 		<imperative2p>obtenez</imperative2p>
 		<imparfait_radical>obten</imparfait_radical>
@@ -18536,7 +18536,7 @@
 		<present2s>obtiens</present2s>
 		<imperative2s>obtiens</imperative2s>
 		<present3s>obtient</present3s>
-		<pastParticiple>obtenu</pastParticiple>
+		<past_participle>obtenu</past_participle>
 		<feminine_past_participle>obtenue</feminine_past_participle>
 		<subjunctive1s>obtienne</subjunctive1s>
 		<subjunctive2s>obtiennes</subjunctive2s>
@@ -18656,7 +18656,7 @@
 		<base>offrir</base>
 		<category>verb</category>
 		<id>offrir_1</id>
-		<presentParticiple>offrant</presentParticiple>
+		<present_participle>offrant</present_participle>
 		<present1s>offre</present1s>
 		<present3s>offre</present3s>
 		<imperative2s>offre</imperative2s>
@@ -18668,7 +18668,7 @@
 		<future_radical>offrir</future_radical>
 		<present1p>offrons</present1p>
 		<imperative1p>offrons</imperative1p>
-		<pastParticiple>offert</pastParticiple>
+		<past_participle>offert</past_participle>
 		<feminine_past_participle>offerte</feminine_past_participle>
 		<subjunctive1s>offre</subjunctive1s>
 		<subjunctive2s>offres</subjunctive2s>
@@ -18963,7 +18963,7 @@
 		<base>ouvrir</base>
 		<category>verb</category>
 		<id>ouvrir_1</id>
-		<presentParticiple>ouvrant</presentParticiple>
+		<present_participle>ouvrant</present_participle>
 		<present1s>ouvre</present1s>
 		<present3s>ouvre</present3s>
 		<imperative2s>ouvre</imperative2s>
@@ -18975,7 +18975,7 @@
 		<future_radical>ouvrir</future_radical>
 		<present1p>ouvrons</present1p>
 		<imperative1p>ouvrons</imperative1p>
-		<pastParticiple>ouvert</pastParticiple>
+		<past_participle>ouvert</past_participle>
 		<feminine_past_participle>ouverte</feminine_past_participle>
 		<subjunctive1s>ouvre</subjunctive1s>
 		<subjunctive2s>ouvres</subjunctive2s>
@@ -19032,7 +19032,7 @@
 		<present1s>pais</present1s>
 		<present2s>pais</present2s>
 		<imperative2s>pais</imperative2s>
-		<presentParticiple>paissant</presentParticiple>
+		<present_participle>paissant</present_participle>
 		<present3p>paissent</present3p>
 		<present2p>paissez</present2p>
 		<imperative2p>paissez</imperative2p>
@@ -19171,7 +19171,7 @@
 		<present1s>parais</present1s>
 		<present2s>parais</present2s>
 		<imperative2s>parais</imperative2s>
-		<presentParticiple>paraissant</presentParticiple>
+		<present_participle>paraissant</present_participle>
 		<present3p>paraissent</present3p>
 		<present2p>paraissez</present2p>
 		<imperative2p>paraissez</imperative2p>
@@ -19180,7 +19180,7 @@
 		<imperative1p>paraissons</imperative1p>
 		<present3s>paraît</present3s>
 		<future_radical>paraîtr</future_radical>
-		<pastParticiple>paru</pastParticiple>
+		<past_participle>paru</past_participle>
 		<feminine_past_participle>parue</feminine_past_participle>
 		<subjunctive1s>paraisse</subjunctive1s>
 		<subjunctive2s>paraisses</subjunctive2s>
@@ -19207,7 +19207,7 @@
 		<base>parcourir</base>
 		<category>verb</category>
 		<id>parcourir_1</id>
-		<presentParticiple>parcourant</presentParticiple>
+		<present_participle>parcourant</present_participle>
 		<present3p>parcourent</present3p>
 		<present2p>parcourez</present2p>
 		<imperative2p>parcourez</imperative2p>
@@ -19219,7 +19219,7 @@
 		<present2s>parcours</present2s>
 		<imperative2s>parcours</imperative2s>
 		<present3s>parcourt</present3s>
-		<pastParticiple>parcouru</pastParticiple>
+		<past_participle>parcouru</past_participle>
 		<feminine_past_participle>parcourue</feminine_past_participle>
 		<subjunctive1s>parcoure</subjunctive1s>
 		<subjunctive2s>parcoures</subjunctive2s>
@@ -19427,7 +19427,7 @@
 		<present2s>pars</present2s>
 		<imperative2s>pars</imperative2s>
 		<present3s>part</present3s>
-		<presentParticiple>partant</presentParticiple>
+		<present_participle>partant</present_participle>
 		<present3p>partent</present3p>
 		<present2p>partez</present2p>
 		<imperative2p>partez</imperative2p>
@@ -19435,7 +19435,7 @@
 		<future_radical>partir</future_radical>
 		<present1p>partons</present1p>
 		<imperative1p>partons</imperative1p>
-		<pastParticiple>parti</pastParticiple>
+		<past_participle>parti</past_participle>
 		<feminine_past_participle>partie</feminine_past_participle>
 		<subjunctive1s>parte</subjunctive1s>
 		<subjunctive2s>partes</subjunctive2s>
@@ -19459,7 +19459,7 @@
 		<base>parvenir</base>
 		<category>verb</category>
 		<id>parvenir_1</id>
-		<presentParticiple>parvenant</presentParticiple>
+		<present_participle>parvenant</present_participle>
 		<present2p>parvenez</present2p>
 		<imperative2p>parvenez</imperative2p>
 		<imparfait_radical>parven</imparfait_radical>
@@ -19471,7 +19471,7 @@
 		<present2s>parviens</present2s>
 		<imperative2s>parviens</imperative2s>
 		<present3s>parvient</present3s>
-		<pastParticiple>parvenu</pastParticiple>
+		<past_participle>parvenu</past_participle>
 		<feminine_past_participle>parvenue</feminine_past_participle>
 		<subjunctive1s>parvienne</subjunctive1s>
 		<subjunctive2s>parviennes</subjunctive2s>
@@ -19735,7 +19735,7 @@
 		<base>peindre</base>
 		<category>verb</category>
 		<id>peindre_1</id>
-		<presentParticiple>peignant</presentParticiple>
+		<present_participle>peignant</present_participle>
 		<present3p>peignent</present3p>
 		<present2p>peignez</present2p>
 		<imperative2p>peignez</imperative2p>
@@ -19747,7 +19747,7 @@
 		<present2s>peins</present2s>
 		<imperative2s>peins</imperative2s>
 		<present3s>peint</present3s>
-		<pastParticiple>peint</pastParticiple>
+		<past_participle>peint</past_participle>
 		<feminine_past_participle>peinte</feminine_past_participle>
 		<subjunctive1s>peigne</subjunctive1s>
 		<subjunctive2s>peignes</subjunctive2s>
@@ -19810,7 +19810,7 @@
 		<category>verb</category>
 		<id>pendre_1</id>
 		<present3s>pend</present3s>
-		<presentParticiple>pendant</presentParticiple>
+		<present_participle>pendant</present_participle>
 		<present3p>pendent</present3p>
 		<present2p>pendez</present2p>
 		<imperative2p>pendez</imperative2p>
@@ -19821,7 +19821,7 @@
 		<present1s>pends</present1s>
 		<present2s>pends</present2s>
 		<imperative2s>pends</imperative2s>
-		<pastParticiple>pendu</pastParticiple>
+		<past_participle>pendu</past_participle>
 		<feminine_past_participle>pendue</feminine_past_participle>
 		<subjunctive1s>pende</subjunctive1s>
 		<subjunctive2s>pendes</subjunctive2s>
@@ -19924,7 +19924,7 @@
 		<category>verb</category>
 		<id>perdre_1</id>
 		<present3s>perd</present3s>
-		<presentParticiple>perdant</presentParticiple>
+		<present_participle>perdant</present_participle>
 		<present3p>perdent</present3p>
 		<present2p>perdez</present2p>
 		<imperative2p>perdez</imperative2p>
@@ -19935,7 +19935,7 @@
 		<present1s>perds</present1s>
 		<present2s>perds</present2s>
 		<imperative2s>perds</imperative2s>
-		<pastParticiple>perdu</pastParticiple>
+		<past_participle>perdu</past_participle>
 		<feminine_past_participle>perdue</feminine_past_participle>
 		<subjunctive1s>perde</subjunctive1s>
 		<subjunctive2s>perdes</subjunctive2s>
@@ -20007,7 +20007,7 @@
 		<present1s>permets</present1s>
 		<present2s>permets</present2s>
 		<imperative2s>permets</imperative2s>
-		<presentParticiple>permettant</presentParticiple>
+		<present_participle>permettant</present_participle>
 		<present3p>permettent</present3p>
 		<present2p>permettez</present2p>
 		<imperative2p>permettez</imperative2p>
@@ -20015,7 +20015,7 @@
 		<present1p>permettons</present1p>
 		<imperative1p>permettons</imperative1p>
 		<future_radical>permettr</future_radical>
-		<pastParticiple>permis</pastParticiple>
+		<past_participle>permis</past_participle>
 		<feminine_past_participle>permise</feminine_past_participle>
 		<subjunctive1s>permette</subjunctive1s>
 		<subjunctive2s>permettes</subjunctive2s>
@@ -20341,7 +20341,7 @@
 		<base>plaindre</base>
 		<category>verb</category>
 		<id>plaindre_1</id>
-		<presentParticiple>plaignant</presentParticiple>
+		<present_participle>plaignant</present_participle>
 		<present3p>plaignent</present3p>
 		<present2p>plaignez</present2p>
 		<imperative2p>plaignez</imperative2p>
@@ -20353,7 +20353,7 @@
 		<present2s>plains</present2s>
 		<imperative2s>plains</imperative2s>
 		<present3s>plaint</present3s>
-		<pastParticiple>plaint</pastParticiple>
+		<past_participle>plaint</past_participle>
 		<feminine_past_participle>plainte</feminine_past_participle>
 		<subjunctive1s>plaigne</subjunctive1s>
 		<subjunctive2s>plaignes</subjunctive2s>
@@ -20392,7 +20392,7 @@
 		<present1s>plais</present1s>
 		<present2s>plais</present2s>
 		<imperative2s>plais</imperative2s>
-		<presentParticiple>plaisant</presentParticiple>
+		<present_participle>plaisant</present_participle>
 		<present3p>plaisent</present3p>
 		<present2p>plaisez</present2p>
 		<imperative2p>plaisez</imperative2p>
@@ -20516,7 +20516,7 @@
 		<category>verb</category>
 		<id>pleuvoir_1</id>
 		<present3s>pleut</present3s>
-		<presentParticiple>pleuvant</presentParticiple>
+		<present_participle>pleuvant</present_participle>
 		<present3p>pleuvent</present3p>
 		<subjunctive1s/>
 		<subjunctive2s/>
@@ -20783,7 +20783,7 @@
 		<category>verb</category>
 		<id>pondre_1</id>
 		<present3s>pond</present3s>
-		<presentParticiple>pondant</presentParticiple>
+		<present_participle>pondant</present_participle>
 		<present3p>pondent</present3p>
 		<present2p>pondez</present2p>
 		<imperative2p>pondez</imperative2p>
@@ -20794,7 +20794,7 @@
 		<present1s>ponds</present1s>
 		<present2s>ponds</present2s>
 		<imperative2s>ponds</imperative2s>
-		<pastParticiple>pondu</pastParticiple>
+		<past_participle>pondu</past_participle>
 		<feminine_past_participle>pondue</feminine_past_participle>
 		<subjunctive1s>ponde</subjunctive1s>
 		<subjunctive2s>pondes</subjunctive2s>
@@ -21036,7 +21036,7 @@
 		<present2s>poursuis</present2s>
 		<imperative2s>poursuis</imperative2s>
 		<present3s>poursuit</present3s>
-		<presentParticiple>poursuivant</presentParticiple>
+		<present_participle>poursuivant</present_participle>
 		<present3p>poursuivent</present3p>
 		<present2p>poursuivez</present2p>
 		<imperative2p>poursuivez</imperative2p>
@@ -21044,7 +21044,7 @@
 		<present1p>poursuivons</present1p>
 		<imperative1p>poursuivons</imperative1p>
 		<future_radical>poursuivr</future_radical>
-		<pastParticiple>poursuivi</pastParticiple>
+		<past_participle>poursuivi</past_participle>
 		<feminine_past_participle>poursuivie</feminine_past_participle>
 		<subjunctive1s>poursuive</subjunctive1s>
 		<subjunctive2s>poursuives</subjunctive2s>
@@ -21067,13 +21067,13 @@
 		<present2s>pourvois</present2s>
 		<imperative2s>pourvois</imperative2s>
 		<present3s>pourvoit</present3s>
-		<presentParticiple>pourvoyant</presentParticiple>
+		<present_participle>pourvoyant</present_participle>
 		<present2p>pourvoyez</present2p>
 		<imperative2p>pourvoyez</imperative2p>
 		<imparfait_radical>pourvoy</imparfait_radical>
 		<present1p>pourvoyons</present1p>
 		<imperative1p>pourvoyons</imperative1p>
-		<pastParticiple>pourvu</pastParticiple>
+		<past_participle>pourvu</past_participle>
 		<feminine_past_participle>pourvue</feminine_past_participle>
 		<subjunctive1s>pourvoie</subjunctive1s>
 		<subjunctive2s>pourvoies</subjunctive2s>
@@ -21125,7 +21125,7 @@
 		<present3p>peuvent</present3p>
 		<present1s>peux</present1s>
 		<future_radical>pourr</future_radical>
-		<presentParticiple>pouvant</presentParticiple>
+		<present_participle>pouvant</present_participle>
 		<present2p>pouvez</present2p>
 		<imparfait_radical>pouv</imparfait_radical>
 		<present1p>pouvons</present1p>
@@ -21228,7 +21228,7 @@
 		<base>prendre</base>
 		<category>verb</category>
 		<id>prendre_1</id>
-		<presentParticiple>prenant</presentParticiple>
+		<present_participle>prenant</present_participle>
 		<present3s>prend</present3s>
 		<future_radical>prendr</future_radical>
 		<present1s>prends</present1s>
@@ -21241,7 +21241,7 @@
 		<present1p>prenons</present1p>
 		<imperative1p>prenons</imperative1p>
 		<!-- masculine past participle "pris" added manually by vaudrypl -->
-		<pastParticiple>pris</pastParticiple>
+		<past_participle>pris</past_participle>
 		<feminine_past_participle>prise</feminine_past_participle>
 		<subjunctive1s>prenne</subjunctive1s>
 		<subjunctive2s>prennes</subjunctive2s>
@@ -21336,7 +21336,7 @@
 		<category>verb</category>
 		<id>prétendre_1</id>
 		<present3s>prétend</present3s>
-		<presentParticiple>prétendant</presentParticiple>
+		<present_participle>prétendant</present_participle>
 		<present3p>prétendent</present3p>
 		<present2p>prétendez</present2p>
 		<imperative2p>prétendez</imperative2p>
@@ -21347,7 +21347,7 @@
 		<present1s>prétends</present1s>
 		<present2s>prétends</present2s>
 		<imperative2s>prétends</imperative2s>
-		<pastParticiple>prétendu</pastParticiple>
+		<past_participle>prétendu</past_participle>
 		<feminine_past_participle>prétendue</feminine_past_participle>
 		<subjunctive1s>prétende</subjunctive1s>
 		<subjunctive2s>prétendes</subjunctive2s>
@@ -21379,7 +21379,7 @@
 		<base>prévenir</base>
 		<category>verb</category>
 		<id>prévenir_1</id>
-		<presentParticiple>prévenant</presentParticiple>
+		<present_participle>prévenant</present_participle>
 		<present2p>prévenez</present2p>
 		<imperative2p>prévenez</imperative2p>
 		<imparfait_radical>préven</imparfait_radical>
@@ -21391,7 +21391,7 @@
 		<present2s>préviens</present2s>
 		<imperative2s>préviens</imperative2s>
 		<present3s>prévient</present3s>
-		<pastParticiple>prévenu</pastParticiple>
+		<past_participle>prévenu</past_participle>
 		<feminine_past_participle>prévenue</feminine_past_participle>
 		<subjunctive1s>prévienne</subjunctive1s>
 		<subjunctive2s>préviennes</subjunctive2s>
@@ -21410,13 +21410,13 @@
 		<present2s>prévois</present2s>
 		<imperative2s>prévois</imperative2s>
 		<present3s>prévoit</present3s>
-		<presentParticiple>prévoyant</presentParticiple>
+		<present_participle>prévoyant</present_participle>
 		<present2p>prévoyez</present2p>
 		<imperative2p>prévoyez</imperative2p>
 		<imparfait_radical>prévoy</imparfait_radical>
 		<present1p>prévoyons</present1p>
 		<imperative1p>prévoyons</imperative1p>
-		<pastParticiple>prévu</pastParticiple>
+		<past_participle>prévu</past_participle>
 		<feminine_past_participle>prévue</feminine_past_participle>
 		<subjunctive1s>prévoie</subjunctive1s>
 		<subjunctive2s>prévoies</subjunctive2s>
@@ -21640,7 +21640,7 @@
 		<present1s>produis</present1s>
 		<present2s>produis</present2s>
 		<imperative2s>produis</imperative2s>
-		<presentParticiple>produisant</presentParticiple>
+		<present_participle>produisant</present_participle>
 		<present3p>produisent</present3p>
 		<present2p>produisez</present2p>
 		<imperative2p>produisez</imperative2p>
@@ -21648,7 +21648,7 @@
 		<present1p>produisons</present1p>
 		<imperative1p>produisons</imperative1p>
 		<present3s>produit</present3s>
-		<pastParticiple>produit</pastParticiple>
+		<past_participle>produit</past_participle>
 		<feminine_past_participle>produite</feminine_past_participle>
 		<subjunctive1s>produise</subjunctive1s>
 		<subjunctive2s>produises</subjunctive2s>
@@ -21801,7 +21801,7 @@
 		<present1s>promets</present1s>
 		<present2s>promets</present2s>
 		<imperative2s>promets</imperative2s>
-		<presentParticiple>promettant</presentParticiple>
+		<present_participle>promettant</present_participle>
 		<present3p>promettent</present3p>
 		<present2p>promettez</present2p>
 		<imperative2p>promettez</imperative2p>
@@ -21809,7 +21809,7 @@
 		<present1p>promettons</present1p>
 		<imperative1p>promettons</imperative1p>
 		<future_radical>promettr</future_radical>
-		<pastParticiple>promis</pastParticiple>
+		<past_participle>promis</past_participle>
 		<feminine_past_participle>promise</feminine_past_participle>
 		<subjunctive1s>promette</subjunctive1s>
 		<subjunctive2s>promettes</subjunctive2s>
@@ -21943,7 +21943,7 @@
 		<base>provenir</base>
 		<category>verb</category>
 		<id>provenir_1</id>
-		<presentParticiple>provenant</presentParticiple>
+		<present_participle>provenant</present_participle>
 		<present2p>provenez</present2p>
 		<imperative2p>provenez</imperative2p>
 		<imparfait_radical>proven</imparfait_radical>
@@ -21955,7 +21955,7 @@
 		<present2s>proviens</present2s>
 		<imperative2s>proviens</imperative2s>
 		<present3s>provient</present3s>
-		<pastParticiple>provenu</pastParticiple>
+		<past_participle>provenu</past_participle>
 		<feminine_past_participle>provenue</feminine_past_participle>
 		<subjunctive1s>provienne</subjunctive1s>
 		<subjunctive2s>proviennes</subjunctive2s>
@@ -22458,7 +22458,7 @@
 		<base>recevoir</base>
 		<category>verb</category>
 		<id>recevoir_1</id>
-		<presentParticiple>recevant</presentParticiple>
+		<present_participle>recevant</present_participle>
 		<present2p>recevez</present2p>
 		<imperative2p>recevez</imperative2p>
 		<imparfait_radical>recev</imparfait_radical>
@@ -22562,7 +22562,7 @@
 		<present1s>reconduis</present1s>
 		<present2s>reconduis</present2s>
 		<imperative2s>reconduis</imperative2s>
-		<presentParticiple>reconduisant</presentParticiple>
+		<present_participle>reconduisant</present_participle>
 		<present3p>reconduisent</present3p>
 		<present2p>reconduisez</present2p>
 		<imperative2p>reconduisez</imperative2p>
@@ -22570,7 +22570,7 @@
 		<present1p>reconduisons</present1p>
 		<imperative1p>reconduisons</imperative1p>
 		<present3s>reconduit</present3s>
-		<pastParticiple>reconduit</pastParticiple>
+		<past_participle>reconduit</past_participle>
 		<feminine_past_participle>reconduite</feminine_past_participle>
 		<subjunctive1s>reconduise</subjunctive1s>
 		<subjunctive2s>reconduises</subjunctive2s>
@@ -22606,7 +22606,7 @@
 		<present1s>reconnais</present1s>
 		<present2s>reconnais</present2s>
 		<imperative2s>reconnais</imperative2s>
-		<presentParticiple>reconnaissant</presentParticiple>
+		<present_participle>reconnaissant</present_participle>
 		<present3p>reconnaissent</present3p>
 		<present2p>reconnaissez</present2p>
 		<imperative2p>reconnaissez</imperative2p>
@@ -22615,7 +22615,7 @@
 		<imperative1p>reconnaissons</imperative1p>
 		<present3s>reconnaît</present3s>
 		<future_radical>reconnaîtr</future_radical>
-		<pastParticiple>reconnu</pastParticiple>
+		<past_participle>reconnu</past_participle>
 		<feminine_past_participle>reconnue</feminine_past_participle>
 		<subjunctive1s>reconnaisse</subjunctive1s>
 		<subjunctive2s>reconnaisses</subjunctive2s>
@@ -22628,7 +22628,7 @@
 		<base>recourir</base>
 		<category>verb</category>
 		<id>recourir_1</id>
-		<presentParticiple>recourant</presentParticiple>
+		<present_participle>recourant</present_participle>
 		<present3p>recourent</present3p>
 		<present2p>recourez</present2p>
 		<imperative2p>recourez</imperative2p>
@@ -22640,7 +22640,7 @@
 		<present2s>recours</present2s>
 		<imperative2s>recours</imperative2s>
 		<present3s>recourt</present3s>
-		<pastParticiple>recouru</pastParticiple>
+		<past_participle>recouru</past_participle>
 		<feminine_past_participle>recourue</feminine_past_participle>
 		<subjunctive1s>recoure</subjunctive1s>
 		<subjunctive2s>recoures</subjunctive2s>
@@ -22660,7 +22660,7 @@
 		<base>recouvrir</base>
 		<category>verb</category>
 		<id>recouvrir_1</id>
-		<presentParticiple>recouvrant</presentParticiple>
+		<present_participle>recouvrant</present_participle>
 		<present1s>recouvre</present1s>
 		<present3s>recouvre</present3s>
 		<imperative2s>recouvre</imperative2s>
@@ -22672,7 +22672,7 @@
 		<future_radical>recouvrir</future_radical>
 		<present1p>recouvrons</present1p>
 		<imperative1p>recouvrons</imperative1p>
-		<pastParticiple>recouvert</pastParticiple>
+		<past_participle>recouvert</past_participle>
 		<feminine_past_participle>recouverte</feminine_past_participle>
 		<subjunctive1s>recouvre</subjunctive1s>
 		<subjunctive2s>recouvres</subjunctive2s>
@@ -22692,7 +22692,7 @@
 		<base>recueillir</base>
 		<category>verb</category>
 		<id>recueillir_1</id>
-		<presentParticiple>recueillant</presentParticiple>
+		<present_participle>recueillant</present_participle>
 		<present1s>recueille</present1s>
 		<present3s>recueille</present3s>
 		<imperative2s>recueille</imperative2s>
@@ -22704,7 +22704,7 @@
 		<imparfait_radical>recueill</imparfait_radical>
 		<present1p>recueillons</present1p>
 		<imperative1p>recueillons</imperative1p>
-		<pastParticiple>recueilli</pastParticiple>
+		<past_participle>recueilli</past_participle>
 		<feminine_past_participle>recueillie</feminine_past_participle>
 		<subjunctive1s>recueille</subjunctive1s>
 		<subjunctive2s>recueilles</subjunctive2s>
@@ -22730,7 +22730,7 @@
 		<category>verb</category>
 		<id>redescendre_1</id>
 		<present3s>redescend</present3s>
-		<presentParticiple>redescendant</presentParticiple>
+		<present_participle>redescendant</present_participle>
 		<present3p>redescendent</present3p>
 		<present2p>redescendez</present2p>
 		<imperative2p>redescendez</imperative2p>
@@ -22741,7 +22741,7 @@
 		<present1s>redescends</present1s>
 		<present2s>redescends</present2s>
 		<imperative2s>redescends</imperative2s>
-		<pastParticiple>redescendu</pastParticiple>
+		<past_participle>redescendu</past_participle>
 		<feminine_past_participle>redescendue</feminine_past_participle>
 		<subjunctive1s>redescende</subjunctive1s>
 		<subjunctive2s>redescendes</subjunctive2s>
@@ -22756,7 +22756,7 @@
 		<id>redevenir_1</id>
 		<copular/>
 		<auxiliary_etre/>
-		<presentParticiple>redevenant</presentParticiple>
+		<present_participle>redevenant</present_participle>
 		<present2p>redevenez</present2p>
 		<imperative2p>redevenez</imperative2p>
 		<imparfait_radical>redeven</imparfait_radical>
@@ -22768,7 +22768,7 @@
 		<present2s>redeviens</present2s>
 		<imperative2s>redeviens</imperative2s>
 		<present3s>redevient</present3s>
-		<pastParticiple>redevenu</pastParticiple>
+		<past_participle>redevenu</past_participle>
 		<feminine_past_participle>redevenue</feminine_past_participle>
 		<subjunctive1s>redevienne</subjunctive1s>
 		<subjunctive2s>redeviennes</subjunctive2s>
@@ -22785,7 +22785,7 @@
 		<present1s>redis</present1s>
 		<present2s>redis</present2s>
 		<imperative2s>redis</imperative2s>
-		<presentParticiple>redisant</presentParticiple>
+		<present_participle>redisant</present_participle>
 		<present3p>redisent</present3p>
 		<imparfait_radical>redis</imparfait_radical>
 		<present1p>redisons</present1p>
@@ -22793,7 +22793,7 @@
 		<present3s>redit</present3s>
 		<present2p>redites</present2p>
 		<imperative2p>redites</imperative2p>
-		<pastParticiple>redit</pastParticiple>
+		<past_participle>redit</past_participle>
 		<feminine_past_participle>redite</feminine_past_participle>
 		<subjunctive1s>redise</subjunctive1s>
 		<subjunctive2s>redises</subjunctive2s>
@@ -22833,7 +22833,7 @@
 		<present1s>réduis</present1s>
 		<present2s>réduis</present2s>
 		<imperative2s>réduis</imperative2s>
-		<presentParticiple>réduisant</presentParticiple>
+		<present_participle>réduisant</present_participle>
 		<present3p>réduisent</present3p>
 		<present2p>réduisez</present2p>
 		<imperative2p>réduisez</imperative2p>
@@ -22841,7 +22841,7 @@
 		<present1p>réduisons</present1p>
 		<imperative1p>réduisons</imperative1p>
 		<present3s>réduit</present3s>
-		<pastParticiple>réduit</pastParticiple>
+		<past_participle>réduit</past_participle>
 		<feminine_past_participle>réduite</feminine_past_participle>
 		<subjunctive1s>réduise</subjunctive1s>
 		<subjunctive2s>réduises</subjunctive2s>
@@ -22869,7 +22869,7 @@
 		<present1s>refais</present1s>
 		<present2s>refais</present2s>
 		<imperative2s>refais</imperative2s>
-		<presentParticiple>refaisant</presentParticiple>
+		<present_participle>refaisant</present_participle>
 		<imparfait_radical>refais</imparfait_radical>
 		<present1p>refaisons</present1p>
 		<imperative1p>refaisons</imperative1p>
@@ -22878,7 +22878,7 @@
 		<imperative2p>refaites</imperative2p>
 		<future_radical>refer</future_radical>
 		<present3p>refont</present3p>
-		<pastParticiple>refait</pastParticiple>
+		<past_participle>refait</past_participle>
 		<feminine_past_participle>refaite</feminine_past_participle>
 		<subjunctive1s>refasse</subjunctive1s>
 		<subjunctive2s>refasses</subjunctive2s>
@@ -23076,7 +23076,7 @@
 		<base>rejoindre</base>
 		<category>verb</category>
 		<id>rejoindre_1</id>
-		<presentParticiple>rejoignant</presentParticiple>
+		<present_participle>rejoignant</present_participle>
 		<present3p>rejoignent</present3p>
 		<present2p>rejoignez</present2p>
 		<imperative2p>rejoignez</imperative2p>
@@ -23088,7 +23088,7 @@
 		<present2s>rejoins</present2s>
 		<imperative2s>rejoins</imperative2s>
 		<present3s>rejoint</present3s>
-		<pastParticiple>rejoint</pastParticiple>
+		<past_participle>rejoint</past_participle>
 		<feminine_past_participle>rejointe</feminine_past_participle>
 		<subjunctive1s>rejoigne</subjunctive1s>
 		<subjunctive2s>rejoignes</subjunctive2s>
@@ -23149,7 +23149,7 @@
 		<present1s>relis</present1s>
 		<present2s>relis</present2s>
 		<imperative2s>relis</imperative2s>
-		<presentParticiple>relisant</presentParticiple>
+		<present_participle>relisant</present_participle>
 		<present3p>relisent</present3p>
 		<present2p>relisez</present2p>
 		<imperative2p>relisez</imperative2p>
@@ -23157,7 +23157,7 @@
 		<present1p>relisons</present1p>
 		<imperative1p>relisons</imperative1p>
 		<present3s>relit</present3s>
-		<pastParticiple>relu</pastParticiple>
+		<past_participle>relu</past_participle>
 		<feminine_past_participle>relue</feminine_past_participle>
 		<subjunctive1s>relise</subjunctive1s>
 		<subjunctive2s>relises</subjunctive2s>
@@ -23213,7 +23213,7 @@
 		<present1s>remets</present1s>
 		<present2s>remets</present2s>
 		<imperative2s>remets</imperative2s>
-		<presentParticiple>remettant</presentParticiple>
+		<present_participle>remettant</present_participle>
 		<present3p>remettent</present3p>
 		<present2p>remettez</present2p>
 		<imperative2p>remettez</imperative2p>
@@ -23221,7 +23221,7 @@
 		<present1p>remettons</present1p>
 		<imperative1p>remettons</imperative1p>
 		<future_radical>remettr</future_radical>
-		<pastParticiple>remis</pastParticiple>
+		<past_participle>remis</past_participle>
 		<feminine_past_participle>remise</feminine_past_participle>
 		<subjunctive1s>remette</subjunctive1s>
 		<subjunctive2s>remettes</subjunctive2s>
@@ -23276,7 +23276,7 @@
 		<present1s>renais</present1s>
 		<present2s>renais</present2s>
 		<imperative2s>renais</imperative2s>
-		<presentParticiple>renaissant</presentParticiple>
+		<present_participle>renaissant</present_participle>
 		<present3p>renaissent</present3p>
 		<present2p>renaissez</present2p>
 		<imperative2p>renaissez</imperative2p>
@@ -23322,7 +23322,7 @@
 		<category>verb</category>
 		<id>rendre_1</id>
 		<present3s>rend</present3s>
-		<presentParticiple>rendant</presentParticiple>
+		<present_participle>rendant</present_participle>
 		<present3p>rendent</present3p>
 		<present2p>rendez</present2p>
 		<imperative2p>rendez</imperative2p>
@@ -23333,7 +23333,7 @@
 		<present1s>rends</present1s>
 		<present2s>rends</present2s>
 		<imperative2s>rends</imperative2s>
-		<pastParticiple>rendu</pastParticiple>
+		<past_participle>rendu</past_participle>
 		<feminine_past_participle>rendue</feminine_past_participle>
 		<subjunctive1s>rende</subjunctive1s>
 		<subjunctive2s>rendes</subjunctive2s>
@@ -23428,7 +23428,7 @@
 		<category>verb</category>
 		<id>répandre_1</id>
 		<present3s>répand</present3s>
-		<presentParticiple>répandant</presentParticiple>
+		<present_participle>répandant</present_participle>
 		<present3p>répandent</present3p>
 		<present2p>répandez</present2p>
 		<imperative2p>répandez</imperative2p>
@@ -23439,7 +23439,7 @@
 		<present1s>répands</present1s>
 		<present2s>répands</present2s>
 		<imperative2s>répands</imperative2s>
-		<pastParticiple>répandu</pastParticiple>
+		<past_participle>répandu</past_participle>
 		<feminine_past_participle>répandue</feminine_past_participle>
 		<subjunctive1s>répande</subjunctive1s>
 		<subjunctive2s>répandes</subjunctive2s>
@@ -23455,7 +23455,7 @@
 		<present1s>reparais</present1s>
 		<present2s>reparais</present2s>
 		<imperative2s>reparais</imperative2s>
-		<presentParticiple>reparaissant</presentParticiple>
+		<present_participle>reparaissant</present_participle>
 		<present3p>reparaissent</present3p>
 		<present2p>reparaissez</present2p>
 		<imperative2p>reparaissez</imperative2p>
@@ -23464,7 +23464,7 @@
 		<imperative1p>reparaissons</imperative1p>
 		<present3s>reparaît</present3s>
 		<future_radical>reparaîtr</future_radical>
-		<pastParticiple>reparu</pastParticiple>
+		<past_participle>reparu</past_participle>
 		<feminine_past_participle>reparue</feminine_past_participle>
 		<subjunctive1s>reparaisse</subjunctive1s>
 		<subjunctive2s>reparaisses</subjunctive2s>
@@ -23503,7 +23503,7 @@
 		<present2s>repens</present2s>
 		<imperative2s>repens</imperative2s>
 		<present3s>repent</present3s>
-		<presentParticiple>repentant</presentParticiple>
+		<present_participle>repentant</present_participle>
 		<present3p>repentent</present3p>
 		<present2p>repentez</present2p>
 		<imperative2p>repentez</imperative2p>
@@ -23511,7 +23511,7 @@
 		<future_radical>repentir</future_radical>
 		<present1p>repentons</present1p>
 		<imperative1p>repentons</imperative1p>
-		<pastParticiple>repenti</pastParticiple>
+		<past_participle>repenti</past_participle>
 		<feminine_past_participle>repentie</feminine_past_participle>
 		<subjunctive1s>repente</subjunctive1s>
 		<subjunctive2s>repentes</subjunctive2s>
@@ -23535,7 +23535,7 @@
 		<category>verb</category>
 		<id>répondre_1</id>
 		<present3s>répond</present3s>
-		<presentParticiple>répondant</presentParticiple>
+		<present_participle>répondant</present_participle>
 		<present3p>répondent</present3p>
 		<present2p>répondez</present2p>
 		<imperative2p>répondez</imperative2p>
@@ -23546,7 +23546,7 @@
 		<present1s>réponds</present1s>
 		<present2s>réponds</present2s>
 		<imperative2s>réponds</imperative2s>
-		<pastParticiple>répondu</pastParticiple>
+		<past_participle>répondu</past_participle>
 		<feminine_past_participle>répondue</feminine_past_participle>
 		<subjunctive1s>réponde</subjunctive1s>
 		<subjunctive2s>répondes</subjunctive2s>
@@ -23588,7 +23588,7 @@
 		<base>reprendre</base>
 		<category>verb</category>
 		<id>reprendre_1</id>
-		<presentParticiple>reprenant</presentParticiple>
+		<present_participle>reprenant</present_participle>
 		<present3s>reprend</present3s>
 		<future_radical>reprendr</future_radical>
 		<present1s>reprends</present1s>
@@ -23600,7 +23600,7 @@
 		<present3p>reprennent</present3p>
 		<present1p>reprenons</present1p>
 		<imperative1p>reprenons</imperative1p>
-		<pastParticiple>repris</pastParticiple>
+		<past_participle>repris</past_participle>
 		<feminine_past_participle>reprise</feminine_past_participle>
 		<subjunctive1s>reprenne</subjunctive1s>
 		<subjunctive2s>reprennes</subjunctive2s>
@@ -23701,7 +23701,7 @@
 		<base>résoudre</base>
 		<category>verb</category>
 		<id>résoudre_1</id>
-		<presentParticiple>résolvant</presentParticiple>
+		<present_participle>résolvant</present_participle>
 		<present3p>résolvent</present3p>
 		<present2p>résolvez</present2p>
 		<imperative2p>résolvez</imperative2p>
@@ -23713,7 +23713,7 @@
 		<present2s>résous</present2s>
 		<imperative2s>résous</imperative2s>
 		<present3s>résout</present3s>
-		<pastParticiple>résolu</pastParticiple>
+		<past_participle>résolu</past_participle>
 		<feminine_past_participle>résolue</feminine_past_participle>
 		<subjunctive1s>résolve</subjunctive1s>
 		<subjunctive2s>résolves</subjunctive2s>
@@ -23772,7 +23772,7 @@
 		<present2s>ressens</present2s>
 		<imperative2s>ressens</imperative2s>
 		<present3s>ressent</present3s>
-		<presentParticiple>ressentant</presentParticiple>
+		<present_participle>ressentant</present_participle>
 		<present3p>ressentent</present3p>
 		<present2p>ressentez</present2p>
 		<imperative2p>ressentez</imperative2p>
@@ -23780,7 +23780,7 @@
 		<future_radical>ressentir</future_radical>
 		<present1p>ressentons</present1p>
 		<imperative1p>ressentons</imperative1p>
-		<pastParticiple>ressenti</pastParticiple>
+		<past_participle>ressenti</past_participle>
 		<feminine_past_participle>ressentie</feminine_past_participle>
 		<subjunctive1s>ressente</subjunctive1s>
 		<subjunctive2s>ressentes</subjunctive2s>
@@ -23845,7 +23845,7 @@
 		<base>retenir</base>
 		<category>verb</category>
 		<id>retenir_1</id>
-		<presentParticiple>retenant</presentParticiple>
+		<present_participle>retenant</present_participle>
 		<present2p>retenez</present2p>
 		<imperative2p>retenez</imperative2p>
 		<imparfait_radical>reten</imparfait_radical>
@@ -23857,7 +23857,7 @@
 		<present2s>retiens</present2s>
 		<imperative2s>retiens</imperative2s>
 		<present3s>retient</present3s>
-		<pastParticiple>retenu</pastParticiple>
+		<past_participle>retenu</past_participle>
 		<feminine_past_participle>retenue</feminine_past_participle>
 		<subjunctive1s>retienne</subjunctive1s>
 		<subjunctive2s>retiennes</subjunctive2s>
@@ -23958,7 +23958,7 @@
 		<base>revenir</base>
 		<category>verb</category>
 		<id>revenir_1</id>
-		<presentParticiple>revenant</presentParticiple>
+		<present_participle>revenant</present_participle>
 		<present2p>revenez</present2p>
 		<imperative2p>revenez</imperative2p>
 		<imparfait_radical>reven</imparfait_radical>
@@ -23970,7 +23970,7 @@
 		<present2s>reviens</present2s>
 		<imperative2s>reviens</imperative2s>
 		<present3s>revient</present3s>
-		<pastParticiple>revenu</pastParticiple>
+		<past_participle>revenu</past_participle>
 		<feminine_past_participle>revenue</feminine_past_participle>
 		<subjunctive1s>revienne</subjunctive1s>
 		<subjunctive2s>reviennes</subjunctive2s>
@@ -23994,7 +23994,7 @@
 		<category>verb</category>
 		<id>revêtir_1</id>
 		<present3s>revêt</present3s>
-		<presentParticiple>revêtant</presentParticiple>
+		<present_participle>revêtant</present_participle>
 		<present3p>revêtent</present3p>
 		<present2p>revêtez</present2p>
 		<imperative2p>revêtez</imperative2p>
@@ -24005,7 +24005,7 @@
 		<present1s>revêts</present1s>
 		<present2s>revêts</present2s>
 		<imperative2s>revêts</imperative2s>
-		<pastParticiple>revêtu</pastParticiple>
+		<past_participle>revêtu</past_participle>
 		<feminine_past_participle>revêtue</feminine_past_participle>
 		<subjunctive1s>revête</subjunctive1s>
 		<subjunctive2s>revêtes</subjunctive2s>
@@ -24022,7 +24022,7 @@
 		<present2s>revis</present2s>
 		<imperative2s>revis</imperative2s>
 		<present3s>revit</present3s>
-		<presentParticiple>revivant</presentParticiple>
+		<present_participle>revivant</present_participle>
 		<present3p>revivent</present3p>
 		<present2p>revivez</present2p>
 		<imperative2p>revivez</imperative2p>
@@ -24047,13 +24047,13 @@
 		<present2s>revois</present2s>
 		<imperative2s>revois</imperative2s>
 		<present3s>revoit</present3s>
-		<presentParticiple>revoyant</presentParticiple>
+		<present_participle>revoyant</present_participle>
 		<present2p>revoyez</present2p>
 		<imperative2p>revoyez</imperative2p>
 		<imparfait_radical>revoy</imparfait_radical>
 		<present1p>revoyons</present1p>
 		<imperative1p>revoyons</imperative1p>
-		<pastParticiple>revu</pastParticiple>
+		<past_participle>revu</past_participle>
 		<feminine_past_participle>revue</feminine_past_participle>
 		<subjunctive1s>revoie</subjunctive1s>
 		<subjunctive2s>revoies</subjunctive2s>
@@ -24140,7 +24140,7 @@
 		<base>rire</base>
 		<category>verb</category>
 		<id>rire_2</id>
-		<presentParticiple>riant</presentParticiple>
+		<present_participle>riant</present_participle>
 		<present3p>rient</present3p>
 		<present2p>riez</present2p>
 		<imperative2p>riez</imperative2p>
@@ -24245,7 +24245,7 @@
 		<base>rompre</base>
 		<category>verb</category>
 		<id>rompre_1</id>
-		<presentParticiple>rompant</presentParticiple>
+		<present_participle>rompant</present_participle>
 		<present3p>rompent</present3p>
 		<present2p>rompez</present2p>
 		<imperative2p>rompez</imperative2p>
@@ -24257,7 +24257,7 @@
 		<present2s>romps</present2s>
 		<imperative2s>romps</imperative2s>
 		<present3s>rompt</present3s>
-		<pastParticiple>rompu</pastParticiple>
+		<past_participle>rompu</past_participle>
 		<feminine_past_participle>rompue</feminine_past_participle>
 		<subjunctive1s>rompe</subjunctive1s>
 		<subjunctive2s>rompes</subjunctive2s>
@@ -24559,8 +24559,8 @@
 		<imperative2p>enfuyez</imperative2p>
 		<imparfait_radical>enfuy</imparfait_radical>
 		<future_radical>enfuir</future_radical>
-		<presentParticiple>enfuyant</presentParticiple>
-		<pastParticiple>enfui</pastParticiple>
+		<present_participle>enfuyant</present_participle>
+		<past_participle>enfui</past_participle>
 		<feminine_past_participle>enfuie</feminine_past_participle>
 		<subjunctive1s>enfuie</subjunctive1s>
 		<subjunctive2s>enfuies</subjunctive2s>
@@ -24812,7 +24812,7 @@
 		<present1s>satisfais</present1s>
 		<present2s>satisfais</present2s>
 		<imperative2s>satisfais</imperative2s>
-		<presentParticiple>satisfaisant</presentParticiple>
+		<present_participle>satisfaisant</present_participle>
 		<imparfait_radical>satisfais</imparfait_radical>
 		<present1p>satisfaisons</present1p>
 		<imperative1p>satisfaisons</imperative1p>
@@ -24821,7 +24821,7 @@
 		<imperative2p>satisfaites</imperative2p>
 		<future_radical>satisfer</future_radical>
 		<present3p>satisfont</present3p>
-		<pastParticiple>satisfait</pastParticiple>
+		<past_participle>satisfait</past_participle>
 		<feminine_past_participle>satisfaite</feminine_past_participle>
 		<subjunctive1s>satisfasse</subjunctive1s>
 		<subjunctive2s>satisfasses</subjunctive2s>
@@ -24899,7 +24899,7 @@
 		<base>savoir</base>
 		<category>verb</category>
 		<id>savoir_2</id>
-		<presentParticiple>sachant</presentParticiple>
+		<present_participle>sachant</present_participle>
 		<imperative2s>sache</imperative2s>
 		<imperative2p>sachez</imperative2p>
 		<imperative1p>sachons</imperative1p>
@@ -24911,7 +24911,7 @@
 		<present2p>savez</present2p>
 		<imparfait_radical>sav</imparfait_radical>
 		<present1p>savons</present1p>
-		<pastParticiple>su</pastParticiple>
+		<past_participle>su</past_participle>
 		<feminine_past_participle>sue</feminine_past_participle>
 		<subjunctive1s>sache</subjunctive1s>
 		<subjunctive2s>sache</subjunctive2s>
@@ -25025,7 +25025,7 @@
 		<base>secourir</base>
 		<category>verb</category>
 		<id>secourir_1</id>
-		<presentParticiple>secourant</presentParticiple>
+		<present_participle>secourant</present_participle>
 		<present3p>secourent</present3p>
 		<present2p>secourez</present2p>
 		<imperative2p>secourez</imperative2p>
@@ -25037,7 +25037,7 @@
 		<present2s>secours</present2s>
 		<imperative2s>secours</imperative2s>
 		<present3s>secourt</present3s>
-		<pastParticiple>secouru</pastParticiple>
+		<past_participle>secouru</past_participle>
 		<feminine_past_participle>secourue</feminine_past_participle>
 		<subjunctive1s>secoure</subjunctive1s>
 		<subjunctive2s>secoures</subjunctive2s>
@@ -25167,7 +25167,7 @@
 		<present2s>sens</present2s>
 		<imperative2s>sens</imperative2s>
 		<present3s>sent</present3s>
-		<presentParticiple>sentant</presentParticiple>
+		<present_participle>sentant</present_participle>
 		<present3p>sentent</present3p>
 		<present2p>sentez</present2p>
 		<imperative2p>sentez</imperative2p>
@@ -25175,7 +25175,7 @@
 		<future_radical>sentir</future_radical>
 		<present1p>sentons</present1p>
 		<imperative1p>sentons</imperative1p>
-		<pastParticiple>senti</pastParticiple>
+		<past_participle>senti</past_participle>
 		<feminine_past_participle>sentie</feminine_past_participle>
 		<subjunctive1s>sente</subjunctive1s>
 		<subjunctive2s>sentes</subjunctive2s>
@@ -25286,7 +25286,7 @@
 		<present2s>sers</present2s>
 		<imperative2s>sers</imperative2s>
 		<present3s>sert</present3s>
-		<presentParticiple>servant</presentParticiple>
+		<present_participle>servant</present_participle>
 		<present3p>servent</present3p>
 		<present2p>servez</present2p>
 		<imperative2p>servez</imperative2p>
@@ -25294,7 +25294,7 @@
 		<future_radical>servir</future_radical>
 		<present1p>servons</present1p>
 		<imperative1p>servons</imperative1p>
-		<pastParticiple>servi</pastParticiple>
+		<past_participle>servi</past_participle>
 		<feminine_past_participle>servie</feminine_past_participle>
 		<subjunctive1s>serve</subjunctive1s>
 		<subjunctive2s>serves</subjunctive2s>
@@ -25755,7 +25755,7 @@
 		<present2s>sors</present2s>
 		<imperative2s>sors</imperative2s>
 		<present3s>sort</present3s>
-		<presentParticiple>sortant</presentParticiple>
+		<present_participle>sortant</present_participle>
 		<present3p>sortent</present3p>
 		<present2p>sortez</present2p>
 		<imperative2p>sortez</imperative2p>
@@ -25764,7 +25764,7 @@
 		<present1s>sortis</present1s>
 		<present2s>sortis</present2s>
 		<imperative2s>sortis</imperative2s>
-		<presentParticiple>sortissant</presentParticiple>
+		<present_participle>sortissant</present_participle>
 		<present3p>sortissent</present3p>
 		<present2p>sortissez</present2p>
 		<imperative2p>sortissez</imperative2p>
@@ -25774,7 +25774,7 @@
 		<present3s>sortit</present3s>
 		<present1p>sortons</present1p>
 		<imperative1p>sortons</imperative1p>
-		<pastParticiple>sorti</pastParticiple>
+		<past_participle>sorti</past_participle>
 		<feminine_past_participle>sortie</feminine_past_participle>
 		<subjunctive1s>sorte</subjunctive1s>
 		<subjunctive2s>sortes</subjunctive2s>
@@ -25832,7 +25832,7 @@
 		<base>souffrir</base>
 		<category>verb</category>
 		<id>souffrir_1</id>
-		<presentParticiple>souffrant</presentParticiple>
+		<present_participle>souffrant</present_participle>
 		<present1s>souffre</present1s>
 		<present3s>souffre</present3s>
 		<imperative2s>souffre</imperative2s>
@@ -25844,7 +25844,7 @@
 		<future_radical>souffrir</future_radical>
 		<present1p>souffrons</present1p>
 		<imperative1p>souffrons</imperative1p>
-		<pastParticiple>souffert</pastParticiple>
+		<past_participle>souffert</past_participle>
 		<feminine_past_participle>soufferte</feminine_past_participle>
 		<subjunctive1s>souffre</subjunctive1s>
 		<subjunctive2s>souffres</subjunctive2s>
@@ -25902,7 +25902,7 @@
 		<present1s>soumets</present1s>
 		<present2s>soumets</present2s>
 		<imperative2s>soumets</imperative2s>
-		<presentParticiple>soumettant</presentParticiple>
+		<present_participle>soumettant</present_participle>
 		<present3p>soumettent</present3p>
 		<present2p>soumettez</present2p>
 		<imperative2p>soumettez</imperative2p>
@@ -25910,7 +25910,7 @@
 		<present1p>soumettons</present1p>
 		<imperative1p>soumettons</imperative1p>
 		<future_radical>soumettr</future_radical>
-		<pastParticiple>soumis</pastParticiple>
+		<past_participle>soumis</past_participle>
 		<feminine_past_participle>soumise</feminine_past_participle>
 		<subjunctive1s>soumette</subjunctive1s>
 		<subjunctive2s>soumettes</subjunctive2s>
@@ -25983,7 +25983,7 @@
 		<base>sourire</base>
 		<category>verb</category>
 		<id>sourire_2</id>
-		<presentParticiple>souriant</presentParticiple>
+		<present_participle>souriant</present_participle>
 		<present3p>sourient</present3p>
 		<present2p>souriez</present2p>
 		<imperative2p>souriez</imperative2p>
@@ -26017,7 +26017,7 @@
 		<base>soutenir</base>
 		<category>verb</category>
 		<id>soutenir_1</id>
-		<presentParticiple>soutenant</presentParticiple>
+		<present_participle>soutenant</present_participle>
 		<present2p>soutenez</present2p>
 		<imperative2p>soutenez</imperative2p>
 		<imparfait_radical>souten</imparfait_radical>
@@ -26029,7 +26029,7 @@
 		<present2s>soutiens</present2s>
 		<imperative2s>soutiens</imperative2s>
 		<present3s>soutient</present3s>
-		<pastParticiple>soutenu</pastParticiple>
+		<past_participle>soutenu</past_participle>
 		<feminine_past_participle>soutenue</feminine_past_participle>
 		<subjunctive1s>soutienne</subjunctive1s>
 		<subjunctive2s>soutiennes</subjunctive2s>
@@ -26284,7 +26284,7 @@
 		<present1s>suffis</present1s>
 		<present2s>suffis</present2s>
 		<imperative2s>suffis</imperative2s>
-		<presentParticiple>suffisant</presentParticiple>
+		<present_participle>suffisant</present_participle>
 		<present3p>suffisent</present3p>
 		<present2p>suffisez</present2p>
 		<imperative2p>suffisez</imperative2p>
@@ -26333,7 +26333,7 @@
 		<present2s>suis</present2s>
 		<imperative2s>suis</imperative2s>
 		<present3s>suit</present3s>
-		<presentParticiple>suivant</presentParticiple>
+		<present_participle>suivant</present_participle>
 		<present3p>suivent</present3p>
 		<present2p>suivez</present2p>
 		<imperative2p>suivez</imperative2p>
@@ -26341,7 +26341,7 @@
 		<present1p>suivons</present1p>
 		<imperative1p>suivons</imperative1p>
 		<future_radical>suivr</future_radical>
-		<pastParticiple>suivi</pastParticiple>
+		<past_participle>suivi</past_participle>
 		<feminine_past_participle>suivie</feminine_past_participle>
 		<subjunctive1s>suive</subjunctive1s>
 		<subjunctive2s>suives</subjunctive2s>
@@ -26442,7 +26442,7 @@
 		<base>surprendre</base>
 		<category>verb</category>
 		<id>surprendre_1</id>
-		<presentParticiple>surprenant</presentParticiple>
+		<present_participle>surprenant</present_participle>
 		<present3s>surprend</present3s>
 		<future_radical>surprendr</future_radical>
 		<present1s>surprends</present1s>
@@ -26454,7 +26454,7 @@
 		<present3p>surprennent</present3p>
 		<present1p>surprenons</present1p>
 		<imperative1p>surprenons</imperative1p>
-		<pastParticiple>surpris</pastParticiple>
+		<past_participle>surpris</past_participle>
 		<feminine_past_participle>surprise</feminine_past_participle>
 		<subjunctive1s>surprenne</subjunctive1s>
 		<subjunctive2s>surprennes</subjunctive2s>
@@ -26495,7 +26495,7 @@
 		<base>survenir</base>
 		<category>verb</category>
 		<id>survenir_1</id>
-		<presentParticiple>survenant</presentParticiple>
+		<present_participle>survenant</present_participle>
 		<present2p>survenez</present2p>
 		<imperative2p>survenez</imperative2p>
 		<imparfait_radical>surven</imparfait_radical>
@@ -26507,7 +26507,7 @@
 		<present2s>surviens</present2s>
 		<imperative2s>surviens</imperative2s>
 		<present3s>survient</present3s>
-		<pastParticiple>survenu</pastParticiple>
+		<past_participle>survenu</past_participle>
 		<feminine_past_participle>survenue</feminine_past_participle>
 		<subjunctive1s>survienne</subjunctive1s>
 		<subjunctive2s>surviennes</subjunctive2s>
@@ -26521,7 +26521,7 @@
 		<category>verb</category>
 		<id>suspendre_1</id>
 		<present3s>suspend</present3s>
-		<presentParticiple>suspendant</presentParticiple>
+		<present_participle>suspendant</present_participle>
 		<present3p>suspendent</present3p>
 		<present2p>suspendez</present2p>
 		<imperative2p>suspendez</imperative2p>
@@ -26532,7 +26532,7 @@
 		<present1s>suspends</present1s>
 		<present2s>suspends</present2s>
 		<imperative2s>suspends</imperative2s>
-		<pastParticiple>suspendu</pastParticiple>
+		<past_participle>suspendu</past_participle>
 		<feminine_past_participle>suspendue</feminine_past_participle>
 		<subjunctive1s>suspende</subjunctive1s>
 		<subjunctive2s>suspendes</subjunctive2s>
@@ -26646,7 +26646,7 @@
 		<present1s>tais</present1s>
 		<present2s>tais</present2s>
 		<imperative2s>tais</imperative2s>
-		<presentParticiple>taisant</presentParticiple>
+		<present_participle>taisant</present_participle>
 		<present3p>taisent</present3p>
 		<present2p>taisez</present2p>
 		<imperative2p>taisez</imperative2p>
@@ -26654,7 +26654,7 @@
 		<present1p>taisons</present1p>
 		<imperative1p>taisons</imperative1p>
 		<present3s>tait</present3s>
-		<pastParticiple>tu</pastParticiple>
+		<past_participle>tu</past_participle>
 		<feminine_past_participle>tue</feminine_past_participle>
 		<subjunctive1s>taise</subjunctive1s>
 		<subjunctive2s>taises</subjunctive2s>
@@ -26869,7 +26869,7 @@
 		<base>tenir</base>
 		<category>verb</category>
 		<id>tenir_1</id>
-		<presentParticiple>tenant</presentParticiple>
+		<present_participle>tenant</present_participle>
 		<present2p>tenez</present2p>
 		<imperative2p>tenez</imperative2p>
 		<imparfait_radical>ten</imparfait_radical>
@@ -26881,7 +26881,7 @@
 		<present2s>tiens</present2s>
 		<imperative2s>tiens</imperative2s>
 		<present3s>tient</present3s>
-		<pastParticiple>tenu</pastParticiple>
+		<past_participle>tenu</past_participle>
 		<feminine_past_participle>tenue</feminine_past_participle>
 		<subjunctive1s>tienne</subjunctive1s>
 		<subjunctive2s>tiennes</subjunctive2s>
@@ -27159,7 +27159,7 @@
 		<category>verb</category>
 		<id>tordre_1</id>
 		<present3s>tord</present3s>
-		<presentParticiple>tordant</presentParticiple>
+		<present_participle>tordant</present_participle>
 		<present3p>tordent</present3p>
 		<present2p>tordez</present2p>
 		<imperative2p>tordez</imperative2p>
@@ -27170,7 +27170,7 @@
 		<present1s>tords</present1s>
 		<present2s>tords</present2s>
 		<imperative2s>tords</imperative2s>
-		<pastParticiple>tordu</pastParticiple>
+		<past_participle>tordu</past_participle>
 		<feminine_past_participle>tordue</feminine_past_participle>
 		<subjunctive1s>torde</subjunctive1s>
 		<subjunctive2s>tordes</subjunctive2s>
@@ -27409,7 +27409,7 @@
 		<present1s>transmets</present1s>
 		<present2s>transmets</present2s>
 		<imperative2s>transmets</imperative2s>
-		<presentParticiple>transmettant</presentParticiple>
+		<present_participle>transmettant</present_participle>
 		<present3p>transmettent</present3p>
 		<present2p>transmettez</present2p>
 		<imperative2p>transmettez</imperative2p>
@@ -27417,7 +27417,7 @@
 		<present1p>transmettons</present1p>
 		<imperative1p>transmettons</imperative1p>
 		<future_radical>transmettr</future_radical>
-		<pastParticiple>transmis</pastParticiple>
+		<past_participle>transmis</past_participle>
 		<feminine_past_participle>transmise</feminine_past_participle>
 		<subjunctive1s>transmette</subjunctive1s>
 		<subjunctive2s>transmettes</subjunctive2s>
@@ -27511,7 +27511,7 @@
 		<base>tressaillir</base>
 		<category>verb</category>
 		<id>tressaillir_1</id>
-		<presentParticiple>tressaillant</presentParticiple>
+		<present_participle>tressaillant</present_participle>
 		<present1s>tressaille</present1s>
 		<present3s>tressaille</present3s>
 		<imperative2s>tressaille</imperative2s>
@@ -27523,7 +27523,7 @@
 		<future_radical>tressaillir</future_radical>
 		<present1p>tressaillons</present1p>
 		<imperative1p>tressaillons</imperative1p>
-		<pastParticiple>tressailli</pastParticiple>
+		<past_participle>tressailli</past_participle>
 		<feminine_past_participle>tressaillie</feminine_past_participle>
 		<subjunctive1s>tressaille</subjunctive1s>
 		<subjunctive2s>tressailles</subjunctive2s>
@@ -27857,14 +27857,14 @@
 		<present1s>vaincs</present1s>
 		<present2s>vaincs</present2s>
 		<imperative2s>vaincs</imperative2s>
-		<presentParticiple>vainquant</presentParticiple>
+		<present_participle>vainquant</present_participle>
 		<present3p>vainquent</present3p>
 		<present2p>vainquez</present2p>
 		<imperative2p>vainquez</imperative2p>
 		<imparfait_radical>vainqu</imparfait_radical>
 		<present1p>vainquons</present1p>
 		<imperative1p>vainquons</imperative1p>
-		<pastParticiple>vaincu</pastParticiple>
+		<past_participle>vaincu</past_participle>
 		<feminine_past_participle>vaincue</feminine_past_participle>
 		<subjunctive1s>vainque</subjunctive1s>
 		<subjunctive2s>vainques</subjunctive2s>
@@ -27919,7 +27919,7 @@
 		<base>valoir</base>
 		<category>verb</category>
 		<id>valoir_1</id>
-		<presentParticiple>valant</presentParticiple>
+		<present_participle>valant</present_participle>
 		<present3p>valent</present3p>
 		<present2p>valez</present2p>
 		<imperative2p>valez</imperative2p>
@@ -27931,7 +27931,7 @@
 		<present1s>vaux</present1s>
 		<present2s>vaux</present2s>
 		<imperative2s>vaux</imperative2s>
-		<pastParticiple>valu</pastParticiple>
+		<past_participle>valu</past_participle>
 		<feminine_past_participle>value</feminine_past_participle>
 		<subjunctive1s>vaille</subjunctive1s>
 		<subjunctive2s>vailles</subjunctive2s>
@@ -28063,7 +28063,7 @@
 		<category>verb</category>
 		<id>vendre_1</id>
 		<present3s>vend</present3s>
-		<presentParticiple>vendant</presentParticiple>
+		<present_participle>vendant</present_participle>
 		<present3p>vendent</present3p>
 		<present2p>vendez</present2p>
 		<imperative2p>vendez</imperative2p>
@@ -28074,7 +28074,7 @@
 		<present1s>vends</present1s>
 		<present2s>vends</present2s>
 		<imperative2s>vends</imperative2s>
-		<pastParticiple>vendu</pastParticiple>
+		<past_participle>vendu</past_participle>
 		<feminine_past_participle>vendue</feminine_past_participle>
 		<subjunctive1s>vende</subjunctive1s>
 		<subjunctive2s>vendes</subjunctive2s>
@@ -28105,7 +28105,7 @@
 		<category>verb</category>
 		<id>venir_1</id>
 		<auxiliary_etre/>
-		<presentParticiple>venant</presentParticiple>
+		<present_participle>venant</present_participle>
 		<present2p>venez</present2p>
 		<imperative2p>venez</imperative2p>
 		<imparfait_radical>ven</imparfait_radical>
@@ -28117,7 +28117,7 @@
 		<present2s>viens</present2s>
 		<imperative2s>viens</imperative2s>
 		<present3s>vient</present3s>
-		<pastParticiple>venu</pastParticiple>
+		<past_participle>venu</past_participle>
 		<feminine_past_participle>venue</feminine_past_participle>
 		<subjunctive1s>vienne</subjunctive1s>
 		<subjunctive2s>viennes</subjunctive2s>
@@ -28273,7 +28273,7 @@
 		<category>verb</category>
 		<id>vêtir_1</id>
 		<present3s>vêt</present3s>
-		<presentParticiple>vêtant</presentParticiple>
+		<present_participle>vêtant</present_participle>
 		<present3p>vêtent</present3p>
 		<present2p>vêtez</present2p>
 		<imperative2p>vêtez</imperative2p>
@@ -28284,7 +28284,7 @@
 		<present1s>vêts</present1s>
 		<present2s>vêts</present2s>
 		<imperative2s>vêts</imperative2s>
-		<pastParticiple>vêtu</pastParticiple>
+		<past_participle>vêtu</past_participle>
 		<feminine_past_participle>vêtue</feminine_past_participle>
 		<subjunctive1s>vête</subjunctive1s>
 		<subjunctive2s>vêtes</subjunctive2s>
@@ -28608,7 +28608,7 @@
 		<present2s>vis</present2s>
 		<imperative2s>vis</imperative2s>
 		<present3s>vit</present3s>
-		<presentParticiple>vivant</presentParticiple>
+		<present_participle>vivant</present_participle>
 		<present3p>vivent</present3p>
 		<present2p>vivez</present2p>
 		<imperative2p>vivez</imperative2p>
@@ -28666,13 +28666,13 @@
 		<present2s>vois</present2s>
 		<imperative2s>vois</imperative2s>
 		<present3s>voit</present3s>
-		<presentParticiple>voyant</presentParticiple>
+		<present_participle>voyant</present_participle>
 		<present2p>voyez</present2p>
 		<imperative2p>voyez</imperative2p>
 		<imparfait_radical>voy</imparfait_radical>
 		<present1p>voyons</present1p>
 		<imperative1p>voyons</imperative1p>
-		<pastParticiple>vu</pastParticiple>
+		<past_participle>vu</past_participle>
 		<feminine_past_participle>vue</feminine_past_participle>
 		<subjunctive1s>voie</subjunctive1s>
 		<subjunctive2s>voies</subjunctive2s>
@@ -28801,13 +28801,13 @@
 		<present2s>veux</present2s>
 		<imperative2s>veux</imperative2s>
 		<future_radical>voudr</future_radical>
-		<presentParticiple>voulant</presentParticiple>
+		<present_participle>voulant</present_participle>
 		<present2p>voulez</present2p>
 		<imperative2p>voulez</imperative2p>
 		<imparfait_radical>voul</imparfait_radical>
 		<present1p>voulons</present1p>
 		<imperative1p>voulons</imperative1p>
-		<pastParticiple>voulu</pastParticiple>
+		<past_participle>voulu</past_participle>
 		<feminine_past_participle>voulue</feminine_past_participle>
 		<subjunctive1s>veuille</subjunctive1s>
 		<subjunctive2s>veuilles</subjunctive2s>
