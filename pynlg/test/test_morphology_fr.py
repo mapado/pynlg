@@ -107,6 +107,7 @@ def test_morph_adjective(lexicon_fr, morph_rules_fr, word, features, expected):
     # Simple pluralisation using +s rule, because word is not
     # in lexicon
     (u'clavier', u'clavier', {NUMBER: PLURAL}, u'claviers'),
+    (u'directeur', u'directeur', {NUMBER: PLURAL, GENDER: FEMININE}, u'directrices'),
 ])
 def test_morph_noun(lexicon_fr, morph_rules_fr, word, base_word, features, expected):
     base_word = lexicon_fr.first(base_word)

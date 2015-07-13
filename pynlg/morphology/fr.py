@@ -283,6 +283,7 @@ class FrenchMorphologyRules(object):
             element.base_word = base_word.lexicon.first(element.base_form, category=NOUN)
 
         base_form = self.get_base_form(element, base_word)
+        base_word = element.base_word or base_word
 
         if element.is_plural and not element.proper:
             if element.plural and base_word:
