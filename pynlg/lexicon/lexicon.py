@@ -205,7 +205,7 @@ class Lexicon(object):
         if word.id is not None:
             if word.id in self.id_index:
                 raise ValueError(
-                    'Index %d already in id_index' % (int(word.id)))
+                    'Index %s already in id_index' % (word.id))
             else:
                 self.id_index[word.id] = word
         if word.category is not None:
