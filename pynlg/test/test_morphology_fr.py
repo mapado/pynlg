@@ -293,3 +293,24 @@ def test_imperfect_pres_part_radical_unexisting_verb(
     radical = morph_rules_fr.get_imperfect_pres_part_radical(
         infl_verb, base_word=verb, base_form=u'kiffer')
     assert radical == u'kiff'
+
+
+@pytest.mark.parametrize('gender, number, expected', [
+    (MASCULINE, SINGULAR, u'amusant'),
+    (FEMININE, SINGULAR, u'amusante'),
+    (MASCULINE, PLURAL, u'amusants'),
+    (FEMININE, PLURAL, u'amusantes'),
+])
+def test_realise_verb_participle_or_gerund_used_as_adjective(
+        lexicon_fr, morph_rules_fr, gender, number, expected):
+    verb = lexicon_fr.first(u'amuser', category=VERB)
+    gerund_or_present_part = morph_rules_fr.realise_verb_present_participle_or_gerund(
+        verb, base_word=verb, base_form=u'amuser', gender=gender, number=number)
+    assert gerund_or_present_part == expected
+
+
+def test_realise_verb_participle_or_gerund(lexicon_fr, morph_rules_fr):
+    verb = lexicon_fr.first(u'être', category=VERB)
+    gerund_or_present_part = morph_rules_fr.realise_verb_present_participle_or_gerund(
+        verb, base_word=verb, base_form=u'être', gender=None, number=None)
+    assert gerund_or_present_part == u'étant'

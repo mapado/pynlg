@@ -292,6 +292,62 @@ class FrenchMorphologyRules(object):
                 radical = radical[:-3]
             return radical
 
+    def get_verb_parent(self, element):
+        """Return the parenf of the verb and its agreement.
+
+        The verb parent can either be its parent or its grandparent,
+        or the direct object in the sentence.
+
+        If the returned agreement is True, it means that the parent
+        is either a verb phrase, has an object function in the sentence,
+        or has either a front/pre/post-modifier function.
+
+        """
+        #  Get gender and number from parent or "grandparent" or self, in
+        #  that order
+        parent = element.parent
+        agreement = False
+        if element.parent:
+            # used as epithet or as attribute of the subject
+            if parent.category == VERB_PHRASE or element.discourse_function == OBJECT:
+                agreement = True
+                if not parent.gender and parent.parent:
+                    parent = parent.parent
+            else:
+                # used as attribute of the direct object
+                modifier_functions = [FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER]
+                if element.discourse_function in modifier_functions:
+                    agreement = True
+                    for complement in (parent.complements or []):
+                        if complement.discourse_function == OBJECT:
+                            direct_object = complement
+                            parent = direct_object
+                            break
+        return parent, agreement
+
+    def realise_verb_present_participle_or_gerund(
+            self, element, base_word, base_form, gender, number):
+        """Realise the verb element which form is either present
+        participle or gerund.
+
+        """
+        realised = (
+            element.present_participle
+            or (base_word and base_word.present_participle)
+        )
+        if not realised:
+            radical = self.get_imperfect_pres_part_radical(element, base_word, base_form)
+            realised = '%s%s' % (radical, u'ant')
+
+        #  Note : The gender and number features must only be
+        #  passed to the present participle by the syntax when
+        #  the present participle is used as an adjective.
+        #  Otherwise it is immutable.
+        if gender == FEMININE:
+            realised = '%s%s' % (realised, 'e')
+        if number == PLURAL:
+            realised = '%s%s' % (realised, 's')
+        return realised
 
     def morph_determiner(self, element):
         """Perform the morphology for determiners.
@@ -427,67 +483,33 @@ class FrenchMorphologyRules(object):
         realised = '%s%s' % (realised, element.particle)
         return StringElement(string=realised, word=element)
 
-    # def morph_verb(self, element, base_word):
-    #     """Apply morphology rules for verb words.
+    def morph_verb(self, element, base_word):
+        """Apply morphology rules for verb words.
 
-    #     Return a StringElement which realisaton is the morphed verb.
-
-    #     """
-    #     if element.form in [PRESENT_PARTICIPLE, PAST_PARTICIPLE]:
-    #         if element.parent:
-    #             agreement = False
-    # used as epithet or as attribute of the subject
-    #             if parent.category == VERB_PHRASE or element.discourse_function == OBJECT:
-    #                 agreement = True
-    #                 if not parent.gender and parent.parent:
-    #                     parent = parent.parent
-    #             else:
-    # used as attribute of the direct object
-    #                 if element.discourse_function in [
-    # FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER]:
-    #                     agreement = True
-    #                     complements = parent.complements
-    #                     direct_object = None
-    #                     for complement in complements:
-    #                         if complement.discourse_function == OBJECT:
-    #                             direct_object = complement
-    #                             break
-    #                     if direct_object:
-    #                         parent = direct_object
-    #             if aggreement:
-
-    def get_verb_parent(self, element):
-        """Return the parenf of the verb and its agreement.
-
-        The verb parent can either be its parent or its grandparent,
-        or the direct object in the sentence.
-
-        If the returned agreement is True, it means that the parent
-        is either a verb phrase, has an object function in the sentence,
-        or has either a front/pre/post-modifier function.
+        Return a StringElement which realisaton is the morphed verb.
 
         """
-        #  Get gender and number from parent or "grandparent" or self, in
-        #  that order
-        parent = element.parent
-        agreement = False
-        if element.parent:
-            # used as epithet or as attribute of the subject
-            if parent.category == VERB_PHRASE or element.discourse_function == OBJECT:
-                agreement = True
-                if not parent.gender and parent.parent:
-                    parent = parent.parent
-            else:
-                # used as attribute of the direct object
-                modifier_functions = [FRONT_MODIFIER, PRE_MODIFIER, POST_MODIFIER]
-                if element.discourse_function in modifier_functions:
-                    agreement = True
-                    for complement in (parent.complements or []):
-                        if complement.discourse_function == OBJECT:
-                            direct_object = complement
-                            parent = direct_object
-                            break
-        return parent, agreement
+        realised = None  # need?
+        number = element.number or SINGULAR
+        person = element.person or THIRD
+        gender = element.gender or MASCULINE
+        tense = element.tense or PRESENT
+        parent, agreement = self.get_verb_parent(element)
+        base_form = self.get_base_form(element, base_word)
+        form = element.form
+
+        if element.form in [PRESENT_PARTICIPLE, PAST_PARTICIPLE] and agreement:
+            gender, number = parent.gender, parent.number
+
+        # The verb morphology depends of its form (infititive, present participle, past
+        # participle, etc). Each form has specific morphology rules.
+        if form in (BARE_INFINITIVE, INFINITIVE):
+            realised = base_form
+        elif form in (PRESENT_PARTICIPLE, GERUND):
+            realised = self.realise_present_participle_or_gerund_verb(
+                element, base_word, base_form)
+        elif form == PAST_PARTICIPLE:
+            pass
 
     def morph_adverb(self, element, base_word):
         base_form = self.get_base_form(element, base_word)
