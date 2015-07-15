@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pynlg",
-    version='0.1',
+    version='0.1.0',
     description='Natural Language Generation in Python',
     long_description=open('README.rst').read(),
     author=["Jerry Nieuviarts"],
