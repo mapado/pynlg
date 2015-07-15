@@ -21,7 +21,7 @@ First, clone the repository, and create a new local branch. Once the new feature
 Note: you should run the tests beforehand, and make sure they pass:
 
 ```bash
-$ py.test --cov pynlg --pep8
+$ tox
 ```
 
 ## How do I add support for a new language?
