@@ -19,7 +19,7 @@ from ..lexicon.feature.lexical.fr import PRONOUN_TYPE, DETACHED
 from ..lexicon.feature.person import FIRST, SECOND, THIRD
 from ..lexicon.feature.form import IMPERATIVE
 from ..lexicon.feature.number import SINGULAR, PLURAL, BOTH
-from ..lexicon.feature.tense import PRESENT
+from ..lexicon.feature.tense import PRESENT, FUTURE, CONDITIONAL
 from ..lexicon.feature import PERSON, NUMBER
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
 from ..lexicon.feature.form import (
@@ -166,9 +166,8 @@ class FrenchMorphologyRules(object):
 
     @staticmethod
     def get_present_radical(base_form, number):
-        """Return the radical used in indicative simple future and
-        conditional present of the argument regular verb element, using
-        the argument number.
+        """Return the radical used in present of the argument regular
+        verb element, using the argument number.
 
         Return a Verb namedtuple with a 'radical' and 'group' attributes.
 
@@ -210,6 +209,26 @@ class FrenchMorphologyRules(object):
         else:
             raise ValueError('Unrecognized verb group for base form %s' % (base_form))
         return Verb(radical, group)
+
+    @staticmethod
+    def get_conditional_or_future_radical(element, base_word, base_form):
+        """Return the radical used in indicative simple future and
+        conditional present of the argument regular verb element, using
+        the argument number.
+
+        """
+        radical = element.future_radical or base_word.future_radical
+        if not radical:
+            penultimate_vowel = base_form[-4]
+            if base_form.endswith(u'e'):
+                radical = base_form[:-1]
+            elif base_form.endswith(u'yer'):
+                radical = u'%sier' % (base_form[:-3])
+            elif penultimate_vowel in [u'e', u'é']:
+                radical = u'%sè%s' % (base_form[:-4], base_form[-3])
+            else:
+                radical = base_form
+        return radical
 
     @staticmethod
     def build_verb_past_participle(base_form):
@@ -304,6 +323,46 @@ class FrenchMorphologyRules(object):
             else:
                 suffix = u'ent'
         return self.add_suffix(verb.radical, suffix)
+
+    def build_future_verb(self, radical, person, number):
+        """Return the future form for regular verb, using argument
+        person and number.
+
+        """
+        if number in (SINGULAR, BOTH):
+            if person == FIRST:
+                suffix = u'ai'
+            elif person == SECOND:
+                suffix = u'as'
+            else:
+                suffix = u'a'
+        else:
+            if person == FIRST:
+                suffix = u'ons'
+            elif person == SECOND:
+                suffix = u'ez'
+            else:
+                suffix = u'ont'
+        return u'%s%s' % (radical, suffix)
+
+    def build_conditional_verb(self, radical, person, number):
+        """Return the conditional form for regular verb, using argument
+        person and number.
+
+        """
+        if number in (SINGULAR, BOTH):
+            if person in (FIRST, SECOND):
+                suffix = u'ais'
+            else:
+                suffix = u'ait'
+        else:
+            if person == FIRST:
+                suffix = u'ions'
+            elif person == SECOND:
+                suffix = u'iez'
+            else:
+                suffix = u'aient'
+        return u'%s%s' % (radical, suffix)
 
     def get_imperfect_pres_part_radical(self, element, base_word, base_form):
         """Gets or builds the radical used for "imparfait" and present participle."""
@@ -676,6 +735,15 @@ class FrenchMorphologyRules(object):
         elif form == IMPERATIVE:
             realised = self.realise_verb_imperative_or_present(
                 element, base_word, base_form, person, number)
+        elif tense in [CONDITIONAL, FUTURE]:
+            radical = self.get_conditional_or_future_radical(element, base_form, base_word)
+            if tense == CONDITIONAL:
+                realised = self.build_conditional_verb(radical, number, person)
+            else:
+                realised = self.build_future_verb(radical, number, person)
+
+        realised = '%s%s' % (realised, element.particle)
+        return StringElement(string=realised, word=element)
 
     def morph_adverb(self, element, base_word):
         base_form = self.get_base_form(element, base_word)

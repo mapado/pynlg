@@ -443,3 +443,49 @@ def test_realise_verb_present(
     imp = morph_rules_fr.realise_verb_present(
         verb, base_word=verb, base_form=base_form, number=number, person=person)
     assert imp == expected
+
+
+@pytest.mark.parametrize('word, expected', [
+    (u'envoyer', u'enverr'),  # has a future_radical feature
+    (u'employer', u'emploier'),  # ends with 'yer'
+    (u'amener', u'amèn'),
+    (u'manger', u'manger'),  # does not correspond to anything special
+])
+def test_get_conditional_or_future_radical(lexicon_fr, morph_rules_fr, word, expected):
+    verb = lexicon_fr.first(word, category=VERB)
+    radical = morph_rules_fr.get_conditional_or_future_radical(
+        verb, base_form=word, base_word=verb)
+    assert radical == expected
+
+
+@pytest.mark.parametrize('radical, person, number, expected', [
+    (u'aimer', FIRST, SINGULAR, u'aimerai'),
+    (u'aimer', SECOND, SINGULAR, u'aimeras'),
+    (u'aimer', THIRD, SINGULAR, u'aimera'),
+    (u'aimer', FIRST, BOTH, u'aimerai'),
+    (u'aimer', SECOND, BOTH, u'aimeras'),
+    (u'aimer', THIRD, BOTH, u'aimera'),
+    (u'aimer', FIRST, PLURAL, u'aimerons'),
+    (u'aimer', SECOND, PLURAL, u'aimerez'),
+    (u'aimer', THIRD, PLURAL, u'aimeront'),
+])
+def test_build_verb_future(morph_rules_fr, radical, person, number, expected):
+    future = morph_rules_fr.build_future_verb(radical=radical, number=number, person=person)
+    assert future == expected
+
+
+@pytest.mark.parametrize('radical, person, number, expected', [
+    (u'aimer', FIRST, SINGULAR, u'aimerais'),
+    (u'aimer', SECOND, SINGULAR, u'aimerais'),
+    (u'aimer', THIRD, SINGULAR, u'aimerait'),
+    (u'aimer', FIRST, BOTH, u'aimerais'),
+    (u'aimer', SECOND, BOTH, u'aimerais'),
+    (u'aimer', THIRD, BOTH, u'aimerait'),
+    (u'aimer', FIRST, PLURAL, u'aimerions'),
+    (u'aimer', SECOND, PLURAL, u'aimeriez'),
+    (u'aimer', THIRD, PLURAL, u'aimeraient'),
+])
+def test_build_verb_conditional(morph_rules_fr, radical, person, number, expected):
+    cond = morph_rules_fr.build_conditional_verb(
+        radical=radical, number=number, person=person)
+    assert cond == expected
