@@ -8,5 +8,5 @@ setup(
     author_email=['jerry@mapado.com'],
     include_package_data=True,
     packages=find_packages(),
-    install_requires=[],
+    install_requires=['six'],
 )
