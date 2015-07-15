@@ -10661,6 +10661,7 @@
 		<category>verb</category>
 		<id>envoyer_1</id>
 		<clitic_rising/>
+		<future_radical>enverr</future_radical>
 	</word>
 	<word>
 		<base>épais</base>
@@ -23422,6 +23423,7 @@
 		<base>renvoyer</base>
 		<category>verb</category>
 		<id>renvoyer_1</id>
+		<future_radical>renverr</future_radical>
 	</word>
 	<word>
 		<base>répandre</base>
