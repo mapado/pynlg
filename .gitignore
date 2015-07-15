@@ -5,3 +5,5 @@
 .cache
 .coverage
 htmlcov
+.tox/
+*.bak
