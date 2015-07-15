@@ -2,7 +2,7 @@
 
 ``pynlg`` is a pure python re-implementation of [SimpleNLG-EnFr](https://github.com/rali-udem/SimpleNLG-EnFr), a java library enabling bilingual [text surface realisation](https://en.wikipedia.org/wiki/Realization_%28linguistics%29), based on [SimpleNLG](https://github.com/simplenlg/simplenlg).
 
-``pynlg`` supports Python2.7 and 3.4. Python 3.3 should word, but is untested.
+``pynlg`` supports Python2.7 and 3.4. Python 3.3 should work, but is untested.
 
 ## Examples
 
