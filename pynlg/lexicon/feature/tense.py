@@ -2,7 +2,10 @@
 
 """Defintion of tense related features."""
 
-FUTURE = u"future"
-PAST = u"past"
-PRESENT = u"present"
-CONDITIONAL = u"conditional"
+from __future__ import unicode_literals
+
+
+FUTURE = "future"
+PAST = "past"
+PRESENT = "present"
+CONDITIONAL = "conditional"

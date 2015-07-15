@@ -5,7 +5,7 @@
 import pytest
 
 from ..spec.word import WordElement, InflectedWordElement
-from ..lexicon.feature.category import NOUN, ADJECTIVE, ANY
+from ..lexicon.feature.category import NOUN, ADJECTIVE
 from ..lexicon.feature.number import PLURAL
 from ..lexicon.feature import NUMBER
 
@@ -65,27 +65,3 @@ def test_inflex(word):
     iw = word.inflex(number=PLURAL)
     assert isinstance(iw, InflectedWordElement)
     assert iw.features[NUMBER] == PLURAL
-
-
-@pytest.mark.parametrize('word,xml', [
-    (
-        WordElement(
-            base_form='beau', category=ADJECTIVE, id="E1", lexicon=None),
-        '<word><base>beau</base><category>ADJECTIVE</category><id>E1</id></word>'
-    ),
-    (
-        WordElement(
-            base_form='beau', category=ADJECTIVE, id=None, lexicon=None),
-        '<word><base>beau</base><category>ADJECTIVE</category></word>'
-    ),
-    (
-        WordElement(base_form='beau', category=ANY, id="E1", lexicon=None),
-        '<word><base>beau</base><id>E1</id></word>'
-    ),
-    (
-        WordElement(base_form=None, category=ADJECTIVE, id="E1", lexicon=None),
-        '<word><category>ADJECTIVE</category><id>E1</id></word>'
-    ),
-])
-def test_to_xml(word, xml):
-    assert word.to_xml() == xml

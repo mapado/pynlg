@@ -2,6 +2,7 @@
 
 """Definition of generic phrase syntaxes."""
 
+
 from ...lexicon.feature.discourse import PRE_MODIFIER, SPECIFIER
 from ...lexicon.feature.category import PRONOUN
 from ...lexicon.feature import NUMBER

@@ -81,7 +81,7 @@ def test_pluralize(morph_rules_fr, s, expected):
 ])
 def test_morph_determiner(lexicon_fr, morph_rules_fr, word, features, expected):
     element = lexicon_fr.first(word)
-    for k, v in features.iteritems():
+    for k, v in features.items():
         element.features[k] = v
     inflected_form = morph_rules_fr.morph_determiner(element)
     assert inflected_form.realisation == expected
@@ -99,7 +99,7 @@ def test_morph_determiner(lexicon_fr, morph_rules_fr, word, features, expected):
 ])
 def test_morph_adjective(lexicon_fr, morph_rules_fr, word, features, expected):
     element = lexicon_fr.first(word)
-    for k, v in features.iteritems():
+    for k, v in features.items():
         element.features[k] = v
     inflected_form = morph_rules_fr.morph_adjective(element)
     assert inflected_form.realisation == expected
@@ -122,7 +122,7 @@ def test_morph_adjective(lexicon_fr, morph_rules_fr, word, features, expected):
 def test_morph_noun(lexicon_fr, morph_rules_fr, word, base_word, features, expected):
     base_word = lexicon_fr.first(base_word)
     element = lexicon_fr.first(word)
-    for k, v in features.iteritems():
+    for k, v in features.items():
         element.features[k] = v
     inflected_form = morph_rules_fr.morph_noun(element, base_word)
     assert inflected_form.realisation == expected
@@ -137,7 +137,7 @@ def test_morph_noun(lexicon_fr, morph_rules_fr, word, base_word, features, expec
 def test_morph_adverb(lexicon_fr, morph_rules_fr, word, base_word, features, expected):
     base_word = lexicon_fr.first(base_word)
     element = lexicon_fr.first(word)
-    for k, v in features.iteritems():
+    for k, v in features.items():
         element.features[k] = v
     inflected_form = morph_rules_fr.morph_adverb(element, base_word)
     assert inflected_form.realisation == expected

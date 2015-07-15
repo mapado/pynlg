@@ -2,6 +2,7 @@
 
 """Definition of general features"""
 
+from __future__ import unicode_literals
 
 #    * <p>
 #    * This feature determines if the adjectives should be reordered. Some

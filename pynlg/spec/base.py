@@ -2,6 +2,9 @@
 
 """Definition of the base class from which all spec elements inherit."""
 
+from __future__ import unicode_literals
+
+import six
 import os
 import importlib
 
@@ -37,11 +40,11 @@ class FeatureModulesLoader(type):
             cls, clsname, bases, dct)
 
 
+@six.add_metaclass(FeatureModulesLoader)
+@six.python_2_unicode_compatible
 class NLGElement(object):
 
     """Base spec element class from which all spec element classes inherit."""
-
-    __metaclass__ = FeatureModulesLoader
 
     def __init__(self, features=None, category=u'', realisation=u'',
                  lexicon=None):
@@ -57,11 +60,16 @@ class NLGElement(object):
         if isinstance(other, NLGElement):
             return (self.features == other.features
                     and self.category == other.category)
-        elif isinstance(other, basestring):
+        elif isinstance(other, (six.text_type, six.binary_type)):
             return self.realisation == other
         else:
             raise TypeError("Can't compare NLGElement to %s" % (
                 str(type(other))))
+
+    def __hash__(self):
+        feat = {k: v for k, v in self.features.items() if not isinstance(v, (list, tuple))}
+        features = tuple(sorted(tuple(feat)))
+        return hash((features, self.realisation, self.category, self.base_form))
 
     def __contains__(self, feature_name):
         """Check if the argument feature name is contained in the element."""
@@ -91,15 +99,15 @@ class NLGElement(object):
         if feature_name in self.features:
             del self.features[feature_name]
 
-    def __unicode__(self):
-        return u"<%s {realisation=%s, category=%s, features=%s}>" % (
+    def __str__(self):
+        return "<%s {realisation=%s, category=%s, features=%s}>" % (
             self.__class__.__name__,
             self.realisation,
             self.category,
-            unicode(self.features))
+            self.features)
 
     def __repr__(self):
-        return unicode(self).encode('utf-8')
+        return self.__str__()
 
     def __getattr__(self, name):
         """When a undefined attribute name is accessed, try to return
@@ -146,7 +154,7 @@ class NLGElement(object):
     @property
     def feature_names(self):
         """Return all feature names, the keys in the element feature dict."""
-        return self.features.keys()
+        return list(self.features.keys())
 
     @property
     def language(self):

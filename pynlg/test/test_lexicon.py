@@ -2,6 +2,8 @@
 
 """Test suite of the lexicon package"""
 
+from __future__ import unicode_literals
+
 import pytest
 
 from xml.etree import cElementTree as ET
@@ -36,28 +38,28 @@ def test_lexicon_supported_languages():
 def word_node():
     """Return an XML tree representing a word node."""
     word_node = ET.Element('word')
-    ET.SubElement(word_node, 'base').text = u'être'
-    ET.SubElement(word_node, 'category').text = u'verb'
-    ET.SubElement(word_node, 'id').text = u'E0012152'
-    ET.SubElement(word_node, 'present1s').text = u'suis'
-    ET.SubElement(word_node, 'present2s').text = u'es'
-    ET.SubElement(word_node, 'present3s').text = u'est'
-    ET.SubElement(word_node, 'present1p').text = u'sommes'
-    ET.SubElement(word_node, 'present2p').text = u'êtes'
-    ET.SubElement(word_node, 'present3p').text = u'sont'
-    ET.SubElement(word_node, 'imperative2s').text = u'sois'
-    ET.SubElement(word_node, 'imperative1p').text = u'soyons'
-    ET.SubElement(word_node, 'imperative2p').text = u'soyez'
-    ET.SubElement(word_node, 'future_radical').text = u'ser'
-    ET.SubElement(word_node, 'imparfait_radical').text = u'êt'
-    ET.SubElement(word_node, 'pastParticiple').text = u'été'
-    ET.SubElement(word_node, 'presentParticiple').text = u'étant'
-    ET.SubElement(word_node, 'subjunctive1s').text = u'sois'
-    ET.SubElement(word_node, 'subjunctive2s').text = u'sois'
-    ET.SubElement(word_node, 'subjunctive3s').text = u'soit'
-    ET.SubElement(word_node, 'subjunctive1p').text = u'soyons'
-    ET.SubElement(word_node, 'subjunctive2p').text = u'soyez'
-    ET.SubElement(word_node, 'subjunctive3p').text = u'soient'
+    ET.SubElement(word_node, 'base').text = 'être'
+    ET.SubElement(word_node, 'category').text = 'verb'
+    ET.SubElement(word_node, 'id').text = 'E0012152'
+    ET.SubElement(word_node, 'present1s').text = 'suis'
+    ET.SubElement(word_node, 'present2s').text = 'es'
+    ET.SubElement(word_node, 'present3s').text = 'est'
+    ET.SubElement(word_node, 'present1p').text = 'sommes'
+    ET.SubElement(word_node, 'present2p').text = 'êtes'
+    ET.SubElement(word_node, 'present3p').text = 'sont'
+    ET.SubElement(word_node, 'imperative2s').text = 'sois'
+    ET.SubElement(word_node, 'imperative1p').text = 'soyons'
+    ET.SubElement(word_node, 'imperative2p').text = 'soyez'
+    ET.SubElement(word_node, 'future_radical').text = 'ser'
+    ET.SubElement(word_node, 'imparfait_radical').text = 'êt'
+    ET.SubElement(word_node, 'pastParticiple').text = 'été'
+    ET.SubElement(word_node, 'presentParticiple').text = 'étant'
+    ET.SubElement(word_node, 'subjunctive1s').text = 'sois'
+    ET.SubElement(word_node, 'subjunctive2s').text = 'sois'
+    ET.SubElement(word_node, 'subjunctive3s').text = 'soit'
+    ET.SubElement(word_node, 'subjunctive1p').text = 'soyons'
+    ET.SubElement(word_node, 'subjunctive2p').text = 'soyez'
+    ET.SubElement(word_node, 'subjunctive3p').text = 'soient'
     ET.SubElement(word_node, 'copular')
     return word_node
 
@@ -70,11 +72,11 @@ def test_indexed(empty_lexicon_fr, lexicon_fr):
 def test_word_from_node(empty_lexicon_fr, word_node):
     word_elt = empty_lexicon_fr.word_from_node(word_node)
     assert isinstance(word_elt, WordElement)
-    assert word_elt.id == u'E0012152'
-    assert word_elt.base_form == u'être'
-    assert word_elt.category == u'VERB'
-    assert word_elt['present1s'] == u'suis'
-    assert word_elt['present2s'] == u'es'
+    assert word_elt.id == 'E0012152'
+    assert word_elt.base_form == 'être'
+    assert word_elt.category == 'VERB'
+    assert word_elt['present1s'] == 'suis'
+    assert word_elt['present2s'] == 'es'
     assert word_elt['copular'] is True
     assert word_elt.default_inflection_variant == 'reg'
     assert word_elt.inflection_variants == ['reg']
@@ -89,10 +91,10 @@ def test_index_word(empty_lexicon_fr, word_node):
     assert not lex.variant_index
     assert not lex.category_index
     lex.index_word(word_elt)
-    assert lex.id_index[u'E0012152'] == word_elt
-    assert lex.base_index[u'être'] == [word_elt]
-    assert lex.variant_index[u'être'] == [word_elt]
-    assert lex.category_index[u'VERB'] == [word_elt]
+    assert lex.id_index['E0012152'] == word_elt
+    assert lex.base_index['être'] == [word_elt]
+    assert lex.variant_index['être'] == [word_elt]
+    assert lex.category_index['VERB'] == [word_elt]
 
 
 def test_index_lexicon(lexicon_fr):
@@ -104,10 +106,10 @@ def test_index_lexicon(lexicon_fr):
 
 
 @pytest.mark.parametrize("word_base_form, category, expected", [
-    (u'son', ANY, 2),
-    (u'son', NOUN, 1),
-    (u'son', DETERMINER, 1),
-    (u'son', VERB, 0),
+    ('son', ANY, 2),
+    ('son', NOUN, 1),
+    ('son', DETERMINER, 1),
+    ('son', VERB, 0),
 ])
 def test_lookup(lexicon_fr, word_base_form, category, expected):
     assert len(
@@ -115,14 +117,14 @@ def test_lookup(lexicon_fr, word_base_form, category, expected):
 
 
 def test_lookup_null_return(lexicon_fr):
-    assert lexicon_fr.get(u'BLAH', create_if_missing=False) is None
+    assert lexicon_fr.get('BLAH', create_if_missing=False) is None
 
 
 @pytest.mark.parametrize("word_base_form, auto_create, expected", [
-    (u'son', True, 2),
-    (u'son', False, 2),
-    (u'GRUB', False, 0),  # will not automatically be created
-    (u'GRUB', True, 1),  # will automatically be created
+    ('son', True, 2),
+    ('son', False, 2),
+    ('GRUB', False, 0),  # will not automatically be created
+    ('GRUB', True, 1),  # will automatically be created
 ])
 def test_getitem(lexicon_fr, word_base_form, auto_create, expected):
     matches = lexicon_fr.get(word_base_form, create_if_missing=auto_create)
@@ -131,17 +133,17 @@ def test_getitem(lexicon_fr, word_base_form, auto_create, expected):
 
 @pytest.mark.incomplete('The variant index is not yet complete!')
 def test_contains(lexicon_fr):
-    assert u'son' in lexicon_fr
-    assert u'vache_1' in lexicon_fr
+    assert 'son' in lexicon_fr
+    assert 'vache_1' in lexicon_fr
     # assert SOME_VARIANT in lexicon_fr
-    assert u'BLAHBLAH' not in lexicon_fr
+    assert 'BLAHBLAH' not in lexicon_fr
     # check that last call did not have any side effect
-    assert u'BLAHBLAH' not in lexicon_fr
+    assert 'BLAHBLAH' not in lexicon_fr
 
 
 @pytest.mark.parametrize("word_feature, expected_base_form", [
-    (u'manger', u'manger'),
-    (u'vache_1', u'vache'),
+    ('manger', 'manger'),
+    ('vache_1', 'vache'),
 ])
 def test_get(lexicon_fr, word_feature, expected_base_form):
     assert lexicon_fr.get(word_feature)[0].base_form == expected_base_form
@@ -184,7 +186,7 @@ def test_features3(lexicon_en):
 
 
 def test_features4(lexicon_en):
-    quickly = lexicon_en.first(u'E0051632')
+    quickly = lexicon_en.first('E0051632')
     assert quickly.base_form == 'quickly'
     assert quickly.category == ADVERB
     assert quickly.verb_modifier
@@ -193,11 +195,11 @@ def test_features4(lexicon_en):
 
 
 def test_independant_words(lexicon_fr):
-    le1 = lexicon_fr.first(u'le')
-    le2 = lexicon_fr.first(u'le')
+    le1 = lexicon_fr.first('le')
+    le2 = lexicon_fr.first('le')
     assert le1 is not le2
-    le1.realisation = u"l'"
-    assert le2.realisation == u"le"
+    le1.realisation = "l'"
+    assert le2.realisation == 'le'
 
 
 @pytest.mark.parametrize('d1, d2, expected', [
@@ -219,4 +221,4 @@ def test_find_by_features(lexicon_fr):
         DISCOURSE_FUNCTION: SUBJECT
     }
     word = lexicon_fr.find_by_features(features, category=PRONOUN)
-    assert word.base_form == u"je"
+    assert word.base_form == 'je'

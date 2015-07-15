@@ -39,7 +39,7 @@ class ListElement(NLGElement):
                 self.features.update(element.features)
                 self.append(element)
 
-    def __nonzero__(self):
+    def __bool__(self):
         return bool(len(self))
 
     def __len__(self):

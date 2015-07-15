@@ -2,30 +2,18 @@
 
 """Defintion of element classes related to words"""
 
-from xml.etree import cElementTree as ET
+from __future__ import unicode_literals
 
 from .base import NLGElement
 from .string import StringElement
 from ..lexicon.feature.lexical import (DEFAULT_INFL, DEFAULT_SPELL, INFLECTIONS,
                                        SPELL_VARS)
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
-from ..lexicon.feature.category import (
-    ANY, PRONOUN, NOUN, VERB, ADJECTIVE, ADVERB, DETERMINER)
+from ..lexicon.feature.category import (ANY, NOUN, ADJECTIVE, DETERMINER)
 from ..util import get_morphology_rules
 
 
-class WordReprMixin(object):
-
-    """Class defining the behaviour of a word."""
-
-    def __unicode__(self):
-        return u"<%s [%s:%s]>" % (
-            self.__class__.__name__,
-            self.base_form,
-            self.category if self.category else u'no category')
-
-
-class WordElement(WordReprMixin, NLGElement):
+class WordElement(NLGElement):
 
     """Element defining rules and behaviour for a word."""
 
@@ -53,6 +41,15 @@ class WordElement(WordReprMixin, NLGElement):
                 and self.features == other.features
             )
         return False
+
+    def __hash__(self):
+        return super(WordElement, self).__hash__()
+
+    def __unicode__(self):
+        return "<%s [%s:%s]>" % (
+            self.__class__.__name__,
+            self.base_form,
+            self.category if self.category else 'no category')
 
     @property
     def default_inflection_variant(self):
@@ -89,20 +86,6 @@ class WordElement(WordReprMixin, NLGElement):
     def default_spelling_variant(self, variant):
         self.features[DEFAULT_SPELL] = variant
 
-    def to_xml(self, pretty=False):
-        """Export the WordElement to an XML string stucture."""
-        word_tree = ET.Element('word')
-        if self.base_form is not None:
-            base = ET.SubElement(word_tree, 'base')
-            base.text = self.base_form
-        if self.category != ANY:
-            cat = ET.SubElement(word_tree, 'category')
-            cat.text = self.category
-        if self.id is not None:
-            _id = ET.SubElement(word_tree, 'id')
-            _id.text = self.id
-        return ET.tostring(word_tree, encoding='utf-8')
-
     def realise_syntax(self):
         if not self.elided:
             infl = InflectedWordElement(word=self)
@@ -117,7 +100,7 @@ class WordElement(WordReprMixin, NLGElement):
         return InflectedWordElement(word=self, category=category, features=features)
 
 
-class InflectedWordElement(WordReprMixin, NLGElement):
+class InflectedWordElement(NLGElement):
 
     """An InflectedWordElement wraps a base WordElement and some features,
     and is in charge of the realisation of the word, given the features.
@@ -154,6 +137,12 @@ class InflectedWordElement(WordReprMixin, NLGElement):
             self.category = word.category
         else:
             self.category = ANY
+
+    def __unicode__(self):
+        return u"<%s [%s:%s]>" % (
+            self.__class__.__name__,
+            self.base_form,
+            self.category if self.category else u'no category')
 
     @property
     def parent(self):

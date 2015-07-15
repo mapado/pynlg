@@ -2,11 +2,14 @@
 
 """Definition of features related to French pronouns"""
 
-PERSONAL = u"personal"
-SPECIAL_PERSONAL = u"special_personal"
-SNUMERAL = u"snumeral"
-POSSESSIVE = u"possessive"
-DEMONSTRATIVE = u"demonstrative"
-RELATIVE = u"relative"
-INTERROGATIVE = u"interrogative"
-INDEFINITE = u"indefinite"
+from __future__ import unicode_literals
+
+
+PERSONAL = "personal"
+SPECIAL_PERSONAL = "special_personal"
+SNUMERAL = "snumeral"
+POSSESSIVE = "possessive"
+DEMONSTRATIVE = "demonstrative"
+RELATIVE = "relative"
+INTERROGATIVE = "interrogative"
+INDEFINITE = "indefinite"

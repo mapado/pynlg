@@ -8,6 +8,9 @@ refondue par André Goosse, 8e tirage, Éditions Duculot, Louvain-la-Neuve,
 Belgique.
 
 """
+
+from __future__ import unicode_literals
+
 import re
 
 from ..spec.word import InflectedWordElement
@@ -22,17 +25,17 @@ from ..lexicon.feature import ELIDED
 from ..lexicon.feature.gender import FEMININE
 
 VOWELS_RE = re.compile(
-    ur'a|A|ä|Ä|à|À|â|Â|'
-    ur'e|E|ë|Ë|é|É|è|È|ê|Ê|'
-    ur'i|I|ï|Ï|î|Î|'
-    ur'o|O|ô|Ô|'
-    ur'u|U|û|Û|ü|Ü|ù|Ù|'
-    ur'y|Y|ý|Ý|ÿ|Ÿ|'
-    ur'h|H')  # special case of aspired h
+    r'a|A|ä|Ä|à|À|â|Â|'
+    r'e|E|ë|Ë|é|É|è|È|ê|Ê|'
+    r'i|I|ï|Ï|î|Î|'
+    r'o|O|ô|Ô|'
+    r'u|U|û|Û|ü|Ü|ù|Ù|'
+    r'y|Y|ý|Ý|ÿ|Ÿ|'
+    r'h|H')  # special case of aspired h
 
 # Matches le, les, lequel, lesquel, lesquelles
-LE_LEQUEL_RE = re.compile(ur'le(quel)?')
-LES_LESQUELS_RE = re.compile(ur'les(quel(le)?s)?')
+LE_LEQUEL_RE = re.compile(r'le(quel)?')
+LES_LESQUELS_RE = re.compile(r'les(quel(le)?s)?')
 
 
 def match(pattern, word):
@@ -120,7 +123,7 @@ def replace_a_le_by_au(left_word, right_word):
     """
     _bind_words(
         left_word, right_word,
-        left_pattern=ur'à$',
+        left_pattern=r'à$',
         singular_right_pattern=LE_LEQUEL_RE,
         singular_replacement='au',
         plural_right_pattern=LES_LESQUELS_RE,

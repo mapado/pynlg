@@ -4,9 +4,8 @@
 
 import pytest
 
-from ..spec.phrase import PhraseElement, AdjectivePhraseElement
-from ..lexicon.feature.internal import HEAD
-from ..lexicon.feature.category import ADJECTIVE_PHRASE, ADJECTIVE
+from ..spec.phrase import AdjectivePhraseElement
+from ..lexicon.feature.category import ADJECTIVE
 
 
 @pytest.fixture

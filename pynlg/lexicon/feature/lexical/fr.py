@@ -2,6 +2,9 @@
 
 """Definition of french lexical features."""
 
+from __future__ import unicode_literals
+
+
 #    * <p>
 #    * This feature gives the noun of the opposite gender corresponding to a
 #    * noun. For example, the feminine of <em>chien</em> is <em>chienne</em>.

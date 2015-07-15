@@ -2,5 +2,7 @@
 
 """Definition of clause related features."""
 
-MATRIX = u"matrix"
-SUBORDINATE = u"subordinate"
+from __future__ import unicode_literals
+
+MATRIX = "matrix"
+SUBORDINATE = "subordinate"

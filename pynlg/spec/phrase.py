@@ -4,6 +4,7 @@
 
 TODO
 """
+import six
 
 from .base import NLGElement
 from .string import StringElement
@@ -155,7 +156,7 @@ class AdjectivePhraseElement(PhraseElement):
 
     @adjective.setter
     def adjective(self, element):
-        if isinstance(element, basestring):
+        if isinstance(element, six.text_type):
             # Create a word, if not found in lexicon
             element = self.lexicon.first(element, category=cat.ADJECTIVE)
             if not element:

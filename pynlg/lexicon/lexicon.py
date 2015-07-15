@@ -2,8 +2,9 @@
 
 """Definition of the lexicon handlers."""
 
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
+import six
 import random
 
 from copy import deepcopy
@@ -12,7 +13,6 @@ from xml.etree import cElementTree as ElementTree
 from os.path import join, dirname, abspath, exists
 
 from .feature.category import ANY
-from ..util import ensure_unicode as u
 from ..exc import UnhandledLanguage
 from ..spec.word import WordElement
 
@@ -161,12 +161,12 @@ class Lexicon(object):
         word = WordElement(base_form=None, category=None, id=None, lexicon=self)
         inflections = []
         for feature_node in word_node:
-            feature_name = u(feature_node.tag.strip())
+            feature_name = six.text_type(feature_node.tag.strip())
             feature_value = feature_node.text
             assert bool(feature_name), "empty feature_name for word_node %s" % (
                 feature_value)
             if feature_value is not None:
-                feature_value = u(feature_value.strip())
+                feature_value = six.text_type(feature_value.strip())
 
             # Set word base_form, id, category, inflection codes and features
             if feature_name == self.BASE:
@@ -185,12 +185,12 @@ class Lexicon(object):
                 word[feature_name] = feature_value
 
         # If no inflection is specified, assume the word is regular
-        inflections = inflections or [u'reg']
+        inflections = inflections or ['reg']
 
         # The default inflection code is "reg" if we have it, else we take
         # random pick from the available inflection codes
-        if u'reg' in inflections:
-            default_inflection = u'reg'
+        if 'reg' in inflections:
+            default_inflection = 'reg'
         else:
             default_inflection = random.choice(inflections)
 
@@ -229,8 +229,8 @@ class Lexicon(object):
 
     @staticmethod
     def is_dict_subset(d1, d2):
-        s1 = {(k, v) for k, v in d1.iteritems()}
-        s2 = {(k, v) for k, v in d2.iteritems() if k in d1}
+        s1 = {(k, v) for k, v in d1.items()}
+        s2 = {(k, v) for k, v in d2.items() if k in d1}
         return s1 == s2
 
     def find_by_features(self, features, category=ANY):

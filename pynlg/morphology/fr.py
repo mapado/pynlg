@@ -2,6 +2,7 @@
 
 """Definition of French morphology rules."""
 
+
 import re
 
 from collections import namedtuple
@@ -37,7 +38,7 @@ class FrenchMorphologyRules(object):
 
     """
 
-    a_o_regex = ur'(a|ä|à|â|o|ô)'
+    a_o_regex = r'(a|ä|à|â|o|ô)'
 
     @staticmethod
     def get_base_form(element, base_word):
@@ -73,7 +74,7 @@ class FrenchMorphologyRules(object):
         element = old_element.lexicon.first(
             new_element_base_form,
             category=old_element.category)
-        for feature, value in features.iteritems():
+        for feature, value in features.items():
             if feature not in element.features:
                 element.features[feature] = value
         return element
