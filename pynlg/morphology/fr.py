@@ -12,18 +12,18 @@ from ..lexicon.feature.discourse import (
     OBJECT, COMPLEMENT, SUBJECT, INDIRECT_OBJECT)
 from ..lexicon.feature.category import (
     VERB_PHRASE, NOUN, VERB, PREPOSITIONAL_PHRASE, NOUN_PHRASE, PRONOUN, CLAUSE)
-from ..lexicon.feature.lexical import (
-    PRESENT_PARTICIPLE, PAST_PARTICIPLE, REFLEXIVE, GENDER)
+from ..lexicon.feature.lexical import REFLEXIVE, GENDER
 from ..lexicon.feature.pronoun import PERSONAL, RELATIVE
 from ..lexicon.feature.lexical.fr import PRONOUN_TYPE, DETACHED
 from ..lexicon.feature.person import FIRST, SECOND, THIRD
 from ..lexicon.feature.form import IMPERATIVE
 from ..lexicon.feature.number import SINGULAR, PLURAL, BOTH
-from ..lexicon.feature.tense import PRESENT, FUTURE, CONDITIONAL
+from ..lexicon.feature.tense import PRESENT, FUTURE, CONDITIONAL, PAST
 from ..lexicon.feature import PERSON, NUMBER
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
 from ..lexicon.feature.form import (
-    BARE_INFINITIVE, SUBJUNCTIVE, GERUND, INFINITIVE)
+    BARE_INFINITIVE, SUBJUNCTIVE, GERUND, INFINITIVE, PRESENT_PARTICIPLE,
+    PAST_PARTICIPLE, INDICATIVE)
 from ..spec.string import StringElement
 
 
@@ -363,6 +363,13 @@ class FrenchMorphologyRules(object):
             else:
                 suffix = u'aient'
         return u'%s%s' % (radical, suffix)
+
+    def build_past_verb(self, radical, person, number):
+        """Return the past form for regular verb, using argument
+        person and number.
+
+        """
+        return self.build_conditional_verb(radical, person, number)
 
     def get_imperfect_pres_part_radical(self, element, base_word, base_form):
         """Gets or builds the radical used for "imparfait" and present participle."""
@@ -704,7 +711,6 @@ class FrenchMorphologyRules(object):
         Return a StringElement which realisaton is the morphed verb.
 
         """
-        realised = None  # need?
         number = element.number or SINGULAR
         person = element.person or THIRD
         gender = element.gender or MASCULINE
@@ -729,18 +735,22 @@ class FrenchMorphologyRules(object):
         elif form == SUBJUNCTIVE:
             realised = self.realise_verb_subjunctive(
                 element, base_word, base_form, person, number)
+        elif form == IMPERATIVE:
+            realised = self.realise_verb_imperative(
+                element, base_word, base_form, person, number)
         elif tense == PRESENT:
             realised = self.realise_verb_present(
                 element, base_word, base_form, person, number)
-        elif form == IMPERATIVE:
-            realised = self.realise_verb_imperative_or_present(
-                element, base_word, base_form, person, number)
         elif tense in [CONDITIONAL, FUTURE]:
-            radical = self.get_conditional_or_future_radical(element, base_form, base_word)
+            radical = self.get_conditional_or_future_radical(element, base_word, base_form)
             if tense == CONDITIONAL:
-                realised = self.build_conditional_verb(radical, number, person)
+                realised = self.build_conditional_verb(radical, person, number)
             else:
-                realised = self.build_future_verb(radical, number, person)
+                realised = self.build_future_verb(radical, person, number)
+        elif tense == PAST:
+            radical = self.get_imperfect_pres_part_radical(
+                element, base_word, base_form)
+            realised = self.build_past_verb(radical, person, number)
 
         realised = '%s%s' % (realised, element.particle)
         return StringElement(string=realised, word=element)

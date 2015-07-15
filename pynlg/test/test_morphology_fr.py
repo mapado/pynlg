@@ -6,6 +6,7 @@ import pytest
 
 from ..morphology.fr import FrenchMorphologyRules
 from ..spec.phrase import PhraseElement
+from ..spec.string import StringElement
 from ..lexicon.feature.category import ADJECTIVE, VERB_PHRASE, NOUN_PHRASE, VERB
 from ..lexicon.feature.lexical import GENDER
 from ..lexicon.feature import NUMBER, IS_COMPARATIVE
@@ -14,6 +15,11 @@ from ..lexicon.feature.number import PLURAL, SINGULAR, BOTH
 from ..lexicon.feature.discourse import OBJECT, PRE_MODIFIER, FRONT_MODIFIER, POST_MODIFIER
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION, COMPLEMENTS
 from ..lexicon.feature.person import FIRST, SECOND, THIRD
+from ..lexicon.feature.tense import PRESENT, PAST, FUTURE, CONDITIONAL
+from ..lexicon.feature.form import (
+    BARE_INFINITIVE, SUBJUNCTIVE, GERUND, INFINITIVE,
+    PRESENT_PARTICIPLE, PAST_PARTICIPLE, INDICATIVE, IMPERATIVE)
+from ..lexicon.feature import PERSON, TENSE, FORM
 
 
 @pytest.fixture
@@ -489,3 +495,55 @@ def test_build_verb_conditional(morph_rules_fr, radical, person, number, expecte
     cond = morph_rules_fr.build_conditional_verb(
         radical=radical, number=number, person=person)
     assert cond == expected
+
+
+@pytest.mark.parametrize('radical, person, number, expected', [
+    (u'aimer', FIRST, SINGULAR, u'aimerais'),
+    (u'aimer', SECOND, SINGULAR, u'aimerais'),
+    (u'aimer', THIRD, SINGULAR, u'aimerait'),
+    (u'aimer', FIRST, BOTH, u'aimerais'),
+    (u'aimer', SECOND, BOTH, u'aimerais'),
+    (u'aimer', THIRD, BOTH, u'aimerait'),
+    (u'aimer', FIRST, PLURAL, u'aimerions'),
+    (u'aimer', SECOND, PLURAL, u'aimeriez'),
+    (u'aimer', THIRD, PLURAL, u'aimeraient'),
+])
+def test_build_verb_past(morph_rules_fr, radical, person, number, expected):
+    past = morph_rules_fr.build_past_verb(
+        radical=radical, number=number, person=person)
+    assert past == expected
+
+
+@pytest.mark.parametrize('word, tense, form, gender, person, number, expected', [
+    (u'aimer', PRESENT, INDICATIVE, None, FIRST, SINGULAR, u'aime'),
+    (u'aimer', PRESENT, INDICATIVE, MASCULINE, FIRST, SINGULAR, u'aime'),
+    (u'aimer', FUTURE, INDICATIVE, MASCULINE, FIRST, SINGULAR, u'aimerai'),
+    (u'aimer', PAST, INDICATIVE, MASCULINE, FIRST, SINGULAR, u'aimais'),
+    (u'aimer', CONDITIONAL, INDICATIVE, MASCULINE, FIRST, SINGULAR, u'aimerais'),
+    (u'aimer', None, BARE_INFINITIVE, MASCULINE, FIRST, SINGULAR, u'aimer'),
+    (u'aimer', None, INFINITIVE, MASCULINE, FIRST, SINGULAR, u'aimer'),
+    (u'aimer', None, PRESENT_PARTICIPLE, None, FIRST, SINGULAR, u'aimant'),
+    (u'aimer', None, PRESENT_PARTICIPLE, MASCULINE, FIRST, SINGULAR, u'aimant'),
+    (u'aimer', None, PRESENT_PARTICIPLE, FEMININE, FIRST, SINGULAR, u'aimante'),
+    (u'aimer', None, GERUND, None, FIRST, SINGULAR, u'aimant'),
+    (u'aimer', None, GERUND, MASCULINE, FIRST, SINGULAR, u'aimant'),
+    (u'aimer', None, GERUND, FEMININE, FIRST, SINGULAR, u'aimante'),
+    (u'aimer', None, PAST_PARTICIPLE, None, FIRST, SINGULAR, u'aimé'),
+    (u'aimer', None, PAST_PARTICIPLE, MASCULINE, FIRST, SINGULAR, u'aimé'),
+    (u'aimer', None, PAST_PARTICIPLE, FEMININE, FIRST, SINGULAR, u'aimée'),
+    (u'aimer', None, SUBJUNCTIVE, FEMININE, FIRST, SINGULAR, u'aime'),
+    (u'aimer', None, IMPERATIVE, FEMININE, FIRST, PLURAL, u'aimons'),
+])
+def test_morph_verb(
+        lexicon_fr, morph_rules_fr, word, tense, form, gender, person, number, expected):
+    verb = lexicon_fr.first(word, category=VERB)
+    verb.features.update({
+        GENDER: gender,
+        TENSE: tense,
+        NUMBER: number,
+        PERSON: person,
+        FORM: form,
+    })
+    realised = morph_rules_fr.morph_verb(verb, base_word=verb)
+    assert isinstance(realised, StringElement)
+    assert realised.realisation == expected
