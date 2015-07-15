@@ -717,7 +717,7 @@ class FrenchMorphologyRules(object):
         tense = element.tense or PRESENT
         parent, agreement = self.get_verb_parent(element)
         base_form = self.get_base_form(element, base_word)
-        form = element.form
+        form = element.form or INDICATIVE
 
         if element.form in [PRESENT_PARTICIPLE, PAST_PARTICIPLE] and agreement:
             gender, number = parent.gender, parent.number
