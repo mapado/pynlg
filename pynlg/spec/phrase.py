@@ -66,7 +66,7 @@ class PhraseElement(NLGElement):
             children.extend(self.verb_phrase or [])
             children.extend(self.complements or [])
         elif self.category == cat.NOUN_PHRASE:
-            children.append(self.specified or [])
+            children.append(self.specifier or [])
             children.extend(self.premodifiers or [])
             children.append(self.head or [])
             children.extend(self.complements or [])
@@ -82,7 +82,7 @@ class PhraseElement(NLGElement):
             children.extend(self.complements or [])
             children.extend(self.postmodifiers or [])
 
-        children = [child for child in children if child]
+        children = (child for child in children if child)
         children = [
             StringElement(string=child)
             if not isinstance(child, NLGElement) else child
