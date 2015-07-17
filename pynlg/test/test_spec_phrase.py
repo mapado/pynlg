@@ -8,7 +8,7 @@ import pytest
 
 from ..spec.phrase import AdjectivePhraseElement, NounPhraseElement
 from ..lexicon.feature.category import ADJECTIVE, NOUN, DETERMINER
-from ..lexicon.feature.discourse import SPECIFIER, HEAD
+from ..lexicon.feature.discourse import SPECIFIER
 
 
 @pytest.fixture
@@ -67,3 +67,17 @@ def test_noun_phrase_children(lexicon_fr, noun_phrase):
     assert beau.discourse_function is None  # should it be None?
     assert endroit.discourse_function is None  # should it be None?
     assert perdu.discourse_function is None  # should it be None?
+
+
+def test_get_set_noun_phrase_noun(lexicon_fr, noun_phrase):
+    noun = lexicon_fr.first('maison', category=NOUN)
+    noun_phrase.noun = noun
+    assert noun_phrase.head == noun
+    assert noun_phrase.noun == noun
+
+
+def test_get_set_noun_phrase_pronoun(lexicon_fr, noun_phrase):
+    pronoun = lexicon_fr.first('celui-ci', category=NOUN)
+    noun_phrase.pronoun = pronoun
+    assert noun_phrase.head == pronoun
+    assert noun_phrase.pronoun == pronoun
