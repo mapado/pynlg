@@ -586,7 +586,7 @@ class FrenchMorphologyRules(object):
             gender = element.gender
 
         # plural form
-        if parent.is_plural or element.is_plural:
+        if (parent and parent.is_plural) or element.is_plural:
             if gender == FEMININE and element.feminine_plural:
                 inflected_form = element.feminine_plural
             else:
@@ -695,7 +695,11 @@ class FrenchMorphologyRules(object):
         base_form = self.get_base_form(element, base_word)
         base_word = element.base_word or base_word
 
-        if (element.parent.is_plural or element.is_plural) and not element.proper:
+        if (
+                (element.parent and element.parent.is_plural
+                 or element.is_plural) and not
+                element.proper
+        ):
             if element.plural and base_word:
                 realised = base_word.plural
             else:
