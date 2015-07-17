@@ -107,7 +107,10 @@ class NLGElement(object):
             self.features)
 
     def __repr__(self):
-        return self.__str__()
+        return "<%s {realisation=%s, category=%s}>" % (
+            self.__class__.__name__,
+            self.realisation,
+            self.category)
 
     def __getattr__(self, name):
         """When a undefined attribute name is accessed, try to return

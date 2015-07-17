@@ -107,5 +107,5 @@ class ListElement(NLGElement):
         realisations = [element.realise_morphology() for element in self]
         return ListElement(realisations)
 
-    def realise_orthograpphy(self):
+    def realise_orthography(self):
         raise NotImplementedError

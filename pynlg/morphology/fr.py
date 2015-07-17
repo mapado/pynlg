@@ -580,7 +580,7 @@ class FrenchMorphologyRules(object):
 
         """
         parent = element.parent
-        if parent:
+        if parent and parent.gender:
             gender = parent.gender
         else:
             gender = element.gender

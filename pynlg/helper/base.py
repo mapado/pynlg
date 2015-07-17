@@ -30,16 +30,14 @@ class PhraseHelper(object):
         is kept unchanged.
 
         """
-        realised_list = ListElement(realised_element)
+        element_list = element_list or []
         for element in element_list:
             element = element.realise_syntax()
             if not element:
                 continue
             if discourse_function:
                 element.features[DISCOURSE_FUNCTION] = discourse_function
-            realised_list.append(element)
-        if realised_list.children:
-            realised_element.add_component(realised_list)
+            realised_element.append(element)
 
     def realise_head(self, phrase, realised_element):
         """Realise the head of the phrase."""
@@ -51,7 +49,7 @@ class PhraseHelper(object):
                 head.features[IS_SUPERLATIVE] = phrase.is_superlative
             head = head.realise_syntax()
             head.features[DISCOURSE_FUNCTION] = HEAD
-            realised_element.add_component(head)
+            realised_element.append(head)
 
     def realise_complements(phrase, realised_element):
         """Realises the complements of the phrase."""
@@ -81,14 +79,14 @@ class PhraseHelper(object):
         """
         realised = None
         if phrase:
-            realised = ListElement(phrase)
+            realised = ListElement()
             self.realise_list(realised_element=realised,
                               element_list=phrase.pre_modifiers,
                               discourse_funtion=PRE_MODIFIER)
             self.realise_head(phrase=phrase, realised_element=realised)
             self.realise_complements(phrase=phrase, realised_element=realised)
             self.realise_list(realised_element=realised,
-                              element_list=phrase.post_modifiers,
+                              element_list=phrase.postmodifiers,
                               discourse_funtion=POST_MODIFIER)
         return realised
 
@@ -101,7 +99,7 @@ class PhraseHelper(object):
         return False
 
 
-class NounPhraseHelper(object):
+class NounPhraseHelper(PhraseHelper):
 
     """Base class for all languages noun phrase helpers."""
 
@@ -124,15 +122,6 @@ class NounPhraseHelper(object):
         head.passive = phrase.passive
         head.discourse_function = phrase.discourse_function
         realised.append(head)
-
-    def realise_premodifiers(self, phrase, realised):
-        """TODO
-
-        : param realised: the current realised ListElement
-
-        """
-        # TODO: improve kwargs, fix API? Implement phrase helper
-        # phrase.helper.realise_list(realised, phrase.pre_modifiers, PRE_MODIFIER)
 
     def realise_specifier(self, phrase, realised):
         """Realise the phrase specifier and add it to the argument
@@ -158,19 +147,21 @@ class NounPhraseHelper(object):
     def realise(self, phrase):
         realised_element = None
         if phrase and not phrase.elided:
-            realised_element = ListElement(phrase)
+            realised_element = ListElement()
             # Creates the appropriate pronoun if the noun phrase
             # is pronominal.
             if phrase.pronominal:
                 realised_element.append(self.create_pronoun(phrase))
             else:
                 self.realise_specifier(phrase, realised_element)
-                self.realise_pre_modifiers(phrase, realised_element)
+                phrase.helper.realise_list(realised_element,
+                                           element_list=phrase.premodifiers,
+                                           discourse_function=PRE_MODIFIER)
                 self.realise_head_noun(phrase, realised_element)
                 phrase.helper.realise_list(realised_element,
                                            element_list=phrase.complements,
                                            discourse_function=COMPLEMENT)
                 phrase.helper.realise_list(realised_element,
-                                           element_list=phrase.post_modifiers,
+                                           element_list=phrase.postmodifiers,
                                            discourse_function=POST_MODIFIER)
         return realised_element

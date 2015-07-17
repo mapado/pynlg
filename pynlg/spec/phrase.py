@@ -143,6 +143,9 @@ class PhraseElement(NLGElement):
         current_pre_modifiers.append(new_pre_modifier)
         self.premodifiers = current_pre_modifiers
 
+    def realise(self):
+        return self.helper.realise(phrase=self)
+
 
 class AdjectivePhraseElement(PhraseElement):
 

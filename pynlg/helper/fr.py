@@ -10,7 +10,7 @@ from ..spec.word import WordElement, InflectedWordElement
 from ..spec.string import StringElement
 from ..spec.list import ListElement
 from ..spec.phrase import AdjectivePhraseElement, NounPhraseElement
-from ..lexicon.feature.category import PRONOUN, ADJECTIVE, DETERMINER
+from ..lexicon.feature.category import PRONOUN, ADJECTIVE, DETERMINER, COMPLEMENTISER
 from ..lexicon.feature import PERSON, NUMBER
 from ..lexicon.feature.lexical import GENDER
 from ..lexicon.feature.person import THIRD
@@ -130,10 +130,7 @@ class FrenchNounPhraseHelper(NounPhraseHelper):
                 return
         # Extract WordElement if modifier is a single word
         else:
-            if isinstance(modifier_element, InflectedWordElement):
-                modifier_word = modifier_element.base_word
-            else:
-                modifier_word = modifier_element
+            modifier_word = modifier_element
             #  check if modifier is an adjective
             if (
                     modifier_word
@@ -147,7 +144,7 @@ class FrenchNounPhraseHelper(NounPhraseHelper):
         phrase.add_post_modifier(modifier_element)
 
     def realise(self, phrase):
-        realised = ListElement(phrase)
+        realised = ListElement()
         # Creates the appropriate pronoun if the noun phrase
         # is pronominal.
         if phrase.pronominal:
@@ -155,6 +152,8 @@ class FrenchNounPhraseHelper(NounPhraseHelper):
             realised.append(pronoun)
         else:
             du = phrase.lexicon.first('du', category=DETERMINER)
+            un = phrase.lexicon.first('un', category=DETERMINER)
+            de = phrase.lexicon.first('de', category=COMPLEMENTISER)
             if not phrase.raised and phrase.specifier == du:
                 de = phrase.lexicon.first('du', category=DETERMINER)
                 realised_de = de.realise_syntax()
@@ -163,10 +162,20 @@ class FrenchNounPhraseHelper(NounPhraseHelper):
                 sub_phrase = NounPhraseElement(phrase)
                 # if the noun phrase is the direct object of a negated verb,
                 # the determiner is reduced to "de" instead of "du"
-                if self.is_negated_phrase():
+                if self.is_negated_phrase(phrase):
                     new_determiner = None
                 else:
                     new_determiner = phrase.lexicon.get('le', category=DETERMINER)
                 sub_phrase.specifier = new_determiner
                 realised_subphrase = super(FrenchNounPhraseHelper, self).realise()
-                realised.append()
+                realised.append(realised_subphrase)
+            elif (
+                    not phrase.raised and
+                    phrase.specifier == un and
+                    self.is_negated_phrase(phrase)
+            ):
+                phrase.specifier = de
+                realised = super(FrenchNounPhraseHelper, self).realise(phrase)
+            else:
+                realised = super(FrenchNounPhraseHelper, self).realise(phrase)
+            return realised
