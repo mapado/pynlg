@@ -9,7 +9,8 @@ from .string import StringElement
 from ..lexicon.feature.lexical import (DEFAULT_INFL, DEFAULT_SPELL, INFLECTIONS,
                                        SPELL_VARS)
 from ..lexicon.feature.internal import DISCOURSE_FUNCTION
-from ..lexicon.feature.category import (ANY, NOUN, ADJECTIVE, DETERMINER)
+from ..lexicon.feature.category import (ANY, NOUN, ADJECTIVE, DETERMINER, VERB,
+                                        ADVERB, PRONOUN)
 from ..util import get_morphology_rules
 
 
@@ -184,5 +185,10 @@ class InflectedWordElement(NLGElement):
                 realised_element = rules.morph_adjective(self, base_word)
             elif self.category == DETERMINER:
                 realised_element = rules.morph_determiner(self)
-
+            elif self.category == VERB:
+                realised_element = rules.morph_verb(self, base_word)
+            elif self.category == ADVERB:
+                realised_element = rules.morph_adverb(self, base_word)
+            elif self.category == PRONOUN:
+                realised_element = rules.morph_adverb(self)
         return realised_element

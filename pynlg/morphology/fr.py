@@ -580,13 +580,13 @@ class FrenchMorphologyRules(object):
 
         """
         parent = element.parent
-        if parent:
+        if parent and parent.gender:
             gender = parent.gender
         else:
             gender = element.gender
 
         # plural form
-        if element.is_plural:
+        if (parent and parent.is_plural) or element.is_plural:
             if gender == FEMININE and element.feminine_plural:
                 inflected_form = element.feminine_plural
             else:
@@ -659,7 +659,7 @@ class FrenchMorphologyRules(object):
         #  The rules used here apply to the most general cases.
         #  Exceptions are meant to be specified in the lexicon or by the user
         #  by means of the FrenchLexicalFeature.FEMININE_SINGULAR feature.
-        if element.is_feminine:
+        if parent.is_feminine or element.is_feminine:
             realised = self.feminize_singular_element(element, realised)
 
         # Plural
@@ -667,8 +667,8 @@ class FrenchMorphologyRules(object):
         # Exceptions are meant to be specified in the lexicon or by the user
         # by means of the LexicalFeature.PLURAL and
         # FrenchLexicalFeature.FEMININE_PLURAL features.
-        if parent.is_plural:
-            if element.is_feminine:
+        if parent.is_plural or element.is_plural:
+            if parent.is_feminine or element.is_feminine:
                 if element.feminine_plural:
                     realised = element.feminine_plural
                 else:
@@ -695,7 +695,11 @@ class FrenchMorphologyRules(object):
         base_form = self.get_base_form(element, base_word)
         base_word = element.base_word or base_word
 
-        if element.is_plural and not element.proper:
+        if (
+                (element.parent and element.parent.is_plural
+                 or element.is_plural) and not
+                element.proper
+        ):
             if element.plural and base_word:
                 realised = base_word.plural
             else:

@@ -4,14 +4,42 @@ pynlg
 .. image:: https://travis-ci.org/mapado/pynlg.svg
     :target: https://travis-ci.org/mapado/pynlg
 
-``pynlg`` is a pure python re-implementation of `SimpleNLG-EnFr <https://github.com/rali-udem/SimpleNLG-EnFr>`_, a java library enabling bilingual `text surface realisation <https://en.wikipedia.org/wiki/Realization_%28linguistics%29>`_, based on `SimpleNLG <https://github.com/simplenlg/simplenlg>`_.
+``pynlg`` is a pure python re-implementation of `SimpleNLG-EnFr <https://github.com/rali-udem/SimpleNLG-EnFr>`_, a java library enabling french and english `text surface realisation <https://en.wikipedia.org/wiki/Realization_%28linguistics%29>`_, based on `SimpleNLG <https://github.com/simplenlg/simplenlg>`_.
+
+For more information about what SimpleNLG and SimpleNLG-EnFr, have a look at their documentation:
+
+- `SimpleNLG-EnFr <https://github.com/rali-udem/SimpleNLG-EnFr/blob/master/docs/SimpleNLG-EnFr_doc_francais.pdf>`_ (in french)
+- `SimpleNLG <https://github.com/simplenlg/simplenlg/wiki/Section-0-%E2%80%93-SimpleNLG-Tutorial>`_
 
 ``pynlg`` supports Python2.7 and 3.4. Python 3.3 should work, but is untested.
 
 Examples
 --------
 
-TODO
+Definition of a nominal sentence, with a feminine noun
+******************************************************
+
+.. code-block:: python
+
+    from pynlg.lexicon.fr import FrenchLexicon
+    from pynlg.lexicon.feature.category import NOUN, ADJECTIVE, DETERMINER
+    from pynlg.lexicon.feature.gender import FEMININE
+    from pynlg import make_noun_phrase
+
+    lex = FrenchLexicon()
+    un = lex.first(u'un', category=DETERMINER)
+    maison = lex.first(u'maison', category=NOUN)
+    maison = maison.inflex(gender=FEMININE)
+    beau = lex.first(u'beau', category=ADJECTIVE)
+    perdu = lex.first(u'perdu', category=ADJECTIVE)
+    phrase = make_noun_phrase(lexicon=lex, specifier=un, noun=maison, modifiers=[beau, perdu])
+    syntaxically_realised_phrase = phrase.realise()
+    morphologically_realised_phrase = syntaxically_realised_phrase.realise_morphology()
+    morphologically_realised_phrase.components
+    [<StringElement {realisation=une, category=DETERMINER}>,
+    <StringElement {realisation=belle, category=ADJECTIVE}>,
+    <StringElement {realisation=maison, category=CANNED_TEXT}>,
+    <StringElement {realisation=perdue, category=ADJECTIVE}>]
 
 Supported languages
 --------------------

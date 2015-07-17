@@ -2,17 +2,19 @@
 
 """Definition of the base class from which all spec elements inherit."""
 
-from __future__ import unicode_literals
 
 import six
 import os
 import importlib
 
+import platform
 from os.path import join, dirname, relpath
 
 from ..lexicon.feature import PARTICLE
 from ..lexicon.feature.number import PLURAL
 from ..lexicon.feature.gender import FEMININE
+
+PY3 = int(platform.python_version_tuple()[0]) == 3
 
 
 class FeatureModulesLoader(type):
@@ -100,14 +102,21 @@ class NLGElement(object):
             del self.features[feature_name]
 
     def __str__(self):
-        return "<%s {realisation=%s, category=%s, features=%s}>" % (
+        return "<{} (realisation={}, category={}, features={})>".format(
             self.__class__.__name__,
             self.realisation,
             self.category,
             self.features)
 
     def __repr__(self):
-        return self.__str__()
+        _repr = u"<{} (realisation={}, category={})>".format(
+            self.__class__.__name__,
+            self.realisation,
+            self.category)
+        if PY3:
+            return _repr
+        else:
+            return _repr.encode('utf-8')
 
     def __getattr__(self, name):
         """When a undefined attribute name is accessed, try to return
