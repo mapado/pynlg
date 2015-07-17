@@ -114,6 +114,7 @@ class NounPhraseHelper(PhraseHelper):
         if not head:
             return None
         head.realise_syntax()
+        head = InflectedWordElement(word=head)
         head.gender = phrase.gender
         head.acronym = phrase.acronym
         head.number = phrase.number
