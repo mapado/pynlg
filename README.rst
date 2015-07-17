@@ -1,6 +1,9 @@
 pynlg
 =====
 
+.. image:: https://travis-ci.org/mapado/pynlg.svg
+    :target: https://travis-ci.org/mapado/pynlg
+
 ``pynlg`` is a pure python re-implementation of `SimpleNLG-EnFr <https://github.com/rali-udem/SimpleNLG-EnFr>`_, a java library enabling french and english `text surface realisation <https://en.wikipedia.org/wiki/Realization_%28linguistics%29>`_, based on `SimpleNLG <https://github.com/simplenlg/simplenlg>`_.
 
 For more information about what SimpleNLG and SimpleNLG-EnFr, have a look at their documentation:
