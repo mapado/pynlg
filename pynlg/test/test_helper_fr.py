@@ -4,7 +4,7 @@
 
 import pytest
 
-from ..syntax.phrase.fr import FrenchNounPhraseHelper
+from ..helper.fr import FrenchNounPhraseHelper
 from ..spec.phrase import PhraseElement, AdjectivePhraseElement
 from ..spec.word import InflectedWordElement, WordElement
 from ..spec.string import StringElement
