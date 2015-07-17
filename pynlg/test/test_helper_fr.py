@@ -106,8 +106,8 @@ def test_add_pre_modifier_inflected_word(lexicon_fr, noun_helper_fr, phrase):
     word = lexicon_fr.first(u'même')  # meme is preposed
     infl = word.inflex(number='plural')
     noun_helper_fr.add_modifier(phrase, modifier=infl)
-    assert isinstance(phrase.premodifiers[0], WordElement)
-    assert phrase.premodifiers[0] == infl.base_word
+    assert isinstance(phrase.premodifiers[0], InflectedWordElement)
+    assert phrase.premodifiers[0] == infl
     assert not phrase.postmodifiers
 
 
