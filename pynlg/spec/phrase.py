@@ -10,6 +10,7 @@ from .base import NLGElement
 from .string import StringElement
 from .word import WordElement
 from ..lexicon.feature import ELIDED
+from ..util import get_phrase_helper
 from ..lexicon.feature import category as cat
 from ..lexicon.feature import internal
 from ..lexicon.feature import clause
@@ -25,6 +26,8 @@ class PhraseElement(NLGElement):
         """Create a phrase of the given type."""
         super(PhraseElement, self).__init__(category=category, lexicon=lexicon)
         self.features[ELIDED] = False
+        self.helper = get_phrase_helper(language=self.lexicon.language,
+                                        phrase_type='phrase')()
 
     @property
     def head(self):

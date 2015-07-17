@@ -5,6 +5,7 @@
 import importlib
 
 from .lexicon.lang import FRENCH, ENGLISH
+from .lexicon.feature.category import NOUN_PHRASE, ADJECTIVE_PHRASE
 from .exc import UnhandledLanguage
 
 mod_router = {
@@ -20,6 +21,20 @@ morphology_rules = {
 lexicon_router = {
     FRENCH: 'FrenchLexicon',
     ENGLISH: 'EnglishLexicon'
+}
+
+
+phrase_helper_router = {
+    FRENCH: {
+        NOUN_PHRASE: 'FrenchNounPhraseHelper',
+        ADJECTIVE_PHRASE: 'FrenchAdjectivePhraseHelper',
+        'phrase': 'FrenchPhraseHelper'
+    },
+    ENGLISH: {
+        NOUN_PHRASE: 'EnglishNounPhraseHelper',
+        ADJECTIVE_PHRASE: 'EnglishAdjectivePhraseHelper',
+        'phrase': 'EnglishPhraseHelper',
+    },
 }
 
 
@@ -47,3 +62,11 @@ def get_morphophonology_rules(language):
 def get_lexicon(language):
     """Return the appropriate lexicon given a language."""
     return _get_from_module('.lexicon', language=language, target=lexicon_router[language])
+
+
+def get_phrase_helper(language, phrase_type):
+    """Return the appropriate phrase helper given a language and a phrase type."""
+    return _get_from_module(
+        '.helper',
+        language=language,
+        target=phrase_helper_router[language][phrase_type])
