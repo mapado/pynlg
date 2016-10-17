@@ -11,7 +11,7 @@ For more information about what SimpleNLG and SimpleNLG-EnFr, have a look at the
 - `SimpleNLG-EnFr <https://github.com/rali-udem/SimpleNLG-EnFr/blob/master/docs/SimpleNLG-EnFr_doc_francais.pdf>`_ (in french)
 - `SimpleNLG <https://github.com/simplenlg/simplenlg/wiki/Section-0-%E2%80%93-SimpleNLG-Tutorial>`_
 
-``pynlg`` supports Python2.7 and 3.4. Python 3.3 should work, but is untested.
+``pynlg`` supports Python2.7 and 3.5. Python 3.3 and 3.4 should work, but are untested.
 
 Examples
 --------
