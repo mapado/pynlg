@@ -26,7 +26,7 @@ class FeatureModulesLoader(type):
         feature_pkg_path = relpath(
             join(dirname(__file__), '..', 'lexicon', 'feature'))
         for dirpath, _, filenames in os.walk(feature_pkg_path):
-            pkg_root = dirpath.replace('/', '.')
+            pkg_root = dirpath[dirpath.rfind("pynlg"):].replace(os.sep, '.')
             for filename in filenames:
                 if not filename.endswith('.py'):
                     continue
