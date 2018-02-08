@@ -1,6 +1,6 @@
 from .spec.phrase import NounPhraseElement
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 def make_noun_phrase(lexicon, specifier, noun, modifiers=None):
