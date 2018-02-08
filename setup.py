@@ -5,8 +5,8 @@ setup(
     version='0.1.1',
     description='Natural Language Generation in Python',
     long_description=open('README.rst').read(),
-    author=["Jerry Nieuviarts"],
-    author_email=['jerry@mapado.com'],
+    author="Jerry Nieuviarts",
+    author_email='jerry@mapado.com',
     url='http://github.com/mapado/pynlg',
     license='MIT',
     # See list of classifiers here:
